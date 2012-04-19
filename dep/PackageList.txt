@@ -1,0 +1,9 @@
+Dbc2MySql uses the following opensource software:
+
+tinyxml (a simple, small, minimal, C++ XML parser)
+  http://sourceforge.net/projects/tinyxml/
+  Version: 2.6.2
+  
+MySQL (the world's most popular open source database software)
+  http://www.mysql.com/
+  Version: 5.5.23 (GA)

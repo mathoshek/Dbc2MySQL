@@ -1,0 +1,1501 @@
+<?xml version="1.0"?>
+
+<DBFilesClient>
+  <Achievement primary="ID">
+    <field name="ID" type="uint32" comment="Entry"/>
+    <field name="Faction" type="int32" comment="-1: both, 0: Horde or 1: Alliance "/>
+    <field name="Map" type="int32" comment="Map.dbc, -1 if none"/>
+    <field name="ParentAchievement" type="uint32" comment="Achievement.dbc, its Achievement parent (can`t start while parent uncomplete, use its Criteria if don`t have own, use its progress on begin)"/>
+    <field name="Name" type="loc"/>
+    <field name="Description" type="loc"/>
+    <field name="Category" type="uint32" comment="Achievement_Category.dbc"/>
+    <field name="Points" type="uint32"/>
+    <field name="OrderInGroup" type="uint32"/>
+    <field name="Flags" type="uint32"/>
+    <field name="Icon" type="uint32" comment="SpellIcon.dbc"/>
+    <field name="Reward" type="loc"/>
+    <field name="Count" type="uint32" comment="need this count of completed criterias (own or referenced achievement criterias)"/>
+    <field name="RefAchievement" type="uint32" comment="Achievement.dbc, referenced achievement (counting of all completed criterias)"/>
+  </Achievement>
+  
+  <Achievement_Category primary="ID">
+    <field name="ID" type="uint32" comment="Entry"/>
+    <field name="ParentID" type="int32" comment="-1 for main category"/>
+    <field name="Name" type="loc"/>
+    <field name="SortOrder" type="uint32"/>
+  </Achievement_Category>
+  
+  <Achievement_Criteria primary="ID">
+    <field name="ID" type="uint32" comment="Entry"/>
+    <field name="Achievement" type="uint32"/>
+    <field name="Type" type="uint32"/>
+    <field name="Value1" type="uint32"/>
+    <field name="Value2" type="uint32"/>
+    <field name="ConditionType1" type="uint32"/>
+    <field name="ConditionValue1" type="uint32"/>
+    <field name="ConditionType2" type="uint32"/>
+    <field name="ConditionValue2" type="uint32"/>
+    <field name="Name" type="loc"/>
+    <field name="completionFlag" type="uint32"/>
+    <field name="groupFlags" type="uint32"/>
+    <field name="timerStartEvent" type="uint32" comment="for timed spells it is spell id, for timed kills it is creature id"/>
+    <field name="timeLimit" type="uint32" comment="time limit in seconds"/>
+    <field name="showOrder" type="uint32"/>
+  </Achievement_Criteria>
+
+  <AnimationData primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Name" type="string"/>
+    <field name="WeaponState" type="uint32"/>
+    <field name="Flags" type="uint32"/>
+    <field name="Unknown_5" type="uint32"/>
+    <field name="Unknown_6" type="uint32"/>
+    <field name="Preceeding" type="uint32"/>
+    <field name="RealID" type="uint32"/>
+  </AnimationData>
+  
+  <AreaGroup primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="AreaID1" type="uint32"/>
+    <field name="AreaID2" type="uint32"/>
+    <field name="AreaID3" type="uint32"/>
+    <field name="AreaID4" type="uint32"/>
+    <field name="AreaID5" type="uint32"/>
+    <field name="AreaID6" type="uint32"/>
+    <field name="NextGroup" type="uint32"/>    
+  </AreaGroup>
+
+  <AreaPOI primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Icon1" type="uint32"/>
+    <field name="Icon2" type="uint32"/>
+    <field name="Icon3" type="uint32"/>
+    <field name="Icon4" type="uint32"/>
+    <field name="Icon5" type="uint32"/>
+    <field name="Icon6" type="uint32"/>
+    <field name="Icon7" type="uint32"/>
+    <field name="Icon8" type="uint32"/>
+    <field name="Icon9" type="uint32"/>
+    <field name="Icon10" type="uint32"/>
+    <field name="Icon11" type="uint32"/>
+    <field name="X" type="float"/>
+    <field name="Y" type="float"/>
+    <field name="Z" type="float"/>
+    <field name="MapID" type="uint32"/>
+    <field name="Unknown_17" type="uint32"/>
+    <field name="ZoneID" type="int32"/>
+    <field name="Name1" type="loc"/>
+    <field name="Name2" type="loc"/>
+    <field name="WorldState" type="uint32"/>
+    <field name="Unknown_22" type="uint32"/>
+  </AreaPOI>
+  
+  <AreaTable primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="MapID" type="uint32"/>
+    <field name="Zone" type="uint32" comment="if 0 then it's zone, else it's zone id of this area"/>
+    <field name="ExploreFlag" type="uint32" comment="main index"/>
+    <field name="Flags" type="uint32"/>
+    <field name="SoundPreferences" type="uint32" comment="SoundProviderPreferences.dbc"/>
+    <field name="Unknown_7" type="uint32"/>
+    <field name="SoundAmbience" type="uint32" comment="SoundAmbience.dbc"/>
+    <field name="ZoneMusic" type="uint32" comment="ZoneMusic.dbc"/>
+    <field name="ZoneIntroMusicTable" type="uint32" comment="ZoneIntroMusicTable.dbc"/>
+    <field name="AreaLevel" type="int32"/>
+    <field name="Name" type="loc"/>
+    <field name="Team" type="uint32" comment="FactionGroup.dbc"/>
+    <field name="Unknown_14" type="uint32" comment=""/>
+    <field name="Unknown_15" type="uint32" comment=""/>
+    <field name="Unknown_16" type="uint32" comment=""/>
+    <field name="Unknown_17" type="uint32" comment=""/>
+    <field name="Unknown_18" type="float" comment=""/>
+    <field name="Unknown_19" type="float" comment=""/>
+    <field name="Unknown_20" type="uint32" comment=""/>
+  </AreaTable>
+
+  <AreaTrigger primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="MapID" type="uint32"/>
+    <field name="X" type="float"/>
+    <field name="Y" type="float"/>
+    <field name="Z" type="float"/>
+    <field name="Radius" type="float"/>
+    <field name="Box_X" type="float"/>
+    <field name="Box_Y" type="float"/>
+    <field name="Box_Z" type="float"/>
+    <field name="Box_O" type="float"/>
+  </AreaTrigger>
+
+  <AuctionHouse primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Faction" type="uint32"/>
+    <field name="DepositPercent" type="uint32"/>
+    <field name="CutPercent" type="uint32"/>
+    <field name="Name" type="loc"/>
+  </AuctionHouse>
+
+  <BankBagSlotPrices primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Price" type="uint32"/>
+  </BankBagSlotPrices>
+
+  <BarberShopStyle primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Type" type="uint32" comment="0 -> hair, 2 -> facialhair"/>
+    <field name="Name" type="loc"/>
+    <field name="unk_name" type="loc"/>
+    <field name="CostMultiplier" type="float"/>
+    <field name="Race" type="uint32"/>
+    <field name="Gender" type="uint32" comment="0 -> male, 1 -> female"/>
+    <field name="HairID" type="uint32"/>
+  </BarberShopStyle>
+
+  <BattlemasterList primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="MapID1" type="int32"/>
+    <field name="MapID2" type="int32"/>
+    <field name="MapID3" type="int32"/>
+    <field name="MapID4" type="int32"/>
+    <field name="MapID5" type="int32"/>
+    <field name="MapID6" type="int32"/>
+    <field name="MapID7" type="int32"/>
+    <field name="MapID8" type="int32"/>
+    <field name="Type" type="uint32"/>
+    <field name="CanJoinAsGroup" type="uint32"/>
+    <field name="Name" type="loc"/>
+    <field name="MaxGroupSize" type="uint32"/>
+    <field name="HolidayWorldStateID" type="uint32"/>
+    <field name="MinLevel" type="uint32"/>
+    <field name="SomeLevel" type="uint32"/>
+  </BattlemasterList>
+
+  <CharStartOutfit primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="RaceClassGender" type="uint32"/>
+    <field name="ItemID1" type="int32"/>
+    <field name="ItemID2" type="int32"/>
+    <field name="ItemID3" type="int32"/>
+    <field name="ItemID4" type="int32"/>
+    <field name="ItemID5" type="int32"/>
+    <field name="ItemID6" type="int32"/>
+    <field name="ItemID7" type="int32"/>
+    <field name="ItemID8" type="int32"/>
+    <field name="ItemID9" type="int32"/>
+    <field name="ItemID10" type="int32"/>
+    <field name="ItemID11" type="int32"/>
+    <field name="ItemID12" type="int32"/>
+    <field name="ItemID13" type="int32"/>
+    <field name="ItemID14" type="int32"/>
+    <field name="ItemID15" type="int32"/>
+    <field name="ItemID16" type="int32"/>
+    <field name="ItemID17" type="int32"/>
+    <field name="ItemID18" type="int32"/>
+    <field name="ItemID19" type="int32"/>
+    <field name="ItemID20" type="int32"/>
+    <field name="ItemID21" type="int32"/>
+    <field name="ItemID22" type="int32"/>
+    <field name="ItemID23" type="int32"/>
+    <field name="ItemID24" type="int32"/>
+    <field name="ItemDisplayID1" type="int32"/>
+    <field name="ItemDisplayID2" type="int32"/>
+    <field name="ItemDisplayID3" type="int32"/>
+    <field name="ItemDisplayID4" type="int32"/>
+    <field name="ItemDisplayID5" type="int32"/>
+    <field name="ItemDisplayID6" type="int32"/>
+    <field name="ItemDisplayID7" type="int32"/>
+    <field name="ItemDisplayID8" type="int32"/>
+    <field name="ItemDisplayID9" type="int32"/>
+    <field name="ItemDisplayID10" type="int32"/>
+    <field name="ItemDisplayID11" type="int32"/>
+    <field name="ItemDisplayID12" type="int32"/>
+    <field name="ItemDisplayID13" type="int32"/>
+    <field name="ItemDisplayID14" type="int32"/>
+    <field name="ItemDisplayID15" type="int32"/>
+    <field name="ItemDisplayID16" type="int32"/>
+    <field name="ItemDisplayID17" type="int32"/>
+    <field name="ItemDisplayID18" type="int32"/>
+    <field name="ItemDisplayID19" type="int32"/>
+    <field name="ItemDisplayID20" type="int32"/>
+    <field name="ItemDisplayID21" type="int32"/>
+    <field name="ItemDisplayID22" type="int32"/>
+    <field name="ItemDisplayID23" type="int32"/>
+    <field name="ItemDisplayID24" type="int32"/>
+    <field name="ItemInventorySlot1" type="int32"/>
+    <field name="ItemInventorySlot2" type="int32"/>
+    <field name="ItemInventorySlot3" type="int32"/>
+    <field name="ItemInventorySlot4" type="int32"/>
+    <field name="ItemInventorySlot5" type="int32"/>
+    <field name="ItemInventorySlot6" type="int32"/>
+    <field name="ItemInventorySlot7" type="int32"/>
+    <field name="ItemInventorySlot8" type="int32"/>
+    <field name="ItemInventorySlot9" type="int32"/>
+    <field name="ItemInventorySlot10" type="int32"/>
+    <field name="ItemInventorySlot11" type="int32"/>
+    <field name="ItemInventorySlot12" type="int32"/>
+    <field name="ItemInventorySlot13" type="int32"/>
+    <field name="ItemInventorySlot14" type="int32"/>
+    <field name="ItemInventorySlot15" type="int32"/>
+    <field name="ItemInventorySlot16" type="int32"/>
+    <field name="ItemInventorySlot17" type="int32"/>
+    <field name="ItemInventorySlot18" type="int32"/>
+    <field name="ItemInventorySlot19" type="int32"/>
+    <field name="ItemInventorySlot20" type="int32"/>
+    <field name="ItemInventorySlot21" type="int32"/>
+    <field name="ItemInventorySlot22" type="int32"/>
+    <field name="ItemInventorySlot23" type="int32"/>
+    <field name="ItemInventorySlot24" type="int32"/>
+    <field name="Unknown_75" type="uint32"/>
+    <field name="Unknown_76" type="uint32"/>
+    <field name="Unknown_77" type="uint32"/>
+  </CharStartOutfit>
+  
+  <CharTitles primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Unknown_2" type="uint32"/>
+    <field name="Name" type="loc"/>
+    <field name="Name2" type="loc"/>
+    <field name="BitIndex" type="uint32"/>
+  </CharTitles>
+  
+  <ChatChannels primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Flags" type="uint32"/>
+    <field name="Unknown_2" type="uint32"/>
+    <field name="Pattern" type="loc"/>
+    <field name="Name" type="loc"/>
+  </ChatChannels>
+  
+  <ChrClasses primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Flags" type="uint32"/>
+    <field name="PowerType" type="uint32"/>
+    <field name="Unknown_4" type="uint32"/>
+    <field name="Name" type="loc"/>
+    <field name="NameFemale" type="loc"/>
+    <field name="NameNeutralGender" type="loc"/>
+    <field name="InternalName" type="string"/>
+    <field name="SpellFamily" type="uint32"/>
+    <field name="Flags2" type="uint32"/>
+    <field name="CinematicSequenceID" type="uint32"/>
+    <field name="Expansion" type="uint32"/>
+  </ChrClasses>
+  
+  <ChrRaces primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Flags" type="uint32"/>
+    <field name="FactionID" type="uint32"/>
+    <field name="ExplorationSound" type="uint32"/>
+    <field name="ModelMale" type="uint32"/>
+    <field name="ModelFemale" type="uint32"/>
+    <field name="Abbrev" type="string"/>
+    <field name="TeamID" type="uint32" comment="7-Alliance 1-Horde"/>
+    <field name="CreatureType" type="uint32"/>
+    <field name="Unknown_9" type="uint32"/>
+    <field name="Unknown_10" type="uint32"/>
+    <field name="InternalName" type="string"/>
+    <field name="CinematicSequenceID" type="uint32"/>
+    <field name="Faction" type="uint32" comment="0 Horde, 1 Ally, 2 N/A"/>
+    <field name="Name" type="loc"/>
+    <field name="NameFemale" type="loc"/>
+    <field name="NameNeutralGender" type="loc"/>
+    <field name="Feature[1]" type="string"/>
+    <field name="Feature[2]" type="string"/>
+    <field name="Feature[3]" type="string"/>
+    <field name="Expansion" type="uint32"/>
+  </ChrRaces>
+  
+  <CinematicSequences primary="ID">
+      <field name="ID" type="uint32"/>
+    <field name="Unknown_2" type="uint32"/>
+    <field name="CinematicCameraID" type="uint32" comment="CinematicCamera.dbc"/>
+    <field name="Unknown_4" type="uint32"/>
+    <field name="Unknown_5" type="uint32"/>
+    <field name="Unknown_6" type="uint32"/>
+    <field name="Unknown_7" type="uint32"/>
+    <field name="Unknown_8" type="uint32"/>
+    <field name="Unknown_9" type="uint32"/>
+    <field name="Unknown_10" type="uint32"/>
+  </CinematicSequences>
+  
+  <CreatureDisplayInfo primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="modelID"/>
+    <field type="uint32" name="soundID"/>
+    <field type="uint32" name="extendedDisplayInfoID"/>
+    <field type="float" name="scale"/>
+    <field type="uint32" name="creatureModelAlpha"/>
+    <field type="string" name="textureVariation1"/>
+    <field type="string" name="textureVariation2"/>
+    <field type="string" name="textureVariation3"/>
+    <field type="string" name="portraitTextureName"/>
+    <field type="int32" name="sizeClass"/>
+    <field type="uint32" name="bloodID"/>
+    <field type="uint32" name="NPCSoundID"/>
+    <field type="uint32" name="particleColorID"/>
+    <field type="uint32" name="creatureGeosetData"/>
+    <field type="uint32" name="objectEffectPackageID"/>
+  </CreatureDisplayInfo>
+  
+  <CreatureFamily primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="float" name="minScale"/>
+    <field type="uint32" name="minScaleLevel"/>
+    <field type="float" name="maxScale"/>
+    <field type="uint32" name="maxScaleLevel"/>
+    <field type="uint32" name="skillLine[1]"/>
+    <field type="uint32" name="skillLine[2]"/>
+    <field type="uint32" name="petFoodMask"/>
+    <field type="int32" name="petTalentType"/>
+    <field type="int32" name="categoryEnumID"/>
+    <field type="loc" name="name"/>
+    <field type="string" name="iconFile"/>
+  </CreatureFamily>
+  
+  <CreatureSpellData primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="spellId[1]"/>
+    <field type="uint32" name="spellId[2]"/>
+    <field type="uint32" name="spellId[3]"/>
+    <field type="uint32" name="spellId[4]"/>
+    <field type="uint32" name="availability[1]"/>
+    <field type="uint32" name="availability[2]"/>
+    <field type="uint32" name="availability[3]"/>
+    <field type="uint32" name="availability[4]"/>
+  </CreatureSpellData>
+  
+  <CreatureType primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="loc" name="Name"/>
+    <field type="uint32" name="no_expirience"/>
+  </CreatureType>
+
+  <CurrencyCategory primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="Unknown_1"/>
+    <field type="loc" name="Name"/>
+  </CurrencyCategory>
+
+  <CurrencyTypes primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="ItemId"/>
+    <field type="uint32" name="Category"/>
+    <field type="uint32" name="BitIndex"/>
+  </CurrencyTypes>
+
+  <DurabilityCosts primary="Itemlvl">
+    <field type="uint32" name="Itemlvl"/>
+    <field type="uint32" name="multiplier[1]"/>
+    <field type="uint32" name="multiplier[2]"/>
+    <field type="uint32" name="multiplier[3]"/>
+    <field type="uint32" name="multiplier[4]"/>
+    <field type="uint32" name="multiplier[5]"/>
+    <field type="uint32" name="multiplier[6]"/>
+    <field type="uint32" name="multiplier[7]"/>
+    <field type="uint32" name="multiplier[8]"/>
+    <field type="uint32" name="multiplier[9]"/>
+    <field type="uint32" name="multiplier[10]"/>
+    <field type="uint32" name="multiplier[11]"/>
+    <field type="uint32" name="multiplier[12]"/>
+    <field type="uint32" name="multiplier[13]"/>
+    <field type="uint32" name="multiplier[14]"/>
+    <field type="uint32" name="multiplier[15]"/>
+    <field type="uint32" name="multiplier[16]"/>
+    <field type="uint32" name="multiplier[17]"/>
+    <field type="uint32" name="multiplier[18]"/>
+    <field type="uint32" name="multiplier[19]"/>
+    <field type="uint32" name="multiplier[20]"/>
+    <field type="uint32" name="multiplier[21]"/>
+    <field type="uint32" name="multiplier[22]"/>
+    <field type="uint32" name="multiplier[23]"/>
+    <field type="uint32" name="multiplier[24]"/>
+    <field type="uint32" name="multiplier[25]"/>
+    <field type="uint32" name="multiplier[26]"/>
+    <field type="uint32" name="multiplier[27]"/>
+    <field type="uint32" name="multiplier[28]"/>
+    <field type="uint32" name="multiplier[29]"/>
+  </DurabilityCosts>
+
+  <DurabilityQuality primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="float" name="quality_mod"/>
+  </DurabilityQuality>
+
+  <Emotes primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="string" name="Name"/>
+    <field type="uint32" name="AnimationId"/>
+    <field type="uint32" name="Flags"/>
+    <field type="uint32" name="EmoteType"/>
+    <field type="uint32" name="UnitStandState"/>
+    <field type="uint32" name="SoundId"/>
+  </Emotes>
+
+  <EmotesText primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="string" name="InternalName"/>
+    <field type="uint32" name="Unknown_2"/>
+    <field type="uint32" name="Unknown_3"/>
+    <field type="uint32" name="Unknown_4"/>
+    <field type="uint32" name="Unknown_5"/>
+    <field type="uint32" name="Unknown_6"/>
+    <field type="uint32" name="Unknown_7"/>
+    <field type="uint32" name="Unknown_8"/>
+    <field type="uint32" name="Unknown_9"/>
+    <field type="uint32" name="Unknown_10"/>
+    <field type="uint32" name="Unknown_11"/>
+    <field type="uint32" name="Unknown_12"/>
+    <field type="uint32" name="Unknown_13"/>
+    <field type="uint32" name="Unknown_14"/>
+    <field type="uint32" name="Unknown_15"/>
+    <field type="uint32" name="Unknown_16"/>
+    <field type="uint32" name="Unknown_17"/>
+    <field type="uint32" name="Unknown_18"/>
+  </EmotesText>
+
+  <EmotesTextData primary ="ID">
+    <field type="uint32" name="ID"/>
+    <field type="loc" name="Text"/>
+  </EmotesTextData>
+
+  <EmotesTextSound primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="Unknown_1"/>
+    <field type="uint32" name="Unknown_2"/>
+    <field type="uint32" name="Unknown_3"/>
+    <field type="uint32" name="SoundID"/>
+  </EmotesTextSound>
+
+  <Faction primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="int32" name="reputationListID"/>
+    <field type="uint32" name="BaseRepRaceMask[1]"/>
+    <field type="uint32" name="BaseRepRaceMask[2]"/>
+    <field type="uint32" name="BaseRepRaceMask[3]"/>
+    <field type="uint32" name="BaseRepRaceMask[4]"/>
+    <field type="uint32" name="BaseRepClassMask[1]"/>
+    <field type="uint32" name="BaseRepClassMask[2]"/>
+    <field type="uint32" name="BaseRepClassMask[3]"/>
+    <field type="uint32" name="BaseRepClassMask[4]"/>
+    <field type="int32" name="BaseRepValue[1]"/>
+    <field type="int32" name="BaseRepValue[2]"/>
+    <field type="int32" name="BaseRepValue[3]"/>
+    <field type="int32" name="BaseRepValue[4]"/>
+    <field type="uint32" name="ReputationFlags[1]"/>
+    <field type="uint32" name="ReputationFlags[2]"/>
+    <field type="uint32" name="ReputationFlags[3]"/>
+    <field type="uint32" name="ReputationFlags[4]"/>
+    <field type="uint32" name="team"/>
+    <field type="float" name="spilloverRate1"/>
+    <field type="float" name="spilloverRate2"/>
+    <field type="uint32" name="spilloverMaxRank"/>
+    <field type="uint32" name="spilloverRank_unk"/>
+    <field type="loc" name="name"/>
+    <field type="loc" name="description"/>
+  </Faction>
+
+  <FactionTemplate primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="faction"/>
+    <field type="uint32" name="factionFlags"/>
+    <field type="uint32" name="ourMask"/>
+    <field type="uint32" name="friendlyMask"/>
+    <field type="uint32" name="hostileMask"/>
+    <field type="uint32" name="enemyFaction[1]"/>
+    <field type="uint32" name="enemyFaction[2]"/>
+    <field type="uint32" name="enemyFaction[3]"/>
+    <field type="uint32" name="enemyFaction[4]"/>
+    <field type="uint32" name="friendFaction[1]"/>
+    <field type="uint32" name="friendFaction[2]"/>
+    <field type="uint32" name="friendFaction[3]"/>
+    <field type="uint32" name="friendFaction[4]"/>
+  </FactionTemplate>
+
+  <GameObjectArtKit primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="string" name="TextureVariation1" />
+    <field type="string" name="TextureVariation2" />
+    <field type="string" name="TextureVariation3" />
+    <field type="string" name="AttachModel1" />
+    <field type="string" name="AttachModel2" />
+    <field type="string" name="AttachModel3" />
+    <field type="string" name="AttachModel4" />
+  </GameObjectArtKit>
+  
+  <GameObjectDisplayInfo primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="string" name="ModelName" />
+    <field type="uint32" name="StandSound" />
+    <field type="uint32" name="OpenSound" />
+    <field type="uint32" name="LoopSound" />
+    <field type="uint32" name="CloseSound" />
+    <field type="uint32" name="DestroySound" />
+    <field type="uint32" name="OpenedSound" />
+    <field type="uint32" name="Custom1Sound" />
+    <field type="uint32" name="Custom2Sound" />
+    <field type="uint32" name="Custom3Sound" />
+    <field type="uint32" name="Custom4Sound" />
+    <field type="float" name="GeoBoxMinX" />
+    <field type="float" name="GeoBoxMinY" />
+    <field type="float" name="GeoBoxMinZ" />
+    <field type="float" name="GeoBoxMaxX" />
+    <field type="float" name="GeoBoxMaxY" />
+    <field type="float" name="GeoBoxMaxZ" />
+    <field type="uint32" name="ObjectEffectPackageId" />
+  </GameObjectDisplayInfo>
+
+  <GemProperties primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="SpellItemEnchantement"/>
+    <field type="uint32" name="Unknown_2"/>
+    <field type="uint32" name="Unknown_3"/>
+    <field type="uint32" name="Color"/>
+  </GemProperties>
+
+  <GlyphProperties primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="SpellId"/>
+    <field type="uint32" name="TypeFlags"/>
+    <field type="uint32" name="GlyphIconId"/>
+  </GlyphProperties>
+
+  <GlyphSlot primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="TypeFlags"/>
+    <field type="uint32" name="Order"/>
+  </GlyphSlot>
+
+  <HolidayDescriptions primary="HolidayDescriptionID">
+    <field type="uint32" name="HolidayDescriptionID"/>
+    <field type="loc" name="Description"/>
+  </HolidayDescriptions>
+
+  <HolidayNames primary="HolidayNameID">
+    <field type="uint32" name="HolidayNameID"/>
+    <field type="loc" name="Name"/>
+  </HolidayNames>
+
+  <Holiday primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="Unknown_1"/>
+    <field type="uint32" name="Unknown_2"/>
+    <field type="uint32" name="Unknown_3"/>
+    <field type="uint32" name="Unknown_4"/>
+    <field type="uint32" name="Unknown_5"/>
+    <field type="uint32" name="Unknown_6"/>
+    <field type="uint32" name="Unknown_7"/>
+    <field type="uint32" name="Unknown_8"/>
+    <field type="uint32" name="Unknown_9"/>
+    <field type="uint32" name="Unknown_10"/>
+    <field type="uint32" name="Unknown_11"/>
+    <field type="uint32" name="Unknown_12"/>
+    <field type="uint32" name="Unknown_13"/>
+    <field type="uint32" name="Unknown_14"/>
+    <field type="uint32" name="Unknown_15"/>
+    <field type="uint32" name="Unknown_16"/>
+    <field type="uint32" name="Unknown_17"/>
+    <field type="uint32" name="Unknown_18"/>
+    <field type="uint32" name="Unknown_19"/>
+    <field type="uint32" name="Unknown_20"/>
+    <field type="uint32" name="Unknown_21"/>
+    <field type="uint32" name="Unknown_22"/>
+    <field type="uint32" name="Unknown_23"/>
+    <field type="uint32" name="Unknown_24"/>
+    <field type="uint32" name="Unknown_25"/>
+    <field type="uint32" name="Unknown_26"/>
+    <field type="uint32" name="Unknown_27"/>
+    <field type="uint32" name="Unknown_28"/>
+    <field type="uint32" name="Unknown_29"/>
+    <field type="uint32" name="Unknown_30"/>
+    <field type="uint32" name="Unknown_31"/>
+    <field type="uint32" name="Unknown_32"/>
+    <field type="uint32" name="Unknown_33"/>
+    <field type="uint32" name="Unknown_34"/>
+    <field type="uint32" name="Unknown_35"/>
+    <field type="uint32" name="Unknown_36"/>
+    <field type="uint32" name="Unknown_37"/>
+    <field type="uint32" name="Unknown_38"/>
+    <field type="uint32" name="Unknown_39"/>
+    <field type="uint32" name="Unknown_40"/>
+    <field type="uint32" name="Unknown_41"/>
+    <field type="uint32" name="Unknown_42"/>
+    <field type="uint32" name="Unknown_43"/>
+    <field type="uint32" name="Unknown_44"/>
+    <field type="uint32" name="Unknown_45"/>
+    <field type="uint32" name="Unknown_46"/>
+    <field type="uint32" name="Unknown_47"/>
+    <field type="uint32" name="Unknown_48"/>
+    <field type="uint32" name="HolidayNameId"/>
+    <field type="uint32" name="HolidayDescriptionId"/>
+    <field type="uint32" name="Unknown_51"/>
+    <field type="uint32" name="Unknown_52"/>
+    <field type="uint32" name="Unknown_53"/>
+    <field type="uint32" name="Unknown_54"/>
+  </Holiday>
+
+  <Item primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="uint32" name="Class"/>
+    <field type="uint32" name="SubClass"/>
+    <field type="int32" name="Unknown_3"/>
+    <field type="int32" name="Material"/>
+    <field type="uint32" name="DisplayId"/>
+    <field type="uint32" name="InventoryType"/>
+    <field type="uint32" name="Sheath"/>
+  </Item>
+
+  <ItemBagFamily primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="loc" name="Name"/>
+  </ItemBagFamily>
+<!--
+  <ItemDisplayInfo primary="ID">
+    <field type="uint32" name="ID"/>
+    <field type="string" name="modelName[1]"/>
+    <field type="string" name="modelName[2]"/>
+    <field type="string" name="modelTexture[1]"/>
+    <field type="string" name="modelTexture[2]"/>
+    <field type="string" name="inventoryIcon"/>
+    <field type="uint32" name="geosetGroup[1]"/>
+    <field type="uint32" name="geosetGroup[2]"/>
+    <field type="uint32" name="geosetGroup[3]"/>
+    <field type="uint32" name="flags"/>
+    <field type="uint32" name="spellVisualID"/>
+    <field type="uint32" name="groupSoundIndex"/>
+    <field type="uint32" name="helmetGeosetVis[1]"/>
+    <field type="uint32" name="helmetGeosetVis[2]"/>
+    <field type="string" name="itemVisual[1]"/>
+    <field type="string" name="itemVisual[2]"/>
+    <field type="string" name="itemVisual[3]"/>
+    <field type="string" name="itemVisual[4]"/>
+    <field type="string" name="itemVisual[5]"/>
+    <field type="string" name="itemVisual[6]"/>
+    <field type="string" name="itemVisual[7]"/>
+    <field type="string" name="itemVisual[8]"/>
+    <field type="uint32" name="Unknown_23"/>
+    <field type="uint32" name="particleColorID"/>
+  </ItemDisplayInfo>
+-->
+  <ItemExtendedCost primary="ID">
+    <field name="ID" type="uint32" comment="Entry"/>
+    <field name="ReqHonorPoints" type="uint32" comment="Required Honor Points"/>
+    <field name="ReqArenaPoints" type="uint32" comment="Required Arena Points"/>
+    <field name="ReqArenaSlot" type="uint32" comment="Arena slot restrctions (min slot value)"/>
+    <field name="ReqItem0" type="uint32"/>
+    <field name="ReqItem1" type="uint32"/>
+    <field name="ReqItem2" type="uint32"/>
+    <field name="ReqItem3" type="uint32"/>
+    <field name="ReqItem4" type="uint32"/>
+    <field name="ReqItemCount0" type="uint32"/>
+    <field name="ReqItemCount1" type="uint32"/>
+    <field name="ReqItemCount2" type="uint32"/>
+    <field name="ReqItemCount3" type="uint32"/>
+    <field name="ReqItemCount4" type="uint32"/>
+    <field name="ReqPersRating" type="uint32"/>
+    <field name="PurchaseGroup" type="uint32" comment="ItemPurchaseGroup.dbc"/>
+  </ItemExtendedCost>
+
+  <Lock primary="ID">
+    <field name="ID" type="uint32" />
+    <field name="Type1" type="uint32" />
+    <field name="Type2" type="uint32" />
+    <field name="Type3" type="uint32" />
+    <field name="Type4" type="uint32" />
+    <field name="Type5" type="uint32" />
+    <field name="Type6" type="uint32" />
+    <field name="Type7" type="uint32" />
+    <field name="Type8" type="uint32" />
+    <field name="LockProperties1" type="uint32" />
+    <field name="LockProperties2" type="uint32" />
+    <field name="LockProperties3" type="uint32" />
+    <field name="LockProperties4" type="uint32" />
+    <field name="LockProperties5" type="uint32" />
+    <field name="LockProperties6" type="uint32" />
+    <field name="LockProperties7" type="uint32" />
+    <field name="LockProperties8" type="uint32" />
+    <field name="RequiredSkill1" type="uint32" />
+    <field name="RequiredSkill2" type="uint32" />
+    <field name="RequiredSkill3" type="uint32" />
+    <field name="RequiredSkill4" type="uint32" />
+    <field name="RequiredSkill5" type="uint32" />
+    <field name="RequiredSkill6" type="uint32" />
+    <field name="RequiredSkill7" type="uint32" />
+    <field name="RequiredSkill8" type="uint32" />
+    <field name="Action1" type="uint32" />
+    <field name="Action2" type="uint32" />
+    <field name="Action3" type="uint32" />
+    <field name="Action4" type="uint32" />
+    <field name="Action5" type="uint32" />
+    <field name="Action6" type="uint32" />
+    <field name="Action7" type="uint32" />
+    <field name="Action8" type="uint32" />
+  </Lock>
+  
+  <LockType primary="ID">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="loc" />
+    <field name="ItemStateName" type="loc" />
+    <field name="ProcessName" type="loc" />
+    <field name="InternalName" type="string" />
+  </LockType>
+  
+  <Map primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="InternalName" type="string"/>
+    <field name="Type" type="uint32"/>
+    <field name="Flags" type="uint32"/>
+    <field name="IsPVP" type="uint32"/>
+    <field name="Name" type="loc"/>
+    <field name="LinkedZone" type="uint32"/>
+    <field name="HordeIntro" type="loc"/>
+    <field name="AllianceIntro" type="loc"/>
+    <field name="MultiMapID" type="uint32"/>
+    <field name="Unknown_11" type="float"/>
+    <field name="ParentMap" type="int32"/>
+    <field name="EntranceX" type="float"/>
+    <field name="EntranceY" type="float"/>
+    <field name="Unknown_14" type="int32"/>
+    <field name="Addon" type="uint32"/>
+    <field name="Unknown_16" type="uint32"/>
+    <field name="MaxPlayers" type="uint32"/>
+  </Map>
+
+  <ObjectEffect primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="string" name="Name" />
+    <field type="uint32" name="ObjectEffectGroupId" />
+    <field type="uint32" name="TriggerType" />
+    <field type="uint32" name="EventType" />
+    <field type="uint32" name="EffectRecType" />
+    <field type="uint32" name="EffectRecID" />
+    <field type="uint32" name="Attachment" />
+    <field type="float" name="OffsetX" />
+    <field type="float" name="OffsetY" />
+    <field type="float" name="OffsetZ" />
+    <field type="uint32" name="ObjectEffectModifierID" />
+  </ObjectEffect>
+
+  <ObjectEffectGroup primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="string" name="Name" />
+  </ObjectEffectGroup>
+
+  <ObjectEffectModifier primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="uint32" name="InputType" />
+    <field type="uint32" name="MapType" />
+    <field type="uint32" name="OutputType" />
+    <field type="float" name="Param1" />
+    <field type="float" name="Param2" />
+    <field type="float" name="Param3" />
+    <field type="float" name="Param4" />
+  </ObjectEffectModifier>
+
+  <ObjectEffectPackage primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="string" name="Name" />
+  </ObjectEffectPackage>
+
+  <ObjectEffectPackageElem primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="uint32" name="objectEffectPackageId" />
+    <field type="uint32" name="objectEffectGroupId" />
+    <field type="uint32" name="stateType" />
+  </ObjectEffectPackageElem>
+  
+  <QuestSort primary="ID">
+    <field name="ID" type="uint32" />
+	<field name="Name" type="loc" />
+  </QuestSort>
+  
+  <SkillLine primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="categoryID" type="uint32" />
+    <field name="skillCostsID" type="uint32" />
+    <field name="displayName" type="loc" />
+    <field name="description" type="loc" />
+    <field name="spellIconID" type="uint32" />
+    <field name="alternateVerb" type="loc" />
+    <field name="canLink" type="uint32" />
+  </SkillLine>
+
+  <SkillLineAbility primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="skillLine" type="uint32" />
+    <field name="spell" type="uint32" />
+    <field name="raceMask" type="uint32" />
+    <field name="classMask" type="uint32" />
+    <field name="excludeRace" type="uint32" />
+    <field name="excludeClass" type="uint32" />
+    <field name="minSkillLineRank" type="uint32" />
+    <field name="supercededBySpell" type="uint32" />
+    <field name="acquireMethod" type="uint32" />
+    <field name="trivialSkillLineRankHigh" type="uint32" />
+    <field name="trivialSkillLineRankLow" type="uint32" />
+    <field name="characterPoints" type="uint32" />
+    <field name="numSkillUps" type="uint32" />
+  </SkillLineAbility>
+  
+  <SkillLineCategory primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="loc" />
+    <field name="sortIndex" type="uint32" />
+  </SkillLineCategory>
+
+  <SkillRaceClassInfo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="skillID" type="uint32" />
+    <field name="raceMask" type="uint32" />
+    <field name="classMask" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="minLevel" type="uint32" />
+    <field name="skillTierID" type="uint32" />
+    <field name="skillCostIndex" type="uint32" />
+  </SkillRaceClassInfo>
+  
+  <SkillTiers primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="cost1" type="uint32" />
+    <field name="cost2" type="uint32" />
+    <field name="cost3" type="uint32" />
+    <field name="cost4" type="uint32" />
+    <field name="cost5" type="uint32" />
+    <field name="cost6" type="uint32" />
+    <field name="cost7" type="uint32" />
+    <field name="cost8" type="uint32" />
+    <field name="cost9" type="uint32" />
+    <field name="cost10" type="uint32" />
+    <field name="cost11" type="uint32" />
+    <field name="cost12" type="uint32" />
+    <field name="cost13" type="uint32" />
+    <field name="cost14" type="uint32" />
+    <field name="cost15" type="uint32" />
+    <field name="cost16" type="uint32" />
+    <field name="value1" type="uint32" />
+    <field name="value2" type="uint32" />
+    <field name="value3" type="uint32" />
+    <field name="value4" type="uint32" />
+    <field name="value5" type="uint32" />
+    <field name="value6" type="uint32" />
+    <field name="value7" type="uint32" />
+    <field name="value8" type="uint32" />
+    <field name="value9" type="uint32" />
+    <field name="value10" type="uint32" />
+    <field name="value11" type="uint32" />
+    <field name="value12" type="uint32" />
+    <field name="value13" type="uint32" />
+    <field name="value14" type="uint32" />
+    <field name="value15" type="uint32" />
+    <field name="value16" type="uint32" />
+  </SkillTiers>
+
+  <SoundEntries primary="ID">
+    <field name="ID" type="uint32" comment="Entry"/>
+    <field name="Type" type="uint32"/>
+    <field name="Name" type="string"/>
+    <field name="Filename0" type="string"/>
+    <field name="Filename1" type="string"/>
+    <field name="Filename2" type="string"/>
+    <field name="Filename3" type="string"/>
+    <field name="Filename4" type="string"/>
+    <field name="Filename5" type="string"/>
+    <field name="Filename6" type="string"/>
+    <field name="Filename7" type="string"/>
+    <field name="Filename8" type="string"/>
+    <field name="Filename9" type="string"/>
+    <field name="Parameter0" type="uint32"/>
+    <field name="Parameter1" type="uint32"/>
+    <field name="Parameter2" type="uint32"/>
+    <field name="Parameter3" type="uint32"/>
+    <field name="Parameter4" type="uint32"/>
+    <field name="Parameter5" type="uint32"/>
+    <field name="Parameter6" type="uint32"/>
+    <field name="Parameter7" type="uint32"/>
+    <field name="Parameter8" type="uint32"/>
+    <field name="Parameter9" type="uint32"/>
+    <field name="FilePath" type="string"/>
+    <field name="Volume" type="float"/>
+    <field name="Flags" type="uint32"/>
+    <field name="minDistance" type="float"/>
+    <field name="distanceCutoff" type="float"/>
+    <field name="EAXDef" type="uint32"/>
+    <field name="Unknown_30" type="uint32"/>
+  </SoundEntries>
+
+  <Spell primary="ID">
+    <field name="ID" type="uint32" comment="entry"/>
+    <field name="Category" type="uint32"/>
+    <field name="Dispel" type="uint32"/>
+    <field name="Mechanic" type="uint32"/>
+    <field name="Attributes" type="uint32"/>
+    <field name="AttributesEx" type="uint32"/>
+    <field name="AttributesEx2" type="uint32"/>
+    <field name="AttributesEx3" type="uint32"/>
+    <field name="AttributesEx4" type="uint32"/>
+    <field name="AttributesEx5" type="uint32"/>
+    <field name="AttributesEx6" type="uint32"/>
+    <field name="AttributesEx7" type="uint32"/>
+    <field name="Stances" type="uint32"/>
+    <field name="unk_320_2" type="uint32"/>
+    <field name="StancesNot" type="uint32"/>
+    <field name="unk_320_3" type="uint32"/>
+    <field name="Targets" type="uint32"/>
+    <field name="TargetCreatureType" type="uint32"/>
+    <field name="RequiresSpellFocus" type="uint32"/>
+    <field name="FacingCasterFlags" type="uint32"/>
+    <field name="CasterAuraState" type="uint32"/>
+    <field name="TargetAuraState" type="uint32"/>
+    <field name="CasterAuraStateNot" type="uint32"/>
+    <field name="TargetAuraStateNot" type="uint32"/>
+    <field name="casterAuraSpell" type="uint32"/>
+    <field name="targetAuraSpell" type="uint32"/>
+    <field name="excludeCasterAuraSpell" type="uint32"/>
+    <field name="excludeTargetAuraSpell" type="uint32"/>
+    <field name="CastingTimeIndex" type="uint32"/>
+    <field name="RecoveryTime" type="uint32"/>
+    <field name="CategoryRecoveryTime" type="uint32"/>
+    <field name="InterruptFlags" type="uint32"/>
+    <field name="AuraInterruptFlags" type="uint32"/>
+    <field name="ChannelInterruptFlags" type="uint32"/>
+    <field name="procFlags" type="uint32"/>
+    <field name="procChance" type="uint32"/>
+    <field name="procCharges" type="int32"/>
+    <field name="maxLevel" type="uint32"/>
+    <field name="baseLevel" type="uint32"/>
+    <field name="spellLevel" type="uint32"/>
+    <field name="DurationIndex" type="uint32"/>
+    <field name="powerType" type="uint32"/>
+    <field name="manaCost" type="uint32"/>
+    <field name="manaCostPerlevel" type="uint32"/>
+    <field name="manaPerSecond" type="uint32"/>
+    <field name="manaPerSecondPerLevel" type="uint32"/>
+    <field name="rangeIndex" type="uint32"/>
+    <field name="speed" type="float"/>
+    <field name="modalNextSpell" type="uint32"/>
+    <field name="StackAmount" type="uint32"/>
+    <field name="Totem1" type="uint32"/>
+    <field name="Totem2" type="uint32"/>
+    <field name="Reagent1" type="int32"/>
+    <field name="Reagent2" type="int32"/>
+    <field name="Reagent3" type="int32"/>
+    <field name="Reagent4" type="int32"/>
+    <field name="Reagent5" type="int32"/>
+    <field name="Reagent6" type="int32"/>
+    <field name="Reagent7" type="int32"/>
+    <field name="Reagent8" type="int32"/>
+    <field name="ReagentCount1" type="uint32"/>
+    <field name="ReagentCount2" type="uint32"/>
+    <field name="ReagentCount3" type="uint32"/>
+    <field name="ReagentCount4" type="uint32"/>
+    <field name="ReagentCount5" type="uint32"/>
+    <field name="ReagentCount6" type="uint32"/>
+    <field name="ReagentCount7" type="uint32"/>
+    <field name="ReagentCount8" type="uint32"/>
+    <field name="EquippedItemClass" type="int32"/>
+    <field name="EquippedItemSubClassMask" type="uint32"/>
+    <field name="EquippedItemInventoryTypeMask" type="uint32"/>
+    <field name="Effect1" type="uint32"/>
+    <field name="Effect2" type="uint32"/>
+    <field name="Effect3" type="uint32"/>
+    <field name="EffectDieSides1" type="uint32"/>
+    <field name="EffectDieSides2" type="uint32"/>
+    <field name="EffectDieSides3" type="uint32"/>
+    <field name="EffectRealPointsPerLevel1" type="float"/>
+    <field name="EffectRealPointsPerLevel2" type="float"/>
+    <field name="EffectRealPointsPerLevel3" type="float"/>
+    <field name="EffectBasePoints1" type="int32"/>
+    <field name="EffectBasePoints2" type="int32"/>
+    <field name="EffectBasePoints3" type="int32"/>
+    <field name="EffectMechanic1" type="int32"/>
+    <field name="EffectMechanic2" type="int32"/>
+    <field name="EffectMechanic3" type="int32"/>
+    <field name="EffectImplicitTargetA1" type="uint32"/>
+    <field name="EffectImplicitTargetA2" type="uint32"/>
+    <field name="EffectImplicitTargetA3" type="uint32"/>
+    <field name="EffectImplicitTargetB1" type="uint32"/>
+    <field name="EffectImplicitTargetB2" type="uint32"/>
+    <field name="EffectImplicitTargetB3" type="uint32"/>
+    <field name="EffectRadiusIndex1" type="uint32"/>
+    <field name="EffectRadiusIndex2" type="uint32"/>
+    <field name="EffectRadiusIndex3" type="uint32"/>
+    <field name="EffectApplyAuraName1" type="uint32"/>
+    <field name="EffectApplyAuraName2" type="uint32"/>
+    <field name="EffectApplyAuraName3" type="uint32"/>
+    <field name="EffectAmplitude1" type="uint32"/>
+    <field name="EffectAmplitude2" type="uint32"/>
+    <field name="EffectAmplitude3" type="uint32"/>
+    <field name="EffectMultipleValue1" type="float"/>
+    <field name="EffectMultipleValue2" type="float"/>
+    <field name="EffectMultipleValue3" type="float"/>
+    <field name="EffectChainTarget1" type="uint32"/>
+    <field name="EffectChainTarget2" type="uint32"/>
+    <field name="EffectChainTarget3" type="uint32"/>
+    <field name="EffectItemType1" type="uint32"/>
+    <field name="EffectItemType2" type="uint32"/>
+    <field name="EffectItemType3" type="uint32"/>
+    <field name="EffectMiscValue1" type="uint32"/>
+    <field name="EffectMiscValue2" type="uint32"/>
+    <field name="EffectMiscValue3" type="uint32"/>
+    <field name="EffectMiscValueB1" type="uint32"/>
+    <field name="EffectMiscValueB2" type="uint32"/>
+    <field name="EffectMiscValueB3" type="uint32"/>
+    <field name="EffectTriggerSpell1" type="uint32"/>
+    <field name="EffectTriggerSpell2" type="uint32"/>
+    <field name="EffectTriggerSpell3" type="uint32"/>
+    <field name="EffectPointsPerComboPoint1" type="float"/>
+    <field name="EffectPointsPerComboPoint2" type="float"/>
+    <field name="EffectPointsPerComboPoint3" type="float"/>
+    <field name="EffectSpellClassMaskA1" type="uint32"/>
+    <field name="EffectSpellClassMaskA2" type="uint32"/>
+    <field name="EffectSpellClassMaskA3" type="uint32"/>
+    <field name="EffectSpellClassMaskB1" type="uint32"/>
+    <field name="EffectSpellClassMaskB2" type="uint32"/>
+    <field name="EffectSpellClassMaskB3" type="uint32"/>
+    <field name="EffectSpellClassMaskC1" type="uint32"/>
+    <field name="EffectSpellClassMaskC2" type="uint32"/>
+    <field name="EffectSpellClassMaskC3" type="uint32"/>
+    <field name="SpellVisual1" type="uint32"/>
+    <field name="SpellVisual2" type="uint32"/>
+    <field name="SpellIconID" type="uint32"/>
+    <field name="activeIconID" type="uint32"/>
+    <field name="spellPriority" type="uint32"/>
+    <field name="SpellName" type="loc"/>
+    <field name="Rank" type="loc"/>
+    <field name="Description" type="loc"/>
+    <field name="ToolTip" type="loc"/>
+    <field name="ManaCostPercentage" type="uint32"/>
+    <field name="StartRecoveryCategory" type="uint32"/>
+    <field name="StartRecoveryTime" type="uint32"/>
+    <field name="MaxTargetLevel" type="uint32"/>
+    <field name="SpellFamilyName" type="uint32"/>
+    <field name="SpellFamilyFlags1" type="uint32"/>
+    <field name="SpellFamilyFlags2" type="uint32"/>
+    <field name="SpellFamilyFlags3" type="uint32"/>
+    <field name="MaxAffectedTargets" type="uint32"/>
+    <field name="DmgClass" type="uint32"/>
+    <field name="PreventionType" type="uint32"/>
+    <field name="StanceBarOrder" type="int32"/>
+    <field name="DmgMultiplier1" type="float"/>
+    <field name="DmgMultiplier2" type="float"/>
+    <field name="DmgMultiplier3" type="float"/>
+    <field name="MinFactionId" type="uint32"/>
+    <field name="MinReputation" type="uint32"/>
+    <field name="RequiredAuraVision" type="uint32"/>
+    <field name="TotemCategory1" type="uint32"/>
+    <field name="TotemCategory2" type="uint32"/>
+    <field name="AreaGroupId" type="int32"/>
+    <field name="SchoolMask" type="uint32"/>
+    <field name="runeCostID" type="uint32"/>
+    <field name="spellMissileID" type="uint32"/>
+    <field name="PowerDisplayId" type="uint32"/>
+    <field name="EffectBonusMultiplier1" type="float"/>
+    <field name="EffectBonusMultiplier2" type="float"/>
+    <field name="EffectBonusMultiplier3" type="float"/>
+    <field name="spellDescriptionVariableID" type="uint32"/>
+    <field name="SpellDifficultyId" type="uint32"/>
+  </Spell>
+
+  <SpellCastTimes primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="CastTime" type="int32"/>
+    <field name="CastTimePerLevel" type="float"/>
+    <field name="MinCastTime" type="int32"/>
+  </SpellCastTimes>
+
+  <SpellCategory primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Flags" type="uint32"/>
+  </SpellCategory>
+
+  <SpellDifficulty primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="SpellID1" type="int32"/>
+    <field name="SpellID2" type="int32"/>
+    <field name="SpellID3" type="int32"/>
+    <field name="SpellID4" type="int32"/>
+  </SpellDifficulty>
+
+  <SpellDuration primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Duration1" type="int32"/>
+    <field name="Duration2" type="int32"/>
+    <field name="Duration3" type="int32"/>
+  </SpellDuration>
+
+  <SpellFocusObject primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Name" type="loc"/>
+  </SpellFocusObject>
+
+  <SpellIcon primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Path" type="string"/>
+  </SpellIcon>
+
+  <SpellItemEnchantment primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Charges" type="uint32"/>
+    <field name="Type1" type="uint32"/>
+    <field name="Type2" type="uint32"/>
+    <field name="Type3" type="uint32"/>
+    <field name="MinAmount1" type="uint32"/>
+    <field name="MinAmount2" type="uint32"/>
+    <field name="MinAmount3" type="uint32"/>
+    <field name="MaxAmount1" type="uint32"/>
+    <field name="MaxAmount2" type="uint32"/>
+    <field name="MaxAmount3" type="uint32"/>
+    <field name="SpellID1" type="uint32"/>
+    <field name="SpellID2" type="uint32"/>
+    <field name="SpellID3" type="uint32"/>
+    <field name="Description" type="loc"/>
+    <field name="AuraID" type="int32"/>
+    <field name="Slot" type="uint32"/>
+    <field name="GemID" type="uint32"/>
+    <field name="EnchantmentCondition" type="uint32"/>
+    <field name="RequiredSkill" type="uint32"/>
+    <field name="RequiredSkillValue" type="uint32"/>
+    <field name="RequiredLevel" type="uint32"/>
+  </SpellItemEnchantment>
+
+  <SpellItemEnchantmentCondition primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="Color1" type="uint8"/>
+    <field name="Color2" type="uint8"/>
+    <field name="Color3" type="uint8"/>
+    <field name="Color4" type="uint8"/>
+    <field name="Color5" type="uint8"/>
+    <field name="LT_Operand1" type="uint32"/>
+    <field name="LT_Operand2" type="uint32"/>
+    <field name="LT_Operand3" type="uint32"/>
+    <field name="LT_Operand4" type="uint32"/>
+    <field name="LT_Operand5" type="uint32"/>
+    <field name="Comparator1" type="uint8"/>
+    <field name="Comparator2" type="uint8"/>
+    <field name="Comparator3" type="uint8"/>
+    <field name="Comparator4" type="uint8"/>
+    <field name="Comparator5" type="uint8"/>
+    <field name="CompareColor1" type="uint8"/>
+    <field name="CompareColor2" type="uint8"/>
+    <field name="CompareColor3" type="uint8"/>
+    <field name="CompareColor4" type="uint8"/>
+    <field name="CompareColor5" type="uint8"/>
+    <field name="Value1" type="uint32"/>
+    <field name="Value2" type="uint32"/>
+    <field name="Value3" type="uint32"/>
+    <field name="Value4" type="uint32"/>
+    <field name="Value5" type="uint32"/>
+    <field name="Logic1" type="uint8"/>
+    <field name="Logic2" type="uint8"/>
+    <field name="Logic3" type="uint8"/>
+    <field name="Logic4" type="uint8"/>
+    <field name="Logic5" type="uint8"/>
+  </SpellItemEnchantmentCondition>
+
+  <SpellMechanic primary="ID">
+    <field name="ID" type="uint32" />
+	<field name="Name" type="loc" />
+  </SpellMechanic>
+  
+  <SpellRadius primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="RadiusHostile" type="float"/>
+    <field name="Unknown_3" type="uint32"/>
+    <field name="RadiusFriend" type="float"/>
+  </SpellRadius>
+
+  <SpellRange primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="minRangeHostile" type="float"/>
+    <field name="minRangeFriend" type="float"/>
+    <field name="maxRangeHostile" type="float"/>
+    <field name="maxRangeFriend" type="float"/>
+    <field name="type" type="uint32"/>
+    <field name="Name" type="loc"/>
+    <field name="Name2" type="loc"/>
+  </SpellRange>
+
+  <SpellRuneCost primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="BloodRuneCost" type="uint32"/>
+    <field name="FrostRuneCost" type="uint32"/>
+    <field name="UnholyRuneCost" type="uint32"/>
+    <field name="RunePowerGain" type="uint32"/>
+  </SpellRuneCost>
+  
+  <SpellVisual primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="precastKit" type="uint32"/>
+    <field name="castKit" type="uint32"/>
+    <field name="impactKit" type="uint32"/>
+    <field name="stateKit" type="uint32"/>
+    <field name="stateDoneKit" type="uint32"/>
+    <field name="channelKit" type="uint32"/>
+    <field name="hasMissile" type="uint32"/>
+    <field name="missileModel" type="uint32"/>
+    <field name="missilePathType" type="uint32"/>
+    <field name="missileDestinationAttachment" type="uint32"/>
+    <field name="missileSound" type="uint32"/>
+    <field name="animEventSoundID" type="uint32"/>
+    <field name="flags" type="uint32"/>
+    <field name="casterImpactKit" type="uint32"/>
+    <field name="targetImpactKit" type="uint32"/>
+    <field name="missileAttachment" type="uint32"/>
+    <field name="missileFollowGroundHeight" type="uint32"/>
+    <field name="missileFollowGroundDropSpeed" type="uint32"/>
+    <field name="missileFollowGroundApproach" type="uint32"/>
+    <field name="missileFollowGroundFlags" type="uint32"/>
+    <field name="missileMotion" type="uint32"/>
+    <field name="missileTargetingKit" type="uint32"/>
+    <field name="instantAreaKit" type="uint32"/>
+    <field name="impactAreaKit" type="uint32"/>
+    <field name="persistentAreaKit" type="uint32"/>
+    <field name="missileCastOffsetX" type="float"/>
+    <field name="missileCastOffsetY" type="float"/>
+    <field name="missileCastOffsetZ" type="float"/>
+    <field name="missileImpactOffsetX" type="float"/>
+    <field name="missileImpactOffsetY" type="float"/>
+    <field name="missileImpactOffsetZ" type="float"/>
+  </SpellVisual>
+	
+  <SpellVisualEffectName primary="ID">
+    <field name="ID" type="uint32" />
+	<field name="name" type="string" />
+	<field name="filename" type="string" />
+	<field name="unk01" type="float" />
+	<field name="unk02" type="float" />
+	<field name="unk03" type="float" />
+	<field name="unk04" type="float" />
+  </SpellVisualEffectName>
+  
+  <SummonProperties primary="ID">
+    <field name="ID" type="uint32" />
+	<field name="Control" type="uint32" />
+	<field name="Faction" type="uint32" />
+	<field name="Title" type="uint32" />
+	<field name="Slot" type="uint32" />
+	<field name="Flags" type="uint32" />
+  </SummonProperties>
+  
+  <TaxiNodes primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="MapID" type="uint32" comment="Map.dbc"/>
+    <field name="X" type="float"/>
+    <field name="Y" type="float"/>
+    <field name="Z" type="float"/>
+    <field name="Name" type="loc"/>
+    <field name="MountCreatureIDH" type="uint32"/>
+    <field name="MountCreatureIDA" type="uint32"/>
+  </TaxiNodes>
+
+  <TaxiPath primary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="TaxiNodeStart" type="uint32" comment="TaxiNodes.dbc"/>
+    <field name="TaxiNodeEnd" type="uint32" comment="TaxiNodes.dbc"/>
+    <field name="Price" type="uint32"/>
+  </TaxiPath>
+
+  <TaxiPathNode prmary="ID">
+    <field name="ID" type="uint32"/>
+    <field name="PathID" type="uint32" comment="TaxiPath.dbc"/>
+    <field name="NodeIndex" type="uint32"/>
+    <field name="MapID" type="uint32"/>
+    <field name="X" type="float"/>
+    <field name="Y" type="float"/>
+    <field name="Z" type="float"/>
+    <field name="actionFlag" type="uint32"/>
+    <field name="delay" type="uint32"/>
+    <field name="arrivalEventID" type="uint32"/>
+    <field name="departureEventID" type="uint32"/>
+  </TaxiPathNode>
+
+  <TransportAnimation primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="uint32" name="TransportId" />
+    <field type="uint32" name="TimeIndex" />
+    <field type="float" name="PosX" />
+    <field type="float" name="PosY" />
+    <field type="float" name="PosZ" />
+    <field type="uint32" name="SequenceId" />
+  </TransportAnimation>
+
+  <TransportPhysics primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="float" name="WaveAmp" />
+    <field type="float" name="WaveTimeScale" />
+    <field type="float" name="RollAmp" />
+    <field type="float" name="RollTimeScale" />
+    <field type="float" name="PitchAmp" />
+    <field type="float" name="PitchTimeScale" />
+    <field type="float" name="MaxBank" />
+    <field type="float" name="MaxBankTurnSpeed" />
+    <field type="float" name="SpeedDampThresh" />
+    <field type="float" name="SpeedDamp" />
+  </TransportPhysics>
+
+  <TransportRotation primary="Id">
+    <field type="uint32" name="Id" />
+    <field type="uint32" name="GameObjectsID" />
+    <field type="uint32" name="TimeIndex" />
+    <field type="float" name="RotX" />
+    <field type="float" name="RotY" />
+    <field type="float" name="RotZ" />
+    <field type="float" name="RotW" />
+  </TransportRotation>
+  
+  <Vehicle primary="ID">
+    <field type="uint32"  name="ID"/>
+    <field type="uint32"  name="flags"/>
+    <field type="float"  name="turnSpeed"/>
+    <field type="float"  name="pitchSpeed"/>
+    <field type="float"  name="pitchMin"/>
+    <field type="float"  name="pitchMax"/>
+    <field type="uint32"  name="seatID1"/>
+    <field type="uint32"  name="seatID2"/>
+    <field type="uint32"  name="seatID3"/>
+    <field type="uint32"  name="seatID4"/>
+    <field type="uint32"  name="seatID5"/>
+    <field type="uint32"  name="seatID6"/>
+    <field type="uint32"  name="seatID7"/>
+    <field type="uint32"  name="seatID8"/>
+    <field type="float"  name="mouseLookOffsetPitch"/>
+    <field type="float"  name="cameraFadeDistScalarMin"/>
+    <field type="float"  name="cameraFadeDistScalarMax"/>
+    <field type="float"  name="cameraPitchOffset"/>
+    <field type="float"  name="facingLimitRight"/>
+    <field type="float"  name="facingLimitLeft"/>
+    <field type="float"  name="msslTrgtTurnLingering"/>
+    <field type="float"  name="msslTrgtPitchLingering"/>
+    <field type="float"  name="msslTrgtMouseLingering"/>
+    <field type="float"  name="msslTrgtEndOpacity"/>
+    <field type="float"  name="msslTrgtArcSpeed"/>
+    <field type="float"  name="msslTrgtArcRepeat"/>
+    <field type="float"  name="msslTrgtArcWidth"/>
+    <field type="float"  name="msslTrgtImpactRadius1"/>
+    <field type="float"  name="msslTrgtImpactRadius2"/>
+    <field type="uint32"  name="msslTrgtArcTexture"/>
+    <field type="uint32"  name="msslTrgtImpactTexture"/>
+    <field type="uint32"  name="msslTrgtImpactModel1"/>
+    <field type="uint32"  name="msslTrgtImpactModel2"/>
+    <field type="float"  name="cameraYawOffset"/>
+    <field type="uint32"  name="uiLocomotionType"/>
+    <field type="float"  name="msslTrgtImpactTexRadius"/>
+    <field type="uint32"  name="uiSeatIndicatorType"/>
+    <field type="uint32"  name="powerType"/>
+    <field type="uint32"  name="Unknown_38"/>
+    <field type="uint32"  name="Unknown_39"/>
+  </Vehicle>
+  
+  <VehicleSeat primary="ID">
+    <field type="uint32"  name="ID"/>
+    <field type="uint32"  name="flags"/>
+    <field type="int32"  name="attachmentID"/>
+    <field type="float"  name="attachmentOffsetX"/>
+    <field type="float"  name="attachmentOffsetY"/>
+    <field type="float"  name="attachmentOffsetZ"/>
+    <field type="float"  name="enterPreDelay"/>
+    <field type="float"  name="enterSpeed"/>
+    <field type="float"  name="enterGravity"/>
+    <field type="float"  name="enterMinDuration"/>
+    <field type="float"  name="enterMaxDuration"/>
+    <field type="float"  name="enterMinArcHeight"/>
+    <field type="float"  name="enterMaxArcHeight"/>
+    <field type="int32"  name="enterAnimStart"/>
+    <field type="int32"  name="enterAnimLoop"/>
+    <field type="int32"  name="rideAnimStart"/>
+    <field type="int32"  name="rideAnimLoop"/>
+    <field type="int32"  name="rideUpperAnimStart"/>
+    <field type="int32"  name="rideUpperAnimLoop"/>
+    <field type="float"  name="exitPreDelay"/>
+    <field type="float"  name="exitSpeed"/>
+    <field type="float"  name="exitGravity"/>
+    <field type="float"  name="exitMinDuration"/>
+    <field type="float"  name="exitMaxDuration"/>
+    <field type="float"  name="exitMinArcHeight"/>
+    <field type="float"  name="exitMaxArcHeight"/>
+    <field type="int32"  name="exitAnimStart"/>
+    <field type="int32"  name="exitAnimLoop"/>
+    <field type="int32"  name="exitAnimEnd"/>
+    <field type="float"  name="passengerYaw"/>
+    <field type="float"  name="passengerPitch"/>
+    <field type="float"  name="passengerRoll"/>
+    <field type="int32"  name="passengerAttachmentID"/>
+    <field type="int32"  name="vehicleEnterAnim"/>
+    <field type="int32"  name="vehicleExitAnim"/>
+    <field type="int32"  name="vehicleRideAnimLoop"/>
+    <field type="int32"  name="vehicleEnterAnimBone"/>
+    <field type="int32"  name="vehicleExitAnimBone"/>
+    <field type="int32"  name="vehicleRideAnimLoopBone"/>
+    <field type="float"  name="vehicleEnterAnimDelay"/>
+    <field type="float"  name="vehicleExitAnimDelay"/>
+    <field type="uint32"  name="vehicleAbilityDisplay"/>
+    <field type="uint32"  name="enterUISoundID"/>
+    <field type="uint32"  name="exitUISoundID"/>
+    <field type="int32"  name="uiSkin"/>
+    <field type="uint32"  name="flagsB"/>
+    <field type="uint32"  name="unknown46"/>
+	<field type="uint32"  name="unknown47"/>
+	<field type="uint32"  name="unknown48"/>
+	<field type="uint32"  name="unknown49"/>
+	<field type="uint32"  name="unknown50"/>
+	<field type="uint32"  name="unknown51"/>
+	<field type="uint32"  name="unknown52"/>
+	<field type="uint32"  name="unknown53"/>
+	<field type="uint32"  name="unknown54"/>
+	<field type="uint32"  name="unknown55"/>
+	<field type="uint32"  name="unknown56"/>
+	<field type="uint32"  name="unknown57"/>
+  </VehicleSeat>
+
+  <WMOAreaTable primary="ID">
+    <field name="ID" type="uint32" />
+    <field name="RootID" type="uint32" />
+    <field name="AdtID" type="uint32" />
+    <field name="GroupID" type="int32" />
+    <field name="Unk1" type="int32" />
+    <field name="Unk2" type="uint32" />
+    <field name="Unk3" type="uint32" />
+    <field name="Unk4" type="uint32" />
+    <field name="Unk5" type="int32" />
+    <field name="Flags" type="uint32" />
+    <field name="AreaID" type="uint32" />
+    <field name="Name" type="loc" />
+  </WMOAreaTable>
+  
+  <WorldSafeLocs primary="ID">
+    <field name="ID" type="uint32" />
+	<field name="MapID" type="uint32" />
+	<field name="PosX" type="float" />
+	<field name="PosY" type="float" />
+	<field name="PosZ" type="float" />
+	<field name="Name" type="loc" />
+  </WorldSafeLocs>
+  
+  <WorldStateUI primary="m_ID">
+    <field name="m_ID" type="uint32" />
+    <field name="m_mapID" type="uint32" />
+    <field name="m_areaID" type="uint32" />
+    <field name="m_phaseShift" type="uint32" />
+    <field name="m_icon" type="string" />
+    <field name="m_string_lang" type="loc" />
+    <field name="m_tooltip_lang" type="loc" />
+    <field name="m_stateVariable" type="uint32" />
+    <field name="m_type" type="uint32" />
+    <field name="m_dynamicIcon" type="string" />
+    <field name="m_dynamicTooltip_lang" type="loc" />
+    <field name="m_extendedUI" type="string" />
+    <field name="m_extendedUIStateVariable" type="uint32" />
+    <field name="unk1" type="uint32" />
+    <field name="unk2" type="uint32" />
+  </WorldStateUI>
+  
+  <WorldStateZoneSounds>
+    <field name="WorldState" type="uint32" />
+    <field name="Value" type="int32" />
+    <field name="AreaID" type="uint32" />
+    <field name="WMOAreaID" type="uint32" />
+    <field name="IntroMusic" type="uint32" />
+    <field name="Music" type="uint32" />
+    <field name="SoundAmbience" type="uint32" />
+    <field name="Preferences" type="uint32" />
+  </WorldStateZoneSounds>
+  
+</DBFilesClient>

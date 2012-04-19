@@ -1,0 +1,3569 @@
+<?xml version="1.0"?>
+
+<DBFilesClient>
+
+  <Achievement primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="faction" type="int32" />
+    <field name="instance_id" type="int32" />
+    <field name="supercedes" type="uint32" />
+    <field name="title" type="string" />
+    <field name="description" type="string" />
+    <field name="category" type="uint32" />
+    <field name="points" type="uint32" />
+    <field name="ui_order" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="iconID" type="uint32" />
+    <field name="reward_lang" type="string" />
+    <field name="minimum_criteria" type="uint32" />
+    <field name="shares_criteria" type="uint32" />
+  </Achievement>
+
+  <Achievement_Category primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="parent" type="uint32" />
+    <field name="name" type="string" />
+    <field name="ui_order" type="uint32" />
+  </Achievement_Category>
+
+  <Achievement_Criteria primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="achievement_id" type="uint32" />
+    <field name="type" type="uint32" />
+    <field name="asset_id" type="uint32" />
+    <field name="quantity" type="uint32" />
+    <field name="start_event" type="uint32" />
+    <field name="start_asset" type="uint32" />
+    <field name="fail_event" type="uint32" />
+    <field name="fail_asset" type="uint32" />
+    <field name="description" type="string" />
+    <field name="flags" type="uint32" />
+    <field name="timer_start_event" type="uint32" />
+    <field name="timer_asset_id" type="uint32" />
+    <field name="timer_time" type="uint32" />
+    <field name="ui_order" type="uint32" />
+    <field name="unk16" type="uint32" />
+    <field name="unk17" type="uint32" />
+    <field name="unk18" type="uint32" />
+    <field name="unk19" type="uint32" />
+    <field name="unk20" type="uint32" />
+    <field name="unk21" type="uint32" />
+    <field name="unk22" type="uint32" />
+    <field name="unk23" type="uint32" />
+  </Achievement_Criteria>
+
+  <AnimationData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="string" />
+    <field name="Weaponflags" type="uint32" />
+    <field name="Bodyflags" type="uint32" />
+    <field name="Flags" type="uint32" />
+    <field name="Fallback" type="uint32" />
+    <field name="BehaviorID" type="uint32" />
+    <field name="BehaviorTier" type="uint32" />
+  </AnimationData>
+
+  <AnimKit primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="oneShotDuration" type="uint32" />
+    <field name="oneShotStopAnimKitID" type="uint32" />
+  </AnimKit>
+
+  <AnimKitBoneSet primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="boneDataID" type="uint32" />
+    <field name="parentAnimKitBoneSetID" type="uint32" />
+    <field name="extraBoneCount" type="uint32" />
+    <field name="altAnimKitBoneSetID" type="uint32" />
+  </AnimKitBoneSet>
+
+  <AnimKitBoneSetAlias primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="boneDataID" type="uint32" />
+    <field name="animKitBoneSetID" type="uint32" />
+  </AnimKitBoneSetAlias>
+
+  <AnimKitConfig primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="configFlags" type="uint32" />
+  </AnimKitConfig>
+
+  <AnimKitConfigBoneSet primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="parentAnimKitConfigID" type="uint32" />
+    <field name="animKitBoneSetID" type="uint32" />
+    <field name="animKitPriorityID" type="uint32" />
+  </AnimKitConfigBoneSet>
+
+  <AnimKitPriority primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="priority" type="uint32" />
+  </AnimKitPriority>
+
+  <AnimKitSegment primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="parentAnimKitID" type="uint32" />
+    <field name="animID" type="uint32" />
+    <field name="animStartTime" type="uint32" />
+    <field name="animKitConfigID" type="uint32" />
+    <field name="startCondition" type="uint32" />
+    <field name="startConditionParam" type="uint32" />
+    <field name="startConditionDelay" type="uint32" />
+    <field name="endCondition" type="uint32" />
+    <field name="endConditionParam" type="uint32" />
+    <field name="endConditionDelay" type="uint32" />
+    <field name="speed" type="float" />
+    <field name="segmentFlags" type="uint32" />
+    <field name="forcedVariation" type="uint32" />
+    <field name="overrideConfigFlags" type="uint32" />
+    <field name="loopToSegmentIndex" type="uint32" />
+  </AnimKitSegment>
+
+  <AnimReplacement primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="srcAnimID" type="uint32" />
+    <field name="dstAnimID" type="uint32" />
+    <field name="parentAnimReplacementSetID" type="uint32" />
+  </AnimReplacement>
+
+  <AnimReplacementSet primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="execOrder" type="uint32" />
+  </AnimReplacementSet>
+
+  <AreaAssignment primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="MapID" type="uint32" />
+    <field name="AreaID" type="uint32" />
+    <field name="ChunkX" type="uint32" />
+    <field name="ChunkY" type="uint32" />
+  </AreaAssignment>
+
+  <AreaGroup primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="areaID1" type="uint32" />
+    <field name="areaID2" type="uint32" />
+    <field name="areaID3" type="uint32" />
+    <field name="areaID4" type="uint32" />
+    <field name="areaID5" type="uint32" />
+    <field name="areaID6" type="uint32" />
+    <field name="nextAreaID" type="uint32" />
+  </AreaGroup>
+
+  <AreaPOI primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="importance" type="uint32" />
+    <field name="icon1" type="uint32" />
+    <field name="icon2" type="uint32" />
+    <field name="icon3" type="uint32" />
+    <field name="icon4" type="uint32" />
+    <field name="icon5" type="uint32" />
+    <field name="icon6" type="uint32" />
+    <field name="icon7" type="uint32" />
+    <field name="icon8" type="uint32" />
+    <field name="icon9" type="uint32" />
+    <field name="factionID" type="uint32" />
+    <field name="x" type="float" />
+    <field name="y" type="float" />
+    <field name="z" type="float" />
+    <field name="continentID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="areaID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="description" type="string" />
+    <field name="worldStateID" type="uint32" />
+    <field name="worldMapLink" type="uint32" />
+  </AreaPOI>
+
+  <!-- AreaPOISortedWorldState -->
+
+  <AreaTable primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="ContinentID" type="uint32" />
+    <field name="ParentAreaID" type="uint32" />
+    <field name="AreaBit" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="SoundProviderPref" type="uint32" />
+    <field name="SoundProviderPrefUnderwater" type="uint32" />
+    <field name="AmbienceID" type="uint32" />
+    <field name="ZoneMusic" type="uint32" />
+    <field name="IntroSound" type="uint32" />
+    <field name="ExplorationLevel" type="uint32" />
+    <field name="AreaName" type="string" />
+    <field name="factionGroupMask" type="uint32" />
+    <field name="liquidTypeID1" type="uint32" />
+    <field name="liquidTypeID2" type="uint32" />
+    <field name="liquidTypeID3" type="uint32" />
+    <field name="liquidTypeID4" type="uint32" />
+    <field name="minElevation" type="float" />
+    <field name="ambient_multiplier" type="float" />
+    <field name="lightid" type="uint32" />
+    <field name="unk21" type="uint32" />
+    <field name="unk22" type="uint32" />
+    <field name="unk23" type="uint32" />
+    <field name="unk14" type="uint32" />
+    <field name="unk25" type="uint32" />
+  </AreaTable>
+
+  <AreaTrigger primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="ContinentID" type="uint32" />
+    <field name="x" type="float" />
+    <field name="y" type="float" />
+    <field name="z" type="float" />
+    <field name="phaseShift" type="uint32" />
+    <field name="unk7" type="uint32" />
+    <field name="unk8" type="uint32" />
+    <field name="radius" type="float" />
+    <field name="box_length" type="float" />
+    <field name="box_width" type="float" />
+    <field name="box_height" type="float" />
+    <field name="box_yaw" type="float" />
+  </AreaTrigger>
+
+  <ArmorLocation primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="clothmodifier" type="float" />
+    <field name="leathermodifier" type="float" />
+    <field name="chainmodifier" type="float" />
+    <field name="platemodifier" type="float" />
+    <field name="modifier" type="float" />
+  </ArmorLocation>
+
+  <!-- AttackAnimKits -->
+
+  <!-- AttackAnimTypes -->
+
+  <AuctionHouse primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="factionID" type="uint32" />
+    <field name="depositRate" type="uint32" />
+    <field name="consignmentRate" type="uint32" />
+    <field name="name" type="string" />
+  </AuctionHouse>
+
+  <BankBagSlotPrices primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Cost" type="uint32" />
+  </BankBagSlotPrices>
+
+  <BannedAddOns primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="nameMD51" type="uint32" />
+    <field name="nameMD52" type="uint32" />
+    <field name="nameMD53" type="uint32" />
+    <field name="nameMD54" type="uint32" />
+    <field name="versionMD51" type="uint32" />
+    <field name="versionMD52" type="uint32" />
+    <field name="versionMD53" type="uint32" />
+    <field name="versionMD54" type="uint32" />
+    <field name="lastModified" type="uint32" />
+    <field name="flags" type="uint32" />
+  </BannedAddOns>
+
+  <BarberShopStyle primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="type" type="uint32" />
+    <field name="DisplayName" type="string" />
+    <field name="Description" type="string" />
+    <field name="Cost_Modifier" type="float" />
+    <field name="race" type="uint32" />
+    <field name="sex" type="uint32" />
+    <field name="data" type="uint32" />
+  </BarberShopStyle>
+
+  <BattlemasterList primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID1" type="uint32" />
+    <field name="mapID2" type="uint32" />
+    <field name="mapID3" type="uint32" />
+    <field name="mapID4" type="uint32" />
+    <field name="mapID5" type="uint32" />
+    <field name="mapID6" type="uint32" />
+    <field name="mapID7" type="uint32" />
+    <field name="mapID8" type="uint32" />
+    <field name="instanceType" type="uint32" />
+    <field name="groupsAllowed" type="uint32" />
+    <field name="name" type="string" />
+    <field name="maxGroupSize" type="uint32" />
+    <field name="holidayWorldState" type="uint32" />
+    <field name="minlevel" type="uint32" />
+    <field name="maxlevel" type="uint32" />
+    <field name="unk17" type="uint32" />
+    <field name="unk18" type="uint32" />
+    <field name="unk19" type="uint32" />
+    <field name="unk20" type="uint32" />
+  </BattlemasterList>
+
+  <!-- CameraMode -->
+
+  <CameraShakes primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="shakeType" type="uint32" />
+    <field name="direction" type="uint32" />
+    <field name="amplitude" type="float" />
+    <field name="frequency" type="float" />
+    <field name="duration" type="float" />
+    <field name="phase" type="float" />
+    <field name="coefficient" type="float" />
+  </CameraShakes>
+
+  <!-- CastableRaidBuffs -->
+
+  <Cfg_Categories primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="localeMask" type="uint32" />
+    <field name="charsetMask" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="name" type="string" />
+  </Cfg_Categories>
+
+  <Cfg_Configs primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="ID" type="uint32" />
+    <field name="realmType" type="uint32" />
+    <field name="playerKillingAllowed" type="uint32" />
+    <field name="roleplaying" type="uint32" />
+  </Cfg_Configs>
+
+  <CharacterFacialHairStyles primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="raceID" type="uint32" />
+    <field name="sexID" type="uint32" />
+    <field name="VariationID" type="uint32" />
+    <field name="Geoset1" type="uint32" />
+    <field name="Geoset2" type="uint32" />
+    <field name="Geoset3" type="uint32" />
+    <field name="Geoset4" type="uint32" />
+    <field name="Geoset5" type="uint32" />
+  </CharacterFacialHairStyles>
+
+  <CharBaseInfo primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="raceID" type="uint8" />
+    <field name="classID" type="uint8" />
+  </CharBaseInfo>
+
+  <CharHairGeosets primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="RaceID" type="uint32" />
+    <field name="SexID" type="uint32" />
+    <field name="VariationID" type="uint32" />
+    <field name="GeosetID" type="uint32" />
+    <field name="Showscalp" type="uint32" />
+  </CharHairGeosets>
+
+  <CharSections primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="raceID" type="uint32" />
+    <field name="sexID" type="uint32" />
+    <field name="baseSection" type="uint32" />
+    <field name="TextureName1" type="string" />
+    <field name="TextureName2" type="string" />
+    <field name="TextureName3" type="string" />
+    <field name="flags" type="uint32" />
+    <field name="variationIndex" type="uint32" />
+    <field name="colorIndex" type="uint32" />
+  </CharSections>
+
+  <CharStartOutfit primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="raceID" type="uint8" />
+    <field name="classID" type="uint8" />
+    <field name="sexID" type="uint8" />
+    <field name="outfitID" type="uint8" />
+    <field name="ItemID1" type="int32" />
+    <field name="ItemID2" type="int32" />
+    <field name="ItemID3" type="int32" />
+    <field name="ItemID4" type="int32" />
+    <field name="ItemID5" type="int32" />
+    <field name="ItemID6" type="int32" />
+    <field name="ItemID7" type="int32" />
+    <field name="ItemID8" type="int32" />
+    <field name="ItemID9" type="int32" />
+    <field name="ItemID10" type="int32" />
+    <field name="ItemID11" type="int32" />
+    <field name="ItemID12" type="int32" />
+    <field name="ItemID13" type="int32" />
+    <field name="ItemID14" type="int32" />
+    <field name="ItemID15" type="int32" />
+    <field name="ItemID16" type="int32" />
+    <field name="ItemID17" type="int32" />
+    <field name="ItemID18" type="int32" />
+    <field name="ItemID19" type="int32" />
+    <field name="ItemID20" type="int32" />
+    <field name="ItemID21" type="int32" />
+    <field name="ItemID22" type="int32" />
+    <field name="ItemID23" type="int32" />
+    <field name="ItemID24" type="int32" />
+    <field name="DisplayItemID1" type="int32" />
+    <field name="DisplayItemID2" type="int32" />
+    <field name="DisplayItemID3" type="int32" />
+    <field name="DisplayItemID4" type="int32" />
+    <field name="DisplayItemID5" type="int32" />
+    <field name="DisplayItemID6" type="int32" />
+    <field name="DisplayItemID7" type="int32" />
+    <field name="DisplayItemID8" type="int32" />
+    <field name="DisplayItemID9" type="int32" />
+    <field name="DisplayItemID10" type="int32" />
+    <field name="DisplayItemID11" type="int32" />
+    <field name="DisplayItemID12" type="int32" />
+    <field name="DisplayItemID13" type="int32" />
+    <field name="DisplayItemID14" type="int32" />
+    <field name="DisplayItemID15" type="int32" />
+    <field name="DisplayItemID16" type="int32" />
+    <field name="DisplayItemID17" type="int32" />
+    <field name="DisplayItemID18" type="int32" />
+    <field name="DisplayItemID19" type="int32" />
+    <field name="DisplayItemID20" type="int32" />
+    <field name="DisplayItemID21" type="int32" />
+    <field name="DisplayItemID22" type="int32" />
+    <field name="DisplayItemID23" type="int32" />
+    <field name="DisplayItemID24" type="int32" />
+    <field name="InventoryType1" type="int32" />
+    <field name="InventoryType2" type="int32" />
+    <field name="InventoryType3" type="int32" />
+    <field name="InventoryType4" type="int32" />
+    <field name="InventoryType5" type="int32" />
+    <field name="InventoryType6" type="int32" />
+    <field name="InventoryType7" type="int32" />
+    <field name="InventoryType8" type="int32" />
+    <field name="InventoryType9" type="int32" />
+    <field name="InventoryType10" type="int32" />
+    <field name="InventoryType11" type="int32" />
+    <field name="InventoryType12" type="int32" />
+    <field name="InventoryType13" type="int32" />
+    <field name="InventoryType14" type="int32" />
+    <field name="InventoryType15" type="int32" />
+    <field name="InventoryType16" type="int32" />
+    <field name="InventoryType17" type="int32" />
+    <field name="InventoryType18" type="int32" />
+    <field name="InventoryType19" type="int32" />
+    <field name="InventoryType20" type="int32" />
+    <field name="InventoryType21" type="int32" />
+    <field name="InventoryType22" type="int32" />
+    <field name="InventoryType23" type="int32" />
+    <field name="InventoryType24" type="int32" />
+    <field name="unk78" type="uint32" />
+    <field name="unk79" type="uint32" />
+  </CharStartOutfit>
+
+  <CharTitles primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Condition_ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="name1" type="string" />
+    <field name="mask_ID" type="uint32" />
+    <field name="unk6" type="uint32" />
+  </CharTitles>
+
+  <ChatChannels primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="factionGroup" type="uint32" />
+    <field name="name" type="string" />
+    <field name="shortcut" type="string" />
+  </ChatChannels>
+
+  <ChatProfanity primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="text" type="string" />
+    <field name="Language" type="uint32" />
+  </ChatProfanity>
+
+  <ChrClasses primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="DisplayPower" type="uint32" />
+    <field name="petNameToken" type="string" />
+    <field name="name" type="string" />
+    <field name="name_female" type="string" />
+    <field name="name_male" type="string" />
+    <field name="filename" type="string" />
+    <field name="spellClassSet" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="cinematicSequenceID" type="uint32" />
+    <field name="required_expansion" type="uint32" />
+    <field name="attackPowerPerStrength" type="uint32" />
+    <field name="attackPowerPerAgility" type="uint32" />
+    <field name="rangedAttackPowerPerAgility" type="uint32" />
+  </ChrClasses>
+
+  <ChrRaces primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="factionID" type="uint32" />
+    <field name="ExplorationSoundID" type="uint32" />
+    <field name="MaleDisplayId" type="uint32" />
+    <field name="FemaleDisplayId" type="uint32" />
+    <field name="ClientPrefix" type="string" />
+    <field name="BaseLanguage" type="uint32" />
+    <field name="creatureType" type="uint32" />
+    <field name="ResSicknessSpellID" type="uint32" />
+    <field name="SplashSoundID" type="uint32" />
+    <field name="clientFileString" type="string" />
+    <field name="cinematicSequenceID" type="uint32" />
+    <field name="alliance" type="uint32" />
+    <field name="name" type="string" />
+    <field name="name_female" type="string" />
+    <field name="name_male" type="string" />
+    <field name="facialHairCustomization1" type="string" />
+    <field name="facialHairCustomization2" type="string" />
+    <field name="hairCustomization" type="string" />
+    <field name="required_expansion" type="uint32" />
+    <field name="unalteredVisualRaceID" type="uint32" />
+    <field name="unk23" type="uint32" />
+    <field name="unk24" type="uint32" />
+  </ChrRaces>
+
+  <CinematicCamera primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="model" type="string" />
+    <field name="soundID" type="uint32" />
+    <field name="originX" type="float" />
+    <field name="originY" type="float" />
+    <field name="originZ" type="float" />
+    <field name="originFacing" type="float" />
+  </CinematicCamera>
+
+  <CinematicSequences primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="soundID" type="uint32" />
+    <field name="camera1" type="uint32" />
+    <field name="camera2" type="uint32" />
+    <field name="camera3" type="uint32" />
+    <field name="camera4" type="uint32" />
+    <field name="camera5" type="uint32" />
+    <field name="camera6" type="uint32" />
+    <field name="camera7" type="uint32" />
+    <field name="camera8" type="uint32" />
+  </CinematicSequences>
+
+  <CreatureDisplayInfo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="modelID" type="uint32" />
+    <field name="soundID" type="uint32" />
+    <field name="extendedDisplayInfoID" type="uint32" />
+    <field name="creatureModelScale" type="float" />
+    <field name="creatureModelAlpha" type="uint32" />
+    <field name="textureVariation1" type="string" />
+    <field name="textureVariation2" type="string" />
+    <field name="textureVariation3" type="string" />
+    <field name="portraitTextureName" type="string" />
+    <field name="sizeClass" type="uint32" />
+    <field name="bloodID" type="uint32" />
+    <field name="NPCSoundID" type="uint32" />
+    <field name="particleColorID" type="uint32" />
+    <field name="creatureGeosetData" type="uint32" />
+    <field name="objectEffectPackageID" type="uint32" />
+    <field name="animReplacementSetID" type="uint32" />
+  </CreatureDisplayInfo>
+
+  <CreatureDisplayInfoExtra primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="DisplayRaceID" type="uint32" />
+    <field name="DisplaySexID" type="uint32" />
+    <field name="SkinID" type="uint32" />
+    <field name="FaceID" type="uint32" />
+    <field name="HairStyleID" type="uint32" />
+    <field name="HairColorID" type="uint32" />
+    <field name="FacialHairID" type="uint32" />
+    <field name="NPCItemDisplay1" type="uint32" />
+    <field name="NPCItemDisplay2" type="uint32" />
+    <field name="NPCItemDisplay3" type="uint32" />
+    <field name="NPCItemDisplay4" type="uint32" />
+    <field name="NPCItemDisplay5" type="uint32" />
+    <field name="NPCItemDisplay6" type="uint32" />
+    <field name="NPCItemDisplay7" type="uint32" />
+    <field name="NPCItemDisplay8" type="uint32" />
+    <field name="NPCItemDisplay9" type="uint32" />
+    <field name="NPCItemDisplay10" type="uint32" />
+    <field name="NPCItemDisplay11" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="BakeName" type="string" />
+  </CreatureDisplayInfoExtra>
+
+  <CreatureFamily primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="minScale" type="float" />
+    <field name="minScaleLevel" type="uint32" />
+    <field name="maxScale" type="float" />
+    <field name="maxScaleLevel" type="uint32" />
+    <field name="skillLine1" type="uint32" />
+    <field name="skillLine2" type="uint32" />
+    <field name="petFoodMask" type="uint32" />
+    <field name="petTalentType" type="uint32" />
+    <field name="categoryEnumID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="iconFile" type="string" />
+  </CreatureFamily>
+
+  <CreatureModelData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="ModelName" type="string" />
+    <field name="sizeClass" type="uint32" />
+    <field name="modelScale" type="float" />
+    <field name="bloodID" type="uint32" />
+    <field name="footprintTextureID" type="uint32" />
+    <field name="footprintTextureLength" type="float" />
+    <field name="footprintTextureWidth" type="float" />
+    <field name="footprintParticleScale" type="float" />
+    <field name="foleyMaterialID" type="uint32" />
+    <field name="footstepShakeSize" type="uint32" />
+    <field name="deathThudShakeSize" type="uint32" />
+    <field name="soundID" type="uint32" />
+    <field name="collisionWidth" type="float" />
+    <field name="collisionHeight" type="float" />
+    <field name="mountHeight" type="float" />
+    <field name="geoBoxMinX" type="float" />
+    <field name="geoBoxMinY" type="float" />
+    <field name="geoBoxMinZ" type="float" />
+    <field name="geoBoxMaxX" type="float" />
+    <field name="geoBoxMaxY" type="float" />
+    <field name="geoBoxMaxZ" type="float" />
+    <field name="worldEffectScale" type="float" />
+    <field name="attachedEffectScale" type="float" />
+    <field name="missileCollisionRadius" type="float" />
+    <field name="missileCollisionPush" type="float" />
+    <field name="missileCollisionRaise" type="float" />
+    <field name="unk29" type="float" />
+    <field name="unk30" type="float" />
+  </CreatureModelData>
+
+  <CreatureMovementInfo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="smoothFacingChaseRate" type="float" />
+  </CreatureMovementInfo>
+
+  <CreatureSoundData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="soundExertionID" type="uint32" />
+    <field name="soundExertionCriticalID" type="uint32" />
+    <field name="soundInjuryID" type="uint32" />
+    <field name="soundInjuryCriticalID" type="uint32" />
+    <field name="soundInjuryCrushingBlowID" type="uint32" />
+    <field name="soundDeathID" type="uint32" />
+    <field name="soundStunID" type="uint32" />
+    <field name="soundStandID" type="uint32" />
+    <field name="soundFootstepID" type="uint32" />
+    <field name="soundAggroID" type="uint32" />
+    <field name="soundWingFlapID" type="uint32" />
+    <field name="soundWingGlideID" type="uint32" />
+    <field name="soundAlertID" type="uint32" />
+    <field name="soundFidget1" type="uint32" />
+    <field name="soundFidget2" type="uint32" />
+    <field name="soundFidget3" type="uint32" />
+    <field name="soundFidget4" type="uint32" />
+    <field name="soundFidget5" type="uint32" />
+    <field name="customAttack1" type="uint32" />
+    <field name="customAttack2" type="uint32" />
+    <field name="customAttack3" type="uint32" />
+    <field name="customAttack4" type="uint32" />
+    <field name="NPCSoundID" type="uint32" />
+    <field name="loopSoundID" type="uint32" />
+    <field name="creatureImpactType" type="uint32" />
+    <field name="soundJumpStartID" type="uint32" />
+    <field name="soundJumpEndID" type="uint32" />
+    <field name="soundPetAttackID" type="uint32" />
+    <field name="soundPetOrderID" type="uint32" />
+    <field name="soundPetDismissID" type="uint32" />
+    <field name="fidgetDelaySecondsMin" type="float" />
+    <field name="fidgetDelaySecondsMax" type="float" />
+    <field name="birthSoundID" type="uint32" />
+    <field name="spellCastDirectedSoundID" type="uint32" />
+    <field name="submergeSoundID" type="uint32" />
+    <field name="submergedSoundID" type="uint32" />
+    <field name="creatureSoundDataIDPet" type="uint32" />
+    <field name="transformSoundID" type="uint32" />
+    <field name="transformAnimatedSoundID" type="uint32" />
+  </CreatureSoundData>
+
+  <CreatureSpellData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="spells1" type="uint32" />
+    <field name="spells2" type="uint32" />
+    <field name="spells3" type="uint32" />
+    <field name="spells4" type="uint32" />
+    <field name="availability1" type="uint32" />
+    <field name="availability2" type="uint32" />
+    <field name="availability3" type="uint32" />
+    <field name="availability4" type="uint32" />
+  </CreatureSpellData>
+
+  <CreatureType primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="flags" type="uint32" />
+  </CreatureType>
+
+  <CurrencyCategory primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="name" type="string" />
+  </CurrencyCategory>
+
+  <CurrencyTypes primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="categoryID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="iconName" type="string" />
+    <field name="unk5" type="uint32" />
+    <field name="unk6" type="uint32" />
+    <field name="unk7" type="uint32" />
+    <field name="unk8" type="uint32" />
+    <field name="unk9" type="uint32" />
+    <field name="unk10" type="uint32" />
+    <field name="description" type="string" />
+  </CurrencyTypes>
+
+  <DanceMoves primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="type" type="uint32" />
+    <field name="param" type="uint32" />
+    <field name="fallback" type="uint32" />
+    <field name="racemask" type="uint32" />
+    <field name="Internal_name" type="string" />
+    <field name="Name" type="string" />
+    <field name="lockID" type="uint32" />
+  </DanceMoves>
+
+  <DeathThudLookups primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="SizeClass" type="uint32" />
+    <field name="TerrainTypeSoundID" type="uint32" />
+    <field name="SoundEntryID" type="uint32" />
+    <field name="SoundEntryIDWater" type="uint32" />
+  </DeathThudLookups>
+
+  <!-- DeclinedWord -->
+
+  <!-- DeclinedWordCases -->
+
+  <DestructibleModelData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="state0Wmo" type="uint32" />
+    <field name="state0ImpactEffectDoodadSet" type="uint32" />
+    <field name="state0AmbientDoodadSet" type="uint32" />
+    <field name="state0unkNEW" type="uint32" />
+    <field name="state1Wmo" type="uint32" />
+    <field name="state1DestructionDoodadSet" type="uint32" />
+    <field name="state1ImpactEffectDoodadSet" type="uint32" />
+    <field name="state1AmbientDoodadSet" type="uint32" />
+    <field name="state1unkNEW" type="uint32" />
+    <field name="state2Wmo" type="uint32" />
+    <field name="state2DestructionDoodadSet" type="uint32" />
+    <field name="state2ImpactEffectDoodadSet" type="uint32" />
+    <field name="state2AmbientDoodadSet" type="uint32" />
+    <field name="state2unkNEW" type="uint32" />
+    <field name="state3Wmo" type="uint32" />
+    <field name="state3InitDoodadSet" type="uint32" />
+    <field name="state3AmbientDoodadSet" type="uint32" />
+    <field name="state3unkNEW" type="uint32" />
+    <field name="ejectDirection" type="uint32" />
+    <field name="repairGroundFx" type="uint32" />
+    <field name="doNotHighlight" type="uint32" />
+    <field name="healEffect" type="uint32" />
+    <field name="healEffectSpeed" type="uint32" />
+  </DestructibleModelData>
+
+  <DungeonEncounter primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="difficulty" type="int32" />
+    <field name="orderIndex" type="int32" />
+    <field name="Bit" type="uint32" />
+    <field name="name" type="string" />
+    <field name="spellIconID" type="uint32" />
+    <field name="unk8" type="uint32" />
+  </DungeonEncounter>
+
+  <DungeonMap primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="floorIndex" type="uint32" />
+    <field name="minX" type="float" />
+    <field name="maxX" type="float" />
+    <field name="minY" type="float" />
+    <field name="maxY" type="float" />
+    <field name="parentWorldMapID" type="uint32" />
+  </DungeonMap>
+
+  <DungeonMapChunk primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="wmoGroupID" type="uint32" />
+    <field name="dungeonMapID" type="uint32" />
+    <field name="minZ" type="float" />
+  </DungeonMapChunk>
+
+  <DurabilityCosts primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="weaponSubClassCost1" type="uint32" />
+    <field name="weaponSubClassCost2" type="uint32" />
+    <field name="weaponSubClassCost3" type="uint32" />
+    <field name="weaponSubClassCost4" type="uint32" />
+    <field name="weaponSubClassCost5" type="uint32" />
+    <field name="weaponSubClassCost6" type="uint32" />
+    <field name="weaponSubClassCost7" type="uint32" />
+    <field name="weaponSubClassCost8" type="uint32" />
+    <field name="weaponSubClassCost9" type="uint32" />
+    <field name="weaponSubClassCost10" type="uint32" />
+    <field name="weaponSubClassCost11" type="uint32" />
+    <field name="weaponSubClassCost12" type="uint32" />
+    <field name="weaponSubClassCost13" type="uint32" />
+    <field name="weaponSubClassCost14" type="uint32" />
+    <field name="weaponSubClassCost15" type="uint32" />
+    <field name="weaponSubClassCost16" type="uint32" />
+    <field name="weaponSubClassCost17" type="uint32" />
+    <field name="weaponSubClassCost18" type="uint32" />
+    <field name="weaponSubClassCost19" type="uint32" />
+    <field name="weaponSubClassCost20" type="uint32" />
+    <field name="weaponSubClassCost21" type="uint32" />
+    <field name="armorSubClassCost1" type="uint32" />
+    <field name="armorSubClassCost2" type="uint32" />
+    <field name="armorSubClassCost3" type="uint32" />
+    <field name="armorSubClassCost4" type="uint32" />
+    <field name="armorSubClassCost5" type="uint32" />
+    <field name="armorSubClassCost6" type="uint32" />
+    <field name="armorSubClassCost7" type="uint32" />
+    <field name="armorSubClassCost8" type="uint32" />
+  </DurabilityCosts>
+
+  <DurabilityQuality primary="ID" build="14332">
+    <field name="ID" type="uint32" />
+    <field name="data" type="float" />
+  </DurabilityQuality>
+
+  <Emotes primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="EmoteSlashCommand" type="string" />
+    <field name="AnimID" type="uint32" />
+    <field name="EmoteFlags" type="uint32" />
+    <field name="EmoteSpecProc" type="uint32" />
+    <field name="EmoteSpecProcParam" type="uint32" />
+    <field name="EventSoundID" type="uint32" />
+  </Emotes>
+
+  <EmotesText primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="emoteID" type="uint32" />
+    <field name="emoteText1" type="uint32" />
+    <field name="emoteText2" type="uint32" />
+    <field name="emoteText3" type="uint32" />
+    <field name="emoteText4" type="uint32" />
+    <field name="emoteText5" type="uint32" />
+    <field name="emoteText6" type="uint32" />
+    <field name="emoteText7" type="uint32" />
+    <field name="emoteText8" type="uint32" />
+    <field name="emoteText9" type="uint32" />
+    <field name="emoteText10" type="uint32" />
+    <field name="emoteText11" type="uint32" />
+    <field name="emoteText12" type="uint32" />
+    <field name="emoteText13" type="uint32" />
+    <field name="emoteText14" type="uint32" />
+    <field name="emoteText15" type="uint32" />
+    <field name="emoteText16" type="uint32" />
+  </EmotesText>
+
+  <EmotesTextData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="text" type="string" />
+  </EmotesTextData>
+
+  <EmotesTextSound primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="emotesTextID" type="uint32" />
+    <field name="raceID" type="uint32" />
+    <field name="sexID" type="uint32" />
+    <field name="soundID" type="uint32" />
+  </EmotesTextSound>
+
+  <EnvironmentalDamage primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="EnumID" type="uint32" />
+    <field name="VisualkitID" type="uint32" />
+  </EnvironmentalDamage>
+
+  <Exhaustion primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="xp" type="uint32" />
+    <field name="factor" type="float" />
+    <field name="outdoorHours" type="float" />
+    <field name="innHours" type="float" />
+    <field name="name" type="string" />
+    <field name="threshold" type="float" />
+  </Exhaustion>
+
+  <Faction primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="reputationIndex" type="uint32" />
+    <field name="reputationRaceMask1" type="uint32" />
+    <field name="reputationRaceMask2" type="uint32" />
+    <field name="reputationRaceMask3" type="uint32" />
+    <field name="reputationRaceMask4" type="uint32" />
+    <field name="reputationClassMask1" type="uint32" />
+    <field name="reputationClassMask2" type="uint32" />
+    <field name="reputationClassMask3" type="uint32" />
+    <field name="reputationClassMask4" type="uint32" />
+    <field name="reputationBase1" type="uint32" />
+    <field name="reputationBase2" type="uint32" />
+    <field name="reputationBase3" type="uint32" />
+    <field name="reputationBase4" type="uint32" />
+    <field name="reputationFlags1" type="uint32" />
+    <field name="reputationFlags2" type="uint32" />
+    <field name="reputationFlags3" type="uint32" />
+    <field name="reputationFlags4" type="uint32" />
+    <field name="parentFactionID" type="uint32" />
+    <field name="parentFactionMod1" type="float" />
+    <field name="parentFactionMod2" type="float" />
+    <field name="parentFactionCap1" type="uint32" />
+    <field name="parentFactionCap2" type="uint32" />
+    <field name="name" type="string" />
+    <field name="description" type="string" />
+    <field name="unk25" type="uint32" />
+  </Faction>
+
+  <FactionGroup primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="maskID" type="uint32" />
+    <field name="internalName" type="string" />
+    <field name="name" type="string" />
+  </FactionGroup>
+
+  <FactionTemplate primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="faction" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="factionGroup" type="uint32" />
+    <field name="friendGroup" type="uint32" />
+    <field name="enemyGroup" type="uint32" />
+    <field name="enemies1" type="uint32" />
+    <field name="enemies2" type="uint32" />
+    <field name="enemies3" type="uint32" />
+    <field name="enemies4" type="uint32" />
+    <field name="friend1" type="uint32" />
+    <field name="friend2" type="uint32" />
+    <field name="friend3" type="uint32" />
+    <field name="friend4" type="uint32" />
+  </FactionTemplate>
+
+  <FileData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="filename" type="string" />
+    <field name="filepath" type="string" />
+  </FileData>
+
+  <FootprintTextures primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="FootstepFilename" type="string" />
+  </FootprintTextures>
+
+  <FootstepTerrainLookup primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="CreatureFootstepID" type="uint32" />
+    <field name="TerrainSoundID" type="uint32" />
+    <field name="SoundID" type="uint32" />
+    <field name="SoundIDSplash" type="uint32" />
+  </FootstepTerrainLookup>
+
+  <GameObjectArtKit primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="textureVariation1" type="string" />
+    <field name="textureVariation2" type="string" />
+    <field name="textureVariation3" type="string" />
+    <field name="attachModel1" type="string" />
+    <field name="attachModel2" type="string" />
+    <field name="attachModel3" type="string" />
+    <field name="attachModel4" type="string" />
+  </GameObjectArtKit>
+
+  <GameObjectDisplayInfo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="modelName" type="string" />
+    <field name="Sound1" type="uint32" />
+    <field name="Sound2" type="uint32" />
+    <field name="Sound3" type="uint32" />
+    <field name="Sound4" type="uint32" />
+    <field name="Sound5" type="uint32" />
+    <field name="Sound6" type="uint32" />
+    <field name="Sound7" type="uint32" />
+    <field name="Sound8" type="uint32" />
+    <field name="Sound9" type="uint32" />
+    <field name="Sound10" type="uint32" />
+    <field name="geoBoxMinX" type="float" />
+    <field name="geoBoxMinY" type="float" />
+    <field name="geoBoxMinZ" type="float" />
+    <field name="geoBoxMaxX" type="float" />
+    <field name="geoBoxMaxY" type="float" />
+    <field name="geoBoxMaxZ" type="float" />
+    <field name="objectEffectPackageID" type="uint32" />
+    <field name="unk20" type="float" />
+    <field name="unk21" type="float" />
+  </GameObjectDisplayInfo>
+
+  <GameTables primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="numRows" type="uint32" />
+    <field name="numColumns" type="uint32" />
+  </GameTables>
+
+  <GameTips primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="text" type="string" />
+    <field name="unk3" type="uint32" />
+    <field name="unk4" type="uint32" />
+  </GameTips>
+
+  <GemProperties primary="ID" build="14333">
+    <field name="id" type="uint32" />
+    <field name="enchant_id" type="uint32" />
+    <field name="maxcount_inv" type="uint32" />
+    <field name="maxcount_item" type="uint32" />
+    <field name="type" type="uint32" />
+    <field name="min_item_level" type="uint32" />
+  </GemProperties>
+
+  <!-- GlueScreenEmote -->
+
+  <GlyphProperties primary="ID" build="14333">
+    <field name="id" type="uint32" />
+    <field name="spellID" type="uint32" />
+    <field name="glyphSlotFlags" type="uint32" />
+    <field name="spellIconID" type="uint32" />
+  </GlyphProperties>
+
+  <GlyphSlot primary="ID" build="14333">
+    <field name="id" type="uint32" />
+    <field name="type" type="uint32" />
+    <field name="tooltip" type="uint32" />
+  </GlyphSlot>
+
+  <GMSurveyAnswers primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Sort_Index" type="uint32" />
+    <field name="GMSurveyQuestionID" type="uint32" />
+    <field name="Answer" type="string" />
+  </GMSurveyAnswers>
+
+  <GMSurveyCurrentSurvey build="14333">
+    <field name="LANGID" type="uint32" />
+    <field name="GMSURVEY_ID" type="uint32" />
+  </GMSurveyCurrentSurvey>
+
+  <GMSurveyQuestions primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Question" type="string" />
+  </GMSurveyQuestions>
+
+  <GMSurveySurveys primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Q1" type="uint32" />
+    <field name="Q2" type="uint32" />
+    <field name="Q3" type="uint32" />
+    <field name="Q4" type="uint32" />
+    <field name="Q5" type="uint32" />
+    <field name="Q6" type="uint32" />
+    <field name="Q7" type="uint32" />
+    <field name="Q8" type="uint32" />
+    <field name="Q9" type="uint32" />
+    <field name="Q10" type="uint32" />
+  </GMSurveySurveys>
+
+  <GMTicketCategory primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="category" type="string" />
+  </GMTicketCategory>
+
+  <GroundEffectDoodad primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="doodadpath" type="string" />
+    <field name="flags" type="uint32" />
+  </GroundEffectDoodad>
+
+  <GroundEffectTexture primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="doodadId1" type="uint32" />
+    <field name="doodadId2" type="uint32" />
+    <field name="doodadId3" type="uint32" />
+    <field name="doodadId4" type="uint32" />
+    <field name="doodadWeight1" type="uint32" />
+    <field name="doodadWeight2" type="uint32" />
+    <field name="doodadWeight3" type="uint32" />
+    <field name="doodadWeight4" type="uint32" />
+    <field name="density" type="uint32" />
+    <field name="sound" type="uint32" />
+  </GroundEffectTexture>
+
+  <gtBarberShopCostBase primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtBarberShopCostBase>
+
+  <gtChanceToMeleeCrit primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtChanceToMeleeCrit>
+
+  <gtChanceToMeleeCritBase primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtChanceToMeleeCritBase>
+
+  <gtChanceToSpellCrit primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtChanceToSpellCrit>
+
+  <gtChanceToSpellCritBase primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtChanceToSpellCritBase>
+
+  <gtCombatRatings primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtCombatRatings>
+
+  <gtNPCManaCostScaler primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtNPCManaCostScaler>
+
+  <gtOCTClassCombatRatingScalar primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="data" type="float" />
+  </gtOCTClassCombatRatingScalar>
+
+  <gtOCTRegenMP primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtOCTRegenMP>
+
+  <gtRegenMPPerSpt primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtRegenMPPerSpt>
+
+  <gtSpellScaling primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="data" type="float" />
+  </gtSpellScaling>
+
+  <!-- GuildColorBackground -->
+
+  <!-- GuildColorEmblem -->
+
+  <!-- GuildPerkSpells -->
+
+  <HelmetGeosetVisData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="hideGeoset1" type="uint32" />
+    <field name="hideGeoset2" type="uint32" />
+    <field name="hideGeoset3" type="uint32" />
+    <field name="hideGeoset4" type="uint32" />
+    <field name="hideGeoset5" type="uint32" />
+    <field name="hideGeoset6" type="uint32" />
+    <field name="hideGeoset7" type="uint32" />
+  </HelmetGeosetVisData>
+
+  <HolidayDescriptions primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="description" type="string" />
+  </HolidayDescriptions>
+
+  <HolidayNames primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </HolidayNames>
+
+  <Holidays primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="duration1" type="uint32" />
+    <field name="duration2" type="uint32" />
+    <field name="duration3" type="uint32" />
+    <field name="duration4" type="uint32" />
+    <field name="duration5" type="uint32" />
+    <field name="duration6" type="uint32" />
+    <field name="duration7" type="uint32" />
+    <field name="duration8" type="uint32" />
+    <field name="duration9" type="uint32" />
+    <field name="duration10" type="uint32" />
+    <field name="date1" type="uint32" />
+    <field name="date2" type="uint32" />
+    <field name="date3" type="uint32" />
+    <field name="date4" type="uint32" />
+    <field name="date5" type="uint32" />
+    <field name="date6" type="uint32" />
+    <field name="date7" type="uint32" />
+    <field name="date8" type="uint32" />
+    <field name="date9" type="uint32" />
+    <field name="date10" type="uint32" />
+    <field name="date11" type="uint32" />
+    <field name="date12" type="uint32" />
+    <field name="date13" type="uint32" />
+    <field name="date14" type="uint32" />
+    <field name="date15" type="uint32" />
+    <field name="date16" type="uint32" />
+    <field name="date17" type="uint32" />
+    <field name="date18" type="uint32" />
+    <field name="date19" type="uint32" />
+    <field name="date20" type="uint32" />
+    <field name="date21" type="uint32" />
+    <field name="date22" type="uint32" />
+    <field name="date23" type="uint32" />
+    <field name="date24" type="uint32" />
+    <field name="date25" type="uint32" />
+    <field name="date26" type="uint32" />
+    <field name="region" type="uint32" />
+    <field name="looping" type="uint32" />
+    <field name="calendarFlags1" type="uint32" />
+    <field name="calendarFlags2" type="uint32" />
+    <field name="calendarFlags3" type="uint32" />
+    <field name="calendarFlags4" type="uint32" />
+    <field name="calendarFlags5" type="uint32" />
+    <field name="calendarFlags6" type="uint32" />
+    <field name="calendarFlags7" type="uint32" />
+    <field name="calendarFlags8" type="uint32" />
+    <field name="calendarFlags9" type="uint32" />
+    <field name="calendarFlags10" type="uint32" />
+    <field name="holidayNameID" type="uint32" />
+    <field name="holidayDescriptionID" type="uint32" />
+    <field name="textureFilename" type="string" />
+    <field name="priority" type="uint32" />
+    <field name="calendarFilterType" type="uint32" />
+    <field name="flags" type="uint32" />
+  </Holidays>
+
+  <!--<Item primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="classID" type="uint32" />
+    <field name="subclassID" type="uint32" />
+    <field name="sound_override_subclassid" type="uint32" />
+    <field name="material" type="uint32" />
+    <field name="displayInfoID" type="uint32" />
+    <field name="inventoryType" type="uint32" />
+    <field name="sheatheType" type="uint32" />-->
+
+  <ItemArmorQuality primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="qualitymod1" type="float" />
+    <field name="qualitymod2" type="float" />
+    <field name="qualitymod3" type="float" />
+    <field name="qualitymod4" type="float" />
+    <field name="qualitymod5" type="float" />
+    <field name="qualitymod6" type="float" />
+    <field name="qualitymod7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemArmorQuality>
+
+  <ItemArmorShield primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="itemLevel" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+  </ItemArmorShield>
+
+  <ItemArmorTotal primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="itemLevel" type="uint32" />
+    <field name="cloth" type="float" />
+    <field name="leather" type="float" />
+    <field name="mail" type="float" />
+    <field name="plate" type="float" />
+  </ItemArmorTotal>
+
+  <ItemBagFamily primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </ItemBagFamily>
+
+  <ItemClass primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="classID" type="uint32" />
+    <field name="subclassMapID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="className" type="string" />
+  </ItemClass>
+
+  <!-- ItemCondExtCosts -->
+
+  <ItemDamageAmmo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageAmmo>
+
+  <ItemDamageOneHand primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageOneHand>
+
+  <ItemDamageOneHandCaster primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageOneHandCaster>
+
+  <ItemDamageRanged primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageRanged>
+
+  <ItemDamageThrown primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageThrown>
+
+  <ItemDamageTwoHand primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageTwoHand>
+
+  <ItemDamageTwoHandCaster primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageTwoHandCaster>
+
+  <ItemDamageWand primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="quality1" type="float" />
+    <field name="quality2" type="float" />
+    <field name="quality3" type="float" />
+    <field name="quality4" type="float" />
+    <field name="quality5" type="float" />
+    <field name="quality6" type="float" />
+    <field name="quality7" type="float" />
+    <field name="itemLevel" type="uint32" />
+  </ItemDamageWand>
+
+  <ItemDisplayInfo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="modelName1" type="string" />
+    <field name="modelName2" type="string" />
+    <field name="modelTexture1" type="string" />
+    <field name="modelTexture2" type="string" />
+    <field name="inventoryIcon1" type="string" />
+    <field name="inventoryIcon2" type="string" />
+    <field name="geosetGroup1" type="uint32" />
+    <field name="geosetGroup2" type="uint32" />
+    <field name="geosetGroup3" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="spellVisualID" type="uint32" />
+    <field name="groupSoundIndex" type="uint32" />
+    <field name="helmetGeosetVis1" type="uint32" />
+    <field name="helmetGeosetVis2" type="uint32" />
+    <field name="texture1" type="string" />
+    <field name="texture2" type="string" />
+    <field name="texture3" type="string" />
+    <field name="texture4" type="string" />
+    <field name="texture5" type="string" />
+    <field name="texture6" type="string" />
+    <field name="texture7" type="string" />
+    <field name="texture8" type="string" />
+    <field name="itemVisual" type="uint32" />
+    <field name="particleColorID" type="uint32" />
+  </ItemDisplayInfo>
+
+  <ItemExtendedCost primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="honorPoints" type="uint32" />
+    <field name="arenaPoints" type="uint32" />
+    <field name="arenaBracket" type="uint32" />
+    <field name="itemID1" type="uint32" />
+    <field name="itemID2" type="uint32" />
+    <field name="itemID3" type="uint32" />
+    <field name="itemID4" type="uint32" />
+    <field name="itemID5" type="uint32" />
+    <field name="itemCount1" type="uint32" />
+    <field name="itemCount2" type="uint32" />
+    <field name="itemCount3" type="uint32" />
+    <field name="itemCount4" type="uint32" />
+    <field name="itemCount5" type="uint32" />
+    <field name="requiredArenaRating" type="uint32" />
+    <field name="itemPurchaseGroup" type="uint32" />
+    <field name="unk17" type="uint32" />
+    <field name="unk18" type="uint32" />
+    <field name="unk19" type="uint32" />
+    <field name="unk20" type="uint32" />
+    <field name="unk21" type="uint32" />
+    <field name="unk22" type="uint32" />
+    <field name="unk23" type="uint32" />
+    <field name="unk24" type="uint32" />
+    <field name="unk25" type="uint32" />
+    <field name="unk26" type="uint32" />
+    <field name="unk27" type="uint32" />
+    <field name="unk28" type="uint32" />
+    <field name="unk29" type="uint32" />
+    <field name="unk30" type="uint32" />
+    <field name="unk31" type="uint32" />
+  </ItemExtendedCost>
+
+  <ItemGroupSounds primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="sound1" type="uint32" />
+    <field name="sound2" type="uint32" />
+    <field name="sound3" type="uint32" />
+    <field name="sound4" type="uint32" />
+  </ItemGroupSounds>
+
+  <ItemLimitCategory primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="quantity" type="uint32" />
+    <field name="flags" type="uint32" />
+  </ItemLimitCategory>
+
+  <ItemPetFood primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="string" />
+  </ItemPetFood>
+
+  <ItemPurchaseGroup primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="itemID1" type="uint32" />
+    <field name="itemID2" type="uint32" />
+    <field name="itemID3" type="uint32" />
+    <field name="itemID4" type="uint32" />
+    <field name="itemID5" type="uint32" />
+    <field name="itemID6" type="uint32" />
+    <field name="itemID7" type="uint32" />
+    <field name="itemID8" type="uint32" />
+    <field name="name" type="string" />
+  </ItemPurchaseGroup>
+
+  <ItemRandomProperties primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="string" />
+    <field name="Enchantment1" type="uint32" />
+    <field name="Enchantment2" type="uint32" />
+    <field name="Enchantment3" type="uint32" />
+    <field name="Enchantment4" type="uint32" />
+    <field name="Enchantment5" type="uint32" />
+    <field name="name2" type="string" />
+  </ItemRandomProperties>
+
+  <ItemRandomSuffix primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="internalName" type="string" />
+    <field name="enchantment1" type="uint32" />
+    <field name="enchantment2" type="uint32" />
+    <field name="enchantment3" type="uint32" />
+    <field name="enchantment4" type="uint32" />
+    <field name="enchantment5" type="uint32" />
+    <field name="allocationPct1" type="uint32" />
+    <field name="allocationPct2" type="uint32" />
+    <field name="allocationPct3" type="uint32" />
+    <field name="allocationPct4" type="uint32" />
+    <field name="allocationPct5" type="uint32" />
+  </ItemRandomSuffix>
+
+  <ItemReforge primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="unk2" type="uint32" />
+    <field name="unk3" type="float" />
+    <field name="unk4" type="uint32" />
+    <field name="unk5" type="float" />
+  </ItemReforge>
+
+  <ItemSet primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="itemID1" type="uint32" />
+    <field name="itemID2" type="uint32" />
+    <field name="itemID3" type="uint32" />
+    <field name="itemID4" type="uint32" />
+    <field name="itemID5" type="uint32" />
+    <field name="itemID6" type="uint32" />
+    <field name="itemID7" type="uint32" />
+    <field name="itemID8" type="uint32" />
+    <field name="itemID9" type="uint32" />
+    <field name="itemID10" type="uint32" />
+    <field name="itemID11" type="uint32" />
+    <field name="itemID12" type="uint32" />
+    <field name="itemID13" type="uint32" />
+    <field name="itemID14" type="uint32" />
+    <field name="itemID15" type="uint32" />
+    <field name="itemID16" type="uint32" />
+    <field name="itemID17" type="uint32" />
+    <field name="setSpellID1" type="uint32" />
+    <field name="setSpellID2" type="uint32" />
+    <field name="setSpellID3" type="uint32" />
+    <field name="setSpellID4" type="uint32" />
+    <field name="setSpellID5" type="uint32" />
+    <field name="setSpellID6" type="uint32" />
+    <field name="setSpellID7" type="uint32" />
+    <field name="setSpellID8" type="uint32" />
+    <field name="setThreshold1" type="uint32" />
+    <field name="setThreshold2" type="uint32" />
+    <field name="setThreshold3" type="uint32" />
+    <field name="setThreshold4" type="uint32" />
+    <field name="setThreshold5" type="uint32" />
+    <field name="setThreshold6" type="uint32" />
+    <field name="setThreshold7" type="uint32" />
+    <field name="setThreshold8" type="uint32" />
+    <field name="requiredSkill" type="uint32" />
+    <field name="requiredSkillRank" type="uint32" />
+  </ItemSet>
+
+  <ItemSubClass primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="classID" type="uint32" />
+    <field name="subClassID" type="uint32" />
+    <field name="prerequisiteProficiency" type="int32" />
+    <field name="postrequisiteProficiency" type="int32" />
+    <field name="flags" type="uint32" />
+    <field name="displayFlags" type="uint32" />
+    <field name="weaponParrySeq" type="uint32" />
+    <field name="weaponReadySeq" type="uint32" />
+    <field name="weaponAttackSeq" type="uint32" />
+    <field name="WeaponSwingSize" type="uint32" />
+    <field name="displayName" type="string" />
+    <field name="verboseName" type="string" />
+  </ItemSubClass>
+
+  <ItemSubClassMask primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="classID" type="uint32" />
+    <field name="mask" type="uint32" />
+    <field name="name" type="string" />
+  </ItemSubClassMask>
+
+  <ItemVisualEffects primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Model" type="string" />
+  </ItemVisualEffects>
+
+  <ItemVisuals primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Slot1" type="uint32" />
+    <field name="Slot2" type="uint32" />
+    <field name="Slot3" type="uint32" />
+    <field name="Slot4" type="uint32" />
+    <field name="Slot5" type="uint32" />
+  </ItemVisuals>
+
+  <Languages primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </Languages>
+
+  <LanguageWords primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="languageID" type="uint32" />
+    <field name="word" type="string" />
+  </LanguageWords>
+
+  <LfgDungeonExpansion primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="lfg_id" type="uint32" />
+    <field name="expansion_level" type="uint32" />
+    <field name="random_id" type="uint32" />
+    <field name="hard_level_min" type="uint32" />
+    <field name="hard_level_max" type="uint32" />
+    <field name="target_level_min" type="uint32" />
+    <field name="target_level_max" type="uint32" />
+  </LfgDungeonExpansion>
+
+  <LfgDungeonGroup primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="order_index" type="uint32" />
+    <field name="parent_group_id" type="uint32" />
+    <field name="typeid" type="uint32" />
+  </LfgDungeonGroup>
+
+  <LfgDungeons primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="minLevel" type="uint32" />
+    <field name="maxLevel" type="uint32" />
+    <field name="target_level" type="uint32" />
+    <field name="target_level_min" type="uint32" />
+    <field name="target_level_max" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="difficulty" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="typeID" type="uint32" />
+    <field name="faction" type="uint32" />
+    <field name="textureFilename" type="string" />
+    <field name="expansionLevel" type="uint32" />
+    <field name="order_index" type="uint32" />
+    <field name="group_id" type="uint32" />
+    <field name="description" type="string" />
+  </LfgDungeons>
+
+  <Light primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="continentID" type="uint32" />
+    <field name="x" type="float" />
+    <field name="y" type="float" />
+    <field name="z" type="float" />
+    <field name="falloffStart" type="float" />
+    <field name="falloffEnd" type="float" />
+    <field name="lightParamsID1" type="uint32" />
+    <field name="lightParamsID2" type="uint32" />
+    <field name="lightParamsID3" type="uint32" />
+    <field name="lightParamsID4" type="uint32" />
+    <field name="lightParamsID5" type="uint32" />
+    <field name="lightParamsID6" type="uint32" />
+    <field name="lightParamsID7" type="uint32" />
+    <field name="lightParamsID8" type="uint32" />
+  </Light>
+
+  <LightFloatBand primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="num" type="uint32" />
+    <field name="time1" type="uint32" />
+    <field name="time2" type="uint32" />
+    <field name="time3" type="uint32" />
+    <field name="time4" type="uint32" />
+    <field name="time5" type="uint32" />
+    <field name="time6" type="uint32" />
+    <field name="time7" type="uint32" />
+    <field name="time8" type="uint32" />
+    <field name="time9" type="uint32" />
+    <field name="time10" type="uint32" />
+    <field name="time11" type="uint32" />
+    <field name="time12" type="uint32" />
+    <field name="time13" type="uint32" />
+    <field name="time14" type="uint32" />
+    <field name="time15" type="uint32" />
+    <field name="time16" type="uint32" />
+    <field name="data1" type="float" />
+    <field name="data2" type="float" />
+    <field name="data3" type="float" />
+    <field name="data4" type="float" />
+    <field name="data5" type="float" />
+    <field name="data6" type="float" />
+    <field name="data7" type="float" />
+    <field name="data8" type="float" />
+    <field name="data9" type="float" />
+    <field name="data10" type="float" />
+    <field name="data11" type="float" />
+    <field name="data12" type="float" />
+    <field name="data13" type="float" />
+    <field name="data14" type="float" />
+    <field name="data15" type="float" />
+    <field name="data16" type="float" />
+  </LightFloatBand>
+
+  <LightIntBand primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="num" type="uint32" />
+    <field name="time1" type="uint32" />
+    <field name="time2" type="uint32" />
+    <field name="time3" type="uint32" />
+    <field name="time4" type="uint32" />
+    <field name="time5" type="uint32" />
+    <field name="time6" type="uint32" />
+    <field name="time7" type="uint32" />
+    <field name="time8" type="uint32" />
+    <field name="time9" type="uint32" />
+    <field name="time10" type="uint32" />
+    <field name="time11" type="uint32" />
+    <field name="time12" type="uint32" />
+    <field name="time13" type="uint32" />
+    <field name="time14" type="uint32" />
+    <field name="time15" type="uint32" />
+    <field name="time16" type="uint32" />
+    <field name="data1" type="uint32" />
+    <field name="data2" type="uint32" />
+    <field name="data3" type="uint32" />
+    <field name="data4" type="uint32" />
+    <field name="data5" type="uint32" />
+    <field name="data6" type="uint32" />
+    <field name="data7" type="uint32" />
+    <field name="data8" type="uint32" />
+    <field name="data9" type="uint32" />
+    <field name="data10" type="uint32" />
+    <field name="data11" type="uint32" />
+    <field name="data12" type="uint32" />
+    <field name="data13" type="uint32" />
+    <field name="data14" type="uint32" />
+    <field name="data15" type="uint32" />
+    <field name="data16" type="uint32" />
+  </LightIntBand>
+
+  <LightParams primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="highlightSky" type="uint32" />
+    <field name="lightSkyboxID" type="uint32" />
+    <field name="cloudTypeID" type="uint32" />
+    <field name="glow" type="float" />
+    <field name="waterShallowAlpha" type="float" />
+    <field name="waterDeepAlpha" type="float" />
+    <field name="oceanShallowAlpha" type="float" />
+    <field name="oceanDeepAlpha" type="float" />
+    <field name="flags" type="uint32" />
+  </LightParams>
+
+  <LightSkybox primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="flags" type="uint32" />
+  </LightSkybox>
+
+  <LiquidMaterial primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="LVF" type="uint32" />
+    <field name="flags" type="uint32" />
+  </LiquidMaterial>
+
+  <!-- LiquidObject -->
+
+  <LiquidType primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <!--<field name="minDetail" type="uint32" />
+    <field name="loDetail_ID" type="uint32" />
+    <field name="hiDetail_ID" type="uint32" />-->
+    <field name="name" type="string" />
+    <field name="flags" type="uint32" />
+    <field name="soundBank" type="uint32" />
+    <field name="soundID" type="uint32" />
+    <field name="spellID" type="uint32" />
+    <field name="maxDarkenDepth" type="float" />
+    <field name="fogDarkenIntensity" type="float" />
+    <field name="ambDarkenIntensity" type="float" />
+    <field name="dirDarkenIntensity" type="float" />
+    <field name="lightID" type="uint32" />
+    <field name="particleScale" type="float" />
+    <field name="particleMovement" type="uint32" />
+    <field name="particleTexSlots" type="uint32" />
+    <field name="materialID" type="uint32" />
+    <field name="texture1" type="string" />
+    <field name="texture2" type="string" />
+    <field name="texture3" type="string" />
+    <field name="texture4" type="string" />
+    <field name="texture5" type="string" />
+    <field name="texture6" type="string" />
+    <field name="color1" type="uint32" />
+    <field name="color2" type="uint32" />
+    <field name="float1" type="float" />
+    <field name="float2" type="float" />
+    <field name="float3" type="float" />
+    <field name="float4" type="float" />
+    <field name="float5" type="float" />
+    <field name="float6" type="float" />
+    <field name="float7" type="float" />
+    <field name="float8" type="float" />
+    <field name="float9" type="float" />
+    <field name="float10" type="float" />
+    <field name="float11" type="float" />
+    <field name="float12" type="float" />
+    <field name="float13" type="float" />
+    <field name="float14" type="float" />
+    <field name="float15" type="float" />
+    <field name="float16" type="float" />
+    <field name="float17" type="float" />
+    <field name="float18" type="float" />
+    <field name="int1" type="uint32" />
+    <field name="int2" type="uint32" />
+    <field name="int3" type="uint32" />
+    <field name="int4" type="uint32" />
+  </LiquidType>
+
+  <LoadingScreens primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="fileName" type="string" />
+    <field name="hasWideScreen" type="uint32" />
+  </LoadingScreens>
+
+  <LoadingScreenTaxiSplines primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="PathID" type="uint32" />
+    <field name="Locx1" type="float" />
+    <field name="Locx2" type="float" />
+    <field name="Locx3" type="float" />
+    <field name="Locx4" type="float" />
+    <field name="Locx5" type="float" />
+    <field name="Locx6" type="float" />
+    <field name="Locx7" type="float" />
+    <field name="Locx8" type="float" />
+    <field name="Locy1" type="float" />
+    <field name="Locy2" type="float" />
+    <field name="Locy3" type="float" />
+    <field name="Locy4" type="float" />
+    <field name="Locy5" type="float" />
+    <field name="Locy6" type="float" />
+    <field name="Locy7" type="float" />
+    <field name="Locy8" type="float" />
+    <field name="LegIndex" type="uint32" />
+  </LoadingScreenTaxiSplines>
+
+  <Lock primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Type1" type="uint32" />
+    <field name="Type2" type="uint32" />
+    <field name="Type3" type="uint32" />
+    <field name="Type4" type="uint32" />
+    <field name="Type5" type="uint32" />
+    <field name="Type6" type="uint32" />
+    <field name="Type7" type="uint32" />
+    <field name="Type8" type="uint32" />
+    <field name="Index1" type="uint32" />
+    <field name="Index2" type="uint32" />
+    <field name="Index3" type="uint32" />
+    <field name="Index4" type="uint32" />
+    <field name="Index5" type="uint32" />
+    <field name="Index6" type="uint32" />
+    <field name="Index7" type="uint32" />
+    <field name="Index8" type="uint32" />
+    <field name="Skill1" type="uint32" />
+    <field name="Skill2" type="uint32" />
+    <field name="Skill3" type="uint32" />
+    <field name="Skill4" type="uint32" />
+    <field name="Skill5" type="uint32" />
+    <field name="Skill6" type="uint32" />
+    <field name="Skill7" type="uint32" />
+    <field name="Skill8" type="uint32" />
+    <field name="Action1" type="uint32" />
+    <field name="Action2" type="uint32" />
+    <field name="Action3" type="uint32" />
+    <field name="Action4" type="uint32" />
+    <field name="Action5" type="uint32" />
+    <field name="Action6" type="uint32" />
+    <field name="Action7" type="uint32" />
+    <field name="Action8" type="uint32" />
+  </Lock>
+
+  <LockType primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="resourceName" type="string" />
+    <field name="verb" type="string" />
+    <field name="cursorName" type="string" />
+  </LockType>
+
+  <MailTemplate primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="subject" type="string" />
+    <field name="body" type="string" />
+  </MailTemplate>
+
+  <Map primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Directory" type="string" />
+    <field name="InstanceType" type="uint32" />
+    <field name="Flags" type="uint32" />
+    <field name="unk5" type="uint32" />
+    <field name="PVP" type="uint32" />
+    <field name="MapName" type="string" />
+    <field name="areaTableID" type="uint32" />
+    <field name="MapDescription0" type="string" />
+    <field name="MapDescription1" type="string" />
+    <field name="LoadingScreenID" type="uint32" />
+    <field name="minimapIconScale" type="float" />
+    <field name="corpseMapID" type="uint32" />
+    <field name="corpseX" type="float" />
+    <field name="corpseY" type="float" />
+    <field name="timeOfDayOverride" type="int32" />
+    <field name="expansionID" type="uint32" />
+    <field name="raidOffset" type="uint32" />
+    <field name="maxPlayers" type="uint32" />
+    <field name="parentMapID" type="int32" />
+  </Map>
+
+  <MapDifficulty primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="difficulty" type="uint32" />
+    <field name="message" type="string" />
+    <field name="raidDuration" type="uint32" />
+    <field name="maxPlayers" type="uint32" />
+    <field name="difficultystring" type="string" />
+  </MapDifficulty>
+
+  <Material primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="foleySoundID" type="uint32" />
+    <field name="sheatheSoundID" type="uint32" />
+    <field name="unsheatheSoundID" type="uint32" />
+  </Material>
+
+  <!-- MountCapability -->
+
+  <!-- MountType -->
+
+  <Movie primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="filename" type="string" />
+    <field name="volume" type="uint32" />
+    <field name="unk4" type="uint32" />
+  </Movie>
+
+  <MovieFileDataRec build="14333">
+    <field name="FileDataID" type="uint32" />
+    <field name="resolution" type="uint32" />
+  </MovieFileDataRec>
+
+  <MovieVariation primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="movieID" type="uint32" />
+    <field name="fileDataID" type="uint32" />
+  </MovieVariation>
+
+  <NameGen primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="raceID" type="uint32" />
+    <field name="sex" type="uint32" />
+  </NameGen>
+
+  <NamesProfanity primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="string" />
+    <field name="Language" type="uint32" />
+  </NamesProfanity>
+
+  <NamesReserved primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="string" />
+    <field name="Language" type="uint32" />
+  </NamesReserved>
+
+  <NPCSounds primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="SoundID1" type="uint32" />
+    <field name="SoundID2" type="uint32" />
+    <field name="SoundID3" type="uint32" />
+    <field name="SoundID4" type="uint32" />
+  </NPCSounds>
+
+  <!-- NumTalentsAtLevel -->
+
+  <ObjectEffect primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="objectEffectGroupID" type="uint32" />
+    <field name="triggerType" type="uint32" />
+    <field name="eventType" type="uint32" />
+    <field name="effectRecType" type="uint32" />
+    <field name="effectRecID" type="uint32" />
+    <field name="attachment" type="uint32" />
+    <field name="offsetX" type="float" />
+    <field name="offsetY" type="float" />
+    <field name="offsetZ" type="float" />
+    <field name="objectEffectModifierID" type="uint32" />
+  </ObjectEffect>
+
+  <ObjectEffectGroup primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </ObjectEffectGroup>
+
+  <ObjectEffectModifier primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="inputType" type="uint32" />
+    <field name="mapType" type="uint32" />
+    <field name="outputType" type="uint32" />
+    <field name="param1" type="float" />
+    <field name="param2" type="float" />
+    <field name="param3" type="float" />
+    <field name="param4" type="float" />
+  </ObjectEffectModifier>
+
+  <ObjectEffectPackage primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </ObjectEffectPackage>
+
+  <ObjectEffectPackageElem primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="objectEffectPackageID" type="uint32" />
+    <field name="objectEffectGroupID" type="uint32" />
+    <field name="stateType" type="uint32" />
+  </ObjectEffectPackageElem>
+
+  <OverrideSpellData primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="spells1" type="uint32" />
+    <field name="spells2" type="uint32" />
+    <field name="spells3" type="uint32" />
+    <field name="spells4" type="uint32" />
+    <field name="spells5" type="uint32" />
+    <field name="spells6" type="uint32" />
+    <field name="spells7" type="uint32" />
+    <field name="spells8" type="uint32" />
+    <field name="spells9" type="uint32" />
+    <field name="spells10" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="unk13" type="uint32" />
+  </OverrideSpellData>
+
+  <Package primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="icon" type="string" />
+    <field name="cost" type="uint32" />
+    <field name="name" type="string" />
+  </Package>
+
+  <PageTextMaterial primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </PageTextMaterial>
+
+  <PaperDollItemFrame primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="ItemButtonName" type="string" />
+    <field name="SlotIcon" type="string" />
+    <field name="SlotNumber" type="uint32" />
+  </PaperDollItemFrame>
+
+  <ParticleColor primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="start1" type="uint32" />
+    <field name="start2" type="uint32" />
+    <field name="start3" type="uint32" />
+    <field name="mid1" type="uint32" />
+    <field name="mid2" type="uint32" />
+    <field name="mid3" type="uint32" />
+    <field name="end1" type="uint32" />
+    <field name="end2" type="uint32" />
+    <field name="end3" type="uint32" />
+  </ParticleColor>
+
+  <!-- PetitionType -->
+
+  <PetPersonality primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="happinessThreshold1" type="uint32" />
+    <field name="happinessThreshold2" type="uint32" />
+    <field name="happinessThreshold3" type="uint32" />
+    <field name="happinessDamage1" type="float" />
+    <field name="happinessDamage2" type="float" />
+    <field name="happinessDamage3" type="float" />
+  </PetPersonality>
+
+  <Phase primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="phaseShift" type="uint32" />
+    <!--<field name="childMap1" type="uint32" />
+    <field name="childMap2" type="uint32" />
+    <field name="childMap3" type="uint32" />
+    <field name="childMap4" type="uint32" />
+    <field name="childMap5" type="uint32" />-->
+  </Phase>
+
+  <!-- PhaseShiftZoneSounds -->
+
+  <!-- PhaseXPhaseGroup -->
+
+  <PowerDisplay primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="actualType" type="uint32" />
+    <field name="globalStringBaseTag" type="string" />
+    <field name="red" type="uint8" />
+    <field name="green" type="uint8" />
+    <field name="blue" type="uint16" />
+  </PowerDisplay>
+
+  <PvpDifficulty primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="rangeIndex" type="uint32" />
+    <field name="minLevel" type="uint32" />
+    <field name="maxLevel" type="uint32" />
+    <field name="difficulty" type="uint32" />
+  </PvpDifficulty>
+
+  <QuestFactionReward primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Difficulty1" type="uint32" />
+    <field name="Difficulty2" type="uint32" />
+    <field name="Difficulty3" type="uint32" />
+    <field name="Difficulty4" type="uint32" />
+    <field name="Difficulty5" type="uint32" />
+    <field name="Difficulty6" type="uint32" />
+    <field name="Difficulty7" type="uint32" />
+    <field name="Difficulty8" type="uint32" />
+    <field name="Difficulty9" type="uint32" />
+    <field name="Difficulty10" type="uint32" />
+  </QuestFactionReward>
+
+  <QuestInfo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="InfoName" type="string" />
+  </QuestInfo>
+
+  <!-- QuestPOIBlob -->
+
+  <!-- QuestPOIPoint -->
+
+  <QuestSort primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="SortName" type="string" />
+  </QuestSort>
+
+  <QuestXP primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="difficulty1" type="uint32" />
+    <field name="difficulty2" type="uint32" />
+    <field name="difficulty3" type="uint32" />
+    <field name="difficulty4" type="uint32" />
+    <field name="difficulty5" type="uint32" />
+    <field name="difficulty6" type="uint32" />
+    <field name="difficulty7" type="uint32" />
+    <field name="difficulty8" type="uint32" />
+    <field name="difficulty9" type="uint32" />
+    <field name="difficulty10" type="uint32" />
+  </QuestXP>
+
+  <RandPropPoints primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Epic1" type="uint32" />
+    <field name="Epic2" type="uint32" />
+    <field name="Epic3" type="uint32" />
+    <field name="Epic4" type="uint32" />
+    <field name="Epic5" type="uint32" />
+    <field name="Superior1" type="uint32" />
+    <field name="Superior2" type="uint32" />
+    <field name="Superior3" type="uint32" />
+    <field name="Superior4" type="uint32" />
+    <field name="Superior5" type="uint32" />
+    <field name="Good1" type="uint32" />
+    <field name="Good2" type="uint32" />
+    <field name="Good3" type="uint32" />
+    <field name="Good4" type="uint32" />
+    <field name="Good5" type="uint32" />
+  </RandPropPoints>
+
+  <ResearchBranch build="14333">
+    <field name="unk1" type="uint32" />
+    <field name="unk2" type="string" />
+    <field name="unk3" type="uint32" />
+    <field name="unk4" type="uint32" />
+    <field name="unk5" type="string" />
+    <field name="unk6" type="uint32" />
+  </ResearchBranch>
+
+  <ResearchField primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="string" />
+    <field name="unk3" type="uint32" />
+  </ResearchField>
+
+  <ResearchProject build="14333">
+    <field name="unk1" type="uint32" />
+    <field name="unk2" type="string" />
+    <field name="unk3" type="string" />
+    <field name="unk4" type="uint32" />
+    <field name="ResearchBranchID" type="uint32" />
+    <field name="unk6" type="uint32" />
+    <field name="unk7" type="uint32" />
+    <field name="unk8" type="string" />
+    <field name="unk9" type="uint32" />
+  </ResearchProject>
+
+  <ResearchSite build="14333">
+    <field name="unk1" type="uint32" />
+    <field name="unk2" type="uint32" />
+    <field name="unk3" type="uint32" />
+    <field name="unk4" type="string" />
+    <field name="unk5" type="uint32" />
+  </ResearchSite>
+
+  <Resistances primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Flags" type="uint32" />
+    <field name="FizzleSoundID" type="uint32" />
+    <field name="name" type="string" />
+  </Resistances>
+
+  <ScalingStatDistribution primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="statID1" type="uint32" />
+    <field name="statID2" type="uint32" />
+    <field name="statID3" type="uint32" />
+    <field name="statID4" type="uint32" />
+    <field name="statID5" type="uint32" />
+    <field name="statID6" type="uint32" />
+    <field name="statID7" type="uint32" />
+    <field name="statID8" type="uint32" />
+    <field name="statID9" type="uint32" />
+    <field name="statID10" type="uint32" />
+    <field name="bonus1" type="uint32" />
+    <field name="bonus2" type="uint32" />
+    <field name="bonus3" type="uint32" />
+    <field name="bonus4" type="uint32" />
+    <field name="bonus5" type="uint32" />
+    <field name="bonus6" type="uint32" />
+    <field name="bonus7" type="uint32" />
+    <field name="bonus8" type="uint32" />
+    <field name="bonus9" type="uint32" />
+    <field name="bonus10" type="uint32" />
+    <field name="unk22" type="uint32" />
+    <field name="maxlevel" type="uint32" />
+  </ScalingStatDistribution>
+
+  <!--<ScalingStatValues primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="charlevel" type="uint32" />
+    <field name="shoulderBudget" type="uint32" />
+    <field name="trinketBudget" type="uint32" />
+    <field name="weaponBudget1H" type="uint32" />
+    <field name="rangedBudget" type="uint32" />
+    <field name="clothShoulderArmor" type="uint32" />
+    <field name="leatherShoulderArmor" type="uint32" />
+    <field name="mailShoulderArmor" type="uint32" />
+    <field name="plateShoulderArmor" type="uint32" />
+    <field name="weaponDPS1H" type="uint32" />
+    <field name="weaponDPS2H" type="uint32" />
+    <field name="spellcasterDPS1H" type="uint32" />
+    <field name="spellcasterDPS2H" type="uint32" />
+    <field name="rangedDPS" type="uint32" />
+    <field name="wandDPS" type="uint32" />
+    <field name="spellPower" type="uint32" />
+    <field name="primaryBudget" type="uint32" />
+    <field name="tertiaryBudget" type="uint32" />
+    <field name="clothCloakArmor" type="uint32" />
+    <field name="clothChestArmor" type="uint32" />
+    <field name="leatherChestArmor" type="uint32" />
+    <field name="mailChestArmor" type="uint32" />
+    <field name="plateChestArmor" type="uint32" />
+    <field name="unk25" type="uint32" />
+  </ScalingStatValues>-->
+
+  <ScreenEffect primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="effect" type="uint32" />
+    <field name="param1" type="uint32" />
+    <field name="param2" type="uint32" />
+    <field name="param3" type="uint32" />
+    <field name="param4" type="uint32" />
+    <field name="lightParamsID" type="uint32" />
+    <field name="soundAmbienceID" type="uint32" />
+    <field name="zoneMusicID" type="uint32" />
+  </ScreenEffect>
+
+  <ScreenLocation primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Text" type="string" />
+  </ScreenLocation>
+
+  <ServerMessages primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Text" type="string" />
+  </ServerMessages>
+
+  <SkillLine primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="categoryID" type="uint32" />
+    <field name="skillCostsID" type="uint32" />
+    <field name="displayName" type="string" />
+    <field name="description" type="string" />
+    <field name="spellIconID" type="uint32" />
+    <field name="alternateVerb" type="string" />
+    <field name="canLink" type="uint32" />
+  </SkillLine>
+
+  <SkillLineAbility primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="skillLine" type="uint32" />
+    <field name="spell" type="uint32" />
+    <field name="raceMask" type="uint32" />
+    <field name="classMask" type="uint32" />
+    <field name="excludeRace" type="uint32" />
+    <field name="excludeClass" type="uint32" />
+    <field name="minSkillLineRank" type="uint32" />
+    <field name="supercededBySpell" type="uint32" />
+    <field name="acquireMethod" type="uint32" />
+    <field name="trivialSkillLineRankHigh" type="uint32" />
+    <field name="trivialSkillLineRankLow" type="uint32" />
+    <field name="characterPoints" type="uint32" />
+    <field name="numSkillUps" type="uint32" />
+  </SkillLineAbility>
+
+  <!-- SkillLineAbilitySortedSpell -->
+
+  <SkillLineCategory primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="sortIndex" type="uint32" />
+  </SkillLineCategory>
+
+  <!--<SkillRaceClassInfo primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="skillID" type="uint32" />
+    <field name="raceMask" type="uint32" />
+    <field name="classMask" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="minLevel" type="uint32" />
+    <field name="skillTierID" type="uint32" />
+    <field name="skillCostIndex" type="uint32" />
+  </SkillRaceClassInfo>-->
+
+  <SkillTiers primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="cost1" type="uint32" />
+    <field name="cost2" type="uint32" />
+    <field name="cost3" type="uint32" />
+    <field name="cost4" type="uint32" />
+    <field name="cost5" type="uint32" />
+    <field name="cost6" type="uint32" />
+    <field name="cost7" type="uint32" />
+    <field name="cost8" type="uint32" />
+    <field name="cost9" type="uint32" />
+    <field name="cost10" type="uint32" />
+    <field name="cost11" type="uint32" />
+    <field name="cost12" type="uint32" />
+    <field name="cost13" type="uint32" />
+    <field name="cost14" type="uint32" />
+    <field name="cost15" type="uint32" />
+    <field name="cost16" type="uint32" />
+    <field name="value1" type="uint32" />
+    <field name="value2" type="uint32" />
+    <field name="value3" type="uint32" />
+    <field name="value4" type="uint32" />
+    <field name="value5" type="uint32" />
+    <field name="value6" type="uint32" />
+    <field name="value7" type="uint32" />
+    <field name="value8" type="uint32" />
+    <field name="value9" type="uint32" />
+    <field name="value10" type="uint32" />
+    <field name="value11" type="uint32" />
+    <field name="value12" type="uint32" />
+    <field name="value13" type="uint32" />
+    <field name="value14" type="uint32" />
+    <field name="value15" type="uint32" />
+    <field name="value16" type="uint32" />
+  </SkillTiers>
+
+  <SoundAmbience primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="AmbienceID1" type="uint32" />
+    <field name="AmbienceID2" type="uint32" />
+  </SoundAmbience>
+
+  <SoundEmitters primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="positionX" type="float" />
+    <field name="positionY" type="float" />
+    <field name="positionZ" type="float" />
+    <field name="directionX" type="float" />
+    <field name="directionY" type="float" />
+    <field name="directionZ" type="float" />
+    <field name="soundEntriesID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="name" type="string" />
+  </SoundEmitters>
+
+  <SoundEntries primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="soundType" type="uint32" />
+    <field name="name" type="string" />
+    <field name="File1" type="string" />
+    <field name="File2" type="string" />
+    <field name="File3" type="string" />
+    <field name="File4" type="string" />
+    <field name="File5" type="string" />
+    <field name="File6" type="string" />
+    <field name="File7" type="string" />
+    <field name="File8" type="string" />
+    <field name="File9" type="string" />
+    <field name="File10" type="string" />
+    <field name="Freq1" type="uint32" />
+    <field name="Freq2" type="uint32" />
+    <field name="Freq3" type="uint32" />
+    <field name="Freq4" type="uint32" />
+    <field name="Freq5" type="uint32" />
+    <field name="Freq6" type="uint32" />
+    <field name="Freq7" type="uint32" />
+    <field name="Freq8" type="uint32" />
+    <field name="Freq9" type="uint32" />
+    <field name="Freq10" type="uint32" />
+    <field name="DirectoryBase" type="string" />
+    <field name="volumeFloat" type="float" />
+    <field name="flags" type="uint32" />
+    <field name="minDistance" type="float" />
+    <field name="distanceCutoff" type="float" />
+    <field name="EAXDef" type="uint32" />
+    <field name="soundEntriesAdvancedID" type="uint32" />
+    <field name="unk31" type="float" />
+    <field name="unk32" type="float" />
+    <field name="unk33" type="float" />
+    <field name="unk34" type="float" />
+  </SoundEntries>
+
+  <SoundEntriesAdvanced primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="soundEntryID" type="uint32" />
+    <field name="innerRadius2D" type="float" />
+    <field name="timeA" type="uint32" />
+    <field name="timeB" type="uint32" />
+    <field name="timeC" type="uint32" />
+    <field name="timeD" type="uint32" />
+    <field name="randomOffsetRange" type="uint32" />
+    <field name="usage" type="uint32" />
+    <field name="timeIntervalMin" type="uint32" />
+    <field name="timeIntervalMax" type="uint32" />
+    <field name="volumeSliderCategory" type="uint32" />
+    <field name="duckToSFX" type="float" />
+    <field name="duckToMusic" type="float" />
+    <field name="duckToAmbience" type="float" />
+    <field name="innerRadiusOfInfluence" type="float" />
+    <field name="outerRadiusOfInfluence" type="float" />
+    <field name="timeToDuck" type="uint32" />
+    <field name="timeToUnduck" type="uint32" />
+    <field name="insideAngle" type="float" />
+    <field name="outsideAngle" type="float" />
+    <field name="outsideVolume" type="float" />
+    <field name="outerRadius2D" type="float" />
+    <field name="name" type="string" />
+  </SoundEntriesAdvanced>
+
+  <SoundFilter primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </SoundFilter>
+
+  <SoundFilterElem primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="soundFilterID" type="uint32" />
+    <field name="orderIndex" type="uint32" />
+    <field name="filterType" type="uint32" />
+    <field name="params1" type="float" />
+    <field name="params2" type="float" />
+    <field name="params3" type="float" />
+    <field name="params4" type="float" />
+    <field name="params5" type="float" />
+    <field name="params6" type="float" />
+    <field name="params7" type="float" />
+    <field name="params8" type="float" />
+    <field name="params9" type="float" />
+  </SoundFilterElem>
+
+  <SoundProviderPreferences primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Description" type="string" />
+    <field name="Flags" type="uint32" />
+    <field name="EAXEnvironmentSelection" type="uint32" />
+    <field name="EAXDecayTime" type="float" />
+    <field name="EAX2EnvironmentSize" type="float" />
+    <field name="EAX2EnvironmentDiffusion" type="float" />
+    <field name="EAX2Room" type="uint32" />
+    <field name="EAX2RoomHF" type="uint32" />
+    <field name="EAX2DecayHFRatio" type="float" />
+    <field name="EAX2Reflections" type="uint32" />
+    <field name="EAX2ReflectionsDelay" type="float" />
+    <field name="EAX2Reverb" type="uint32" />
+    <field name="EAX2ReverbDelay" type="float" />
+    <field name="EAX2RoomRolloff" type="float" />
+    <field name="EAX2AirAbsorption" type="float" />
+    <field name="EAX3RoomLF" type="uint32" />
+    <field name="EAX3DecayLFRatio" type="float" />
+    <field name="EAX3EchoTime" type="float" />
+    <field name="EAX3EchoDepth" type="float" />
+    <field name="EAX3ModulationTime" type="float" />
+    <field name="EAX3ModulationDepth" type="float" />
+    <field name="EAX3HFReference" type="float" />
+    <field name="EAX3LFReference" type="float" />
+  </SoundProviderPreferences>
+
+  <SpamMessages primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="text" type="string" />
+  </SpamMessages>
+
+  <Spell primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <!--<field name="category" type="uint32" />
+    <field name="dispelType" type="uint32" />
+    <field name="mechanic" type="uint32" />-->
+    <field name="attributes" type="uint32" />
+    <field name="attributesEx" type="uint32" />
+    <field name="attributesExB" type="uint32" />
+    <field name="attributesExC" type="uint32" />
+    <field name="attributesExD" type="uint32" />
+    <field name="attributesExE" type="uint32" />
+    <field name="attributesExF" type="uint32" />
+    <field name="attributesExG" type="uint32" />
+    <field name="attributesExH" type="uint32" />
+    <field name="unk11" type="uint32" />
+    <!--<field name="shapeshiftMask[2]; // +0x34, size 0x8, type 0"
+    <field name="shapeshiftExclude[2]; // +0x3C, size 0x8, type 0"
+    <field name="targets" type="uint32" />
+    <field name="targetCreatureType" type="uint32" />
+    <field name="requiresSpellFocus" type="uint32" />
+    <field name="facingCasterFlags" type="uint32" />
+    <field name="casterAuraState" type="uint32" />
+    <field name="targetAuraState" type="uint32" />
+    <field name="excludeCasterAuraState" type="uint32" />
+    <field name="excludeTargetAuraState" type="uint32" />
+    <field name="casterAuraSpell" type="uint32" />
+    <field name="targetAuraSpell" type="uint32" />
+    <field name="excludeCasterAuraSpell" type="uint32" />
+    <field name="excludeTargetAuraSpell" type="uint32" />-->
+    <field name="castingTimeIndex" type="uint32" />
+    <!--<field name="recoveryTime" type="uint32" />
+    <field name="categoryRecoveryTime" type="uint32" />
+    <field name="interruptFlags" type="uint32" />
+    <field name="auraInterruptFlags[2]; // +0x84, size 0x8, type 0"
+    <field name="channelInterruptFlags[2]; // +0x8C, size 0x8, type 0"
+    <field name="procTypeMask" type="uint32" />
+    <field name="procChance" type="uint32" />
+    <field name="procCharges" type="uint32" />
+    <field name="maxLevel" type="uint32" />
+    <field name="baseLevel" type="uint32" />
+    <field name="spellLevel" type="uint32" />-->
+    <field name="durationIndex" type="uint32" />
+    <field name="powerType" type="uint32" />
+    <!--<field name="manaCost" type="uint32" />
+    <field name="manaCostPerLevel" type="uint32" />
+    <field name="manaPerSecond" type="uint32" />-->
+    <field name="rangeIndex" type="uint32" />
+    <field name="speed" type="float" />
+    <!--<field name="modalNextSpell" type="uint32" />
+    <field name="cumulativeAura" type="uint32" />
+    <field name="totem[2]; // +0xD0, size 0x8, type 0"
+    <field name="reagent[8]; // +0xD8, size 0x20, type 0"
+    <field name="reagentCount[8]; // +0xF8, size 0x20, type 0"
+    <field name="equippedItemClass" type="uint32" />
+    <field name="equippedItemSubclass" type="uint32" />
+    <field name="equippedItemInvTypes" type="uint32" />
+    <field name="effect[3]; // +0x124, size 0xC, type 0"
+    <field name="effectDieSides[3]; // +0x130, size 0xC, type 0"
+    <field name="effectRealPointsPerLevel[3]; // +0x13C, size 0xC, type 3"
+    <field name="effectBasePoints[3]; // +0x148, size 0xC, type 0"
+    <field name="effectMechanic[3]; // +0x154, size 0xC, type 0"
+    <field name="implicitTargetA[3]; // +0x160, size 0xC, type 0"
+    <field name="implicitTargetB[3]; // +0x16C, size 0xC, type 0"
+    <field name="effectRadiusIndex[3]; // +0x178, size 0xC, type 0"
+    <field name="effectRadiusIndexB[3]; // +0x184, size 0xC, type 0"
+    <field name="effectAura[3]; // +0x190, size 0xC, type 0"
+    <field name="effectAuraPeriod[3]; // +0x19C, size 0xC, type 0"
+    <field name="effectAmplitude[3]; // +0x1A8, size 0xC, type 3"
+    <field name="effectChainTargets[3]; // +0x1B4, size 0xC, type 0"
+    <field name="effectItemType[3]; // +0x1C0, size 0xC, type 0"
+    <field name="effectMiscValue[3]; // +0x1CC, size 0xC, type 0"
+    <field name="effectMiscValueB[3]; // +0x1D8, size 0xC, type 0"
+    <field name="effectTriggerSpell[3]; // +0x1E4, size 0xC, type 0"
+    <field name="effectPointsPerCombo[3]; // +0x1F0, size 0xC, type 3"
+    <field name="effectSpellClassMaskA[3]; // +0x1FC, size 0xC, type 0"
+    <field name="effectSpellClassMaskB[3]; // +0x208, size 0xC, type 0"
+    <field name="effectSpellClassMaskC[3]; // +0x214, size 0xC, type 0"-->
+    <field name="spellVisualID1" type="uint32" />
+    <field name="spellVisualID2" type="uint32" />
+    <field name="spellIconID" type="uint32" />
+    <field name="activeIconID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="nameSubtext" type="string" />
+    <field name="description" type="string" />
+    <field name="auraDescription" type="string" />
+    <!--<field name="manaCostPct" type="uint32" />
+    <field name="startRecoveryCategory" type="uint32" />
+    <field name="startRecoveryTime" type="uint32" />
+    <field name="maxTargetLevel" type="uint32" />
+    <field name="spellClassSet" type="uint32" />
+    <field name="spellClassMask[3]; // +0x254, size 0xC, type 0"
+    <field name="maxTargets" type="uint32" />
+    <field name="defenseType" type="uint32" />
+    <field name="preventionType" type="uint32" />
+    <field name="stanceBarOrder" type="uint32" />
+    <field name="effectChainAmplitude[3]; // +0x270, size 0xC, type 3"
+    <field name="minFactionID" type="uint32" />
+    <field name="minReputation" type="uint32" />
+    <field name="requiredAuraVision" type="uint32" />
+    <field name="requiredTotemCategoryID[2]; // +0x288, size 0x8, type 0"
+    <field name="requiredAreasID" type="uint32" />-->
+    <field name="schoolMask" type="uint32" />
+    <field name="runeCostID" type="uint32" />
+    <field name="spellMissileID" type="uint32" />
+    <!--<field name="powerDisplayID" type="uint32" />
+    <field name="effectBonusCoefficient[3]; // +0x2A4, size 0xC, type 3"-->
+    <field name="descriptionVariablesID" type="uint32" />
+    <field name="difficulty" type="uint32" />
+    <!--<field name="scalingID" type="uint32" />-->
+    <field name="unk_f1" type="float" />
+    <field name="SpellScalingID" type="int32" />
+    <field name="SpellAuraOptionsId" type="uint32" />
+    <field name="SpellAuraRestrictionsId" type="uint32" />
+    <field name="SpellCastingRequirementsId" type="uint32" />
+    <field name="SpellCategoriesId" type="uint32" />
+    <field name="SpellClassOptionsId" type="uint32" />
+    <field name="SpellCooldownsId" type="uint32" />
+    <field name="unkIndex7" type="uint32" />
+    <field name="SpellEquippedItemsId" type="uint32" />
+    <field name="SpellInterruptsId" type="uint32" />
+    <field name="SpellLevelsId" type="uint32" />
+    <field name="SpellPowerId" type="uint32" />
+    <field name="SpellReagentsId" type="uint32" />
+    <field name="SpellShapeshiftId" type="uint32" />
+    <field name="SpellTargetRestrictionsId" type="uint32" />
+    <field name="SpellTotemsId" type="uint32" />
+    <field name="ResearchProjectId" type="uint32" />
+  </Spell>
+
+  <!-- SpellActivationOverlay -->
+
+  <!-- SpellAuraOptions -->
+
+  <!-- SpellAuraRestrictions -->
+
+  <!-- SpellCastingRequirements -->
+
+  <SpellCastTimes primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="base" type="uint32" />
+    <field name="perLevel" type="uint32" />
+    <field name="minimum" type="uint32" />
+  </SpellCastTimes>
+
+  <!-- SpellCategories -->
+
+  <SpellCategory primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+  </SpellCategory>
+
+  <SpellChainEffects primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="AvgSegLen" type="float" />
+    <field name="Width" type="float" />
+    <field name="NoiseScale" type="float" />
+    <field name="TexCoordScale" type="float" />
+    <field name="SegDuration" type="uint32" />
+    <field name="SegDelay" type="uint32" />
+    <field name="Texture" type="string" />
+    <field name="Flags" type="uint32" />
+    <field name="JointCount" type="uint32" />
+    <field name="JointOffsetRadius" type="float" />
+    <field name="JointsPerMinorJoint" type="uint32" />
+    <field name="MinorJointsPerMajorJoint" type="uint32" />
+    <field name="MinorJointScale" type="float" />
+    <field name="MajorJointScale" type="float" />
+    <field name="JointMoveSpeed" type="float" />
+    <field name="JointSmoothness" type="float" />
+    <field name="MinDurationBetweenJointJumps" type="float" />
+    <field name="MaxDurationBetweenJointJumps" type="float" />
+    <field name="WaveHeight" type="float" />
+    <field name="WaveFreq" type="float" />
+    <field name="WaveSpeed" type="float" />
+    <field name="MinWaveAngle" type="float" />
+    <field name="MaxWaveAngle" type="float" />
+    <field name="MinWaveSpin" type="float" />
+    <field name="MaxWaveSpin" type="float" />
+    <field name="ArcHeight" type="float" />
+    <field name="MinArcAngle" type="float" />
+    <field name="MaxArcAngle" type="float" />
+    <field name="MinArcSpin" type="float" />
+    <field name="MaxArcSpin" type="float" />
+    <field name="DelayBetweenEffects" type="float" />
+    <field name="MinFlickerOnDuration" type="float" />
+    <field name="MaxFlickerOnDuration" type="float" />
+    <field name="MinFlickerOffDuration" type="float" />
+    <field name="MaxFlickerOffDuration" type="float" />
+    <field name="PulseSpeed" type="float" />
+    <field name="PulseOnLength" type="float" />
+    <field name="PulseFadeLength" type="float" />
+    <field name="Alpha" type="uint8" />
+    <field name="Red" type="uint8" />
+    <field name="Green" type="uint8" />
+    <field name="Blue" type="uint8" />
+    <field name="BlendMode" type="uint32" />
+    <field name="Combo" type="string" />
+    <field name="RenderLayer" type="uint32" />
+    <field name="TextureLength" type="float" />
+    <field name="WavePhase" type="float" />
+  </SpellChainEffects>
+
+  <!-- SpellClassOptions -->
+
+  <!-- SpellCooldowns -->
+
+  <SpellDescriptionVariables primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="variables" type="string" />
+  </SpellDescriptionVariables>
+
+  <SpellDifficulty primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="difficultySpellID1" type="uint32" />
+    <field name="difficultySpellID2" type="uint32" />
+    <field name="difficultySpellID3" type="uint32" />
+    <field name="difficultySpellID4" type="uint32" />
+  </SpellDifficulty>
+
+  <SpellDispelType primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="mask" type="uint32" />
+    <field name="immunityPossible" type="uint32" />
+    <field name="internalName" type="string" />
+  </SpellDispelType>
+
+  <SpellDuration primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="duration" type="uint32" />
+    <field name="durationPerLevel" type="uint32" />
+    <field name="maxDuration" type="uint32" />
+  </SpellDuration>
+
+  <!-- SpellEffect -->
+
+  <SpellEffectCameraShakes primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="CameraShake1" type="uint32" />
+    <field name="CameraShake2" type="uint32" />
+    <field name="CameraShake3" type="uint32" />
+  </SpellEffectCameraShakes>
+
+  <!-- SpellEquippedItems -->
+
+  <!-- SpellFlyout -->
+
+  <!-- SpellFlyoutItem -->
+
+  <SpellFocusObject primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+  </SpellFocusObject>
+
+  <SpellIcon primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="textureFilename" type="string" />
+  </SpellIcon>
+
+  <!-- SpellInterrupts -->
+
+  <SpellItemEnchantment primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="charges" type="uint32" />
+    <field name="effect1" type="uint32" />
+    <field name="effect2" type="uint32" />
+    <field name="effect3" type="uint32" />
+    <field name="effectPointsMin1" type="uint32" />
+    <field name="effectPointsMin2" type="uint32" />
+    <field name="effectPointsMin3" type="uint32" />
+    <field name="effectPointsMax1" type="uint32" />
+    <field name="effectPointsMax2" type="uint32" />
+    <field name="effectPointsMax3" type="uint32" />
+    <field name="effectArg1" type="uint32" />
+    <field name="effectArg2" type="uint32" />
+    <field name="effectArg3" type="uint32" />
+    <field name="name" type="string" />
+    <field name="itemVisual" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="src_itemID" type="uint32" />
+    <field name="condition_id" type="uint32" />
+    <field name="requiredSkillID" type="uint32" />
+    <field name="requiredSkillRank" type="uint32" />
+    <field name="minLevel" type="uint32" />
+    <field name="itemLevel" type="uint32" />
+  </SpellItemEnchantment>
+
+  <SpellItemEnchantmentCondition primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="lt_operandType1" type="uint8" />
+    <field name="lt_operandType2" type="uint8" />
+    <field name="lt_operandType3" type="uint8" />
+    <field name="lt_operandType4" type="uint8" />
+    <field name="lt_operandType5" type="uint8" />
+    <field name="lt_operand1" type="uint32" />
+    <field name="lt_operand2" type="uint32" />
+    <field name="lt_operand3" type="uint32" />
+    <field name="lt_operand4" type="uint32" />
+    <field name="lt_operand5" type="uint32" />
+    <field name="operator1" type="uint8" />
+    <field name="operator2" type="uint8" />
+    <field name="operator3" type="uint8" />
+    <field name="operator4" type="uint8" />
+    <field name="operator5" type="uint8" />
+    <field name="rt_operandType1" type="uint8" />
+    <field name="rt_operandType2" type="uint8" />
+    <field name="rt_operandType3" type="uint8" />
+    <field name="rt_operandType4" type="uint8" />
+    <field name="rt_operandType5" type="uint8" />
+    <field name="rt_operand1" type="uint32" />
+    <field name="rt_operand2" type="uint32" />
+    <field name="rt_operand3" type="uint32" />
+    <field name="rt_operand4" type="uint32" />
+    <field name="rt_operand5" type="uint32" />
+    <field name="logic1" type="uint8" />
+    <field name="logic2" type="uint8" />
+    <field name="logic3" type="uint8" />
+    <field name="logic4" type="uint8" />
+    <field name="logic5" type="uint8" />
+  </SpellItemEnchantmentCondition>
+
+  <!-- SpellLevels -->
+
+  <SpellMechanic primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="stateName" type="string" />
+  </SpellMechanic>
+
+  <SpellMissile primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="defaultPitchMin" type="float" />
+    <field name="defaultPitchMax" type="float" />
+    <field name="defaultSpeedMin" type="float" />
+    <field name="defaultSpeedMax" type="float" />
+    <field name="randomizeFacingMin" type="float" />
+    <field name="randomizeFacingMax" type="float" />
+    <field name="randomizePitchMin" type="float" />
+    <field name="randomizePitchMax" type="float" />
+    <field name="randomizeSpeedMin" type="float" />
+    <field name="randomizeSpeedMax" type="float" />
+    <field name="gravity" type="float" />
+    <field name="maxDuration" type="float" />
+    <field name="collisionRadius" type="float" />
+  </SpellMissile>
+
+  <SpellMissileMotion primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="scriptBody" type="string" />
+    <field name="flags" type="uint32" />
+    <field name="missileCount" type="uint32" />
+  </SpellMissileMotion>
+
+  <!-- SpellPower -->
+
+  <SpellRadius primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="radius" type="float" />
+    <field name="radiusPerLevel" type="float" />
+    <field name="radiusMax" type="float" />
+  </SpellRadius>
+
+  <SpellRange primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="rangeMin1" type="float" />
+    <field name="rangeMin2" type="float" />
+    <field name="rangeMax1" type="float" />
+    <field name="rangeMax2" type="float" />
+    <field name="flags" type="uint32" />
+    <field name="displayName" type="string" />
+    <field name="displayNameShort" type="string" />
+  </SpellRange>
+
+  <!-- SpellReagents -->
+
+  <SpellRuneCost primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="blood" type="uint32" />
+    <field name="unholy" type="uint32" />
+    <field name="frost" type="uint32" />
+    <field name="runicPower" type="uint32" />
+  </SpellRuneCost>
+
+  <SpellScaling primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="castTimeMin" type="uint32" />
+    <field name="castTimeMax" type="uint32" />
+    <field name="castTimeMaxLevel" type="uint32" />
+    <field name="class" type="uint32" />
+    <field name="coefficient1" type="float" />
+    <field name="coefficient2" type="float" />
+    <field name="coefficient3" type="float" />
+    <field name="variance1" type="float" />
+    <field name="variance2" type="float" />
+    <field name="variance3" type="float" />
+    <field name="comboPointsCoefficient1" type="float" />
+    <field name="comboPointsCoefficient2" type="float" />
+    <field name="comboPointsCoefficient3" type="float" />
+    <field name="unk15" type="float" />
+    <field name="unk16" type="uint32" />
+  </SpellScaling>
+
+  <!-- SpellShapeshift -->
+
+  <!--<SpellShapeshiftForm primary="ID" build="11792">
+    <field name="ID" type="uint32" />
+    <field name="bonusActionBar" type="uint32" />
+    <field name="name" type="string" />
+    <field name="flags" type="uint32" />
+    <field name="creatureType" type="uint32" />
+    <field name="attackIconID" type="uint32" />
+    <field name="combatRoundTime" type="uint32" />
+    <field name="creatureDisplayID1" type="uint32" />
+    <field name="creatureDisplayID2" type="uint32" />
+    <field name="creatureDisplayID3" type="uint32" />
+    <field name="creatureDisplayID4" type="uint32" />
+    <field name="presetSpellID1" type="uint32" />
+    <field name="presetSpellID2" type="uint32" />
+    <field name="presetSpellID3" type="uint32" />
+    <field name="presetSpellID4" type="uint32" />
+    <field name="presetSpellID5" type="uint32" />
+    <field name="presetSpellID6" type="uint32" />
+    <field name="presetSpellID7" type="uint32" />
+    <field name="presetSpellID8" type="uint32" />
+  </SpellShapeshiftForm>-->
+
+  <!-- SpellTargetRestrictions -->
+
+  <!-- SpellTotems -->
+
+  <SpellVisual primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="precastKit" type="uint32" />
+    <field name="castKit" type="uint32" />
+    <field name="impactKit" type="uint32" />
+    <field name="stateKit" type="uint32" />
+    <field name="stateDoneKit" type="uint32" />
+    <field name="channelKit" type="uint32" />
+    <field name="hasMissile" type="uint32" />
+    <field name="missileModel" type="uint32" />
+    <field name="missilePathType" type="uint32" />
+    <field name="missileDestinationAttachment" type="uint32" />
+    <field name="missileSound" type="uint32" />
+    <field name="animEventSoundID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="casterImpactKit" type="uint32" />
+    <field name="targetImpactKit" type="uint32" />
+    <field name="missileAttachment" type="uint32" />
+    <field name="missileFollowGroundHeight" type="uint32" />
+    <field name="missileFollowGroundDropSpeed" type="uint32" />
+    <field name="missileFollowGroundApproach" type="uint32" />
+    <field name="missileFollowGroundFlags" type="uint32" />
+    <field name="missileMotion" type="uint32" />
+    <field name="missileTargetingKit" type="uint32" />
+    <field name="instantAreaKit" type="uint32" />
+    <field name="impactAreaKit" type="uint32" />
+    <field name="persistentAreaKit" type="uint32" />
+    <field name="missileCastOffsetX" type="float" />
+    <field name="missileCastOffsetY" type="float" />
+    <field name="missileCastOffsetZ" type="float" />
+    <field name="missileImpactOffsetX" type="float" />
+    <field name="missileImpactOffsetY" type="float" />
+    <field name="missileImpactOffsetZ" type="float" />
+  </SpellVisual>
+
+  <SpellVisualEffectName primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="fileName" type="string" />
+    <field name="areaEffectSize" type="float" />
+    <field name="scale" type="float" />
+    <field name="minAllowedScale" type="float" />
+    <field name="maxAllowedScale" type="float" />
+  </SpellVisualEffectName>
+
+  <SpellVisualKit primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="startAnimID" type="uint32" />
+    <field name="animID" type="uint32" />
+    <field name="animKitID" type="uint32" />
+    <field name="headEffect" type="uint32" />
+    <field name="chestEffect" type="uint32" />
+    <field name="baseEffect" type="uint32" />
+    <field name="leftHandEffect" type="uint32" />
+    <field name="rightHandEffect" type="uint32" />
+    <field name="breathEffect" type="uint32" />
+    <field name="leftWeaponEffect" type="uint32" />
+    <field name="rightWeaponEffect" type="uint32" />
+    <field name="specialEffect1" type="uint32" />
+    <field name="specialEffect2" type="uint32" />
+    <field name="specialEffect3" type="uint32" />
+    <field name="worldEffect" type="uint32" />
+    <field name="soundID" type="uint32" />
+    <field name="shakeID" type="uint32" />
+    <field name="charProc1" type="uint32" />
+    <field name="charProc2" type="uint32" />
+    <field name="charProc3" type="uint32" />
+    <field name="charProc4" type="uint32" />
+    <field name="charParamZero1" type="float" />
+    <field name="charParamZero2" type="float" />
+    <field name="charParamZero3" type="float" />
+    <field name="charParamZero4" type="float" />
+    <field name="charParamOne1" type="float" />
+    <field name="charParamOne2" type="float" />
+    <field name="charParamOne3" type="float" />
+    <field name="charParamOne4" type="float" />
+    <field name="charParamTwo1" type="float" />
+    <field name="charParamTwo2" type="float" />
+    <field name="charParamTwo3" type="float" />
+    <field name="charParamTwo4" type="float" />
+    <field name="charParamThree1" type="float" />
+    <field name="charParamThree2" type="float" />
+    <field name="charParamThree3" type="float" />
+    <field name="charParamThree4" type="float" />
+    <field name="flags" type="uint32" />
+  </SpellVisualKit>
+
+  <SpellVisualKitAreaModel primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="enumID" type="uint32" />
+  </SpellVisualKitAreaModel>
+
+  <!--<SpellVisualKitModelAttach primary="ID" build="11792">
+    <field name="ID" type="uint32" />
+    <field name="parentSpellVisualKitID" type="uint32" />
+    <field name="spellVisualEffectNameID" type="uint32" />
+    <field name="attachmentID" type="uint32" />
+    <field name="offsetX" type="float" />
+    <field name="offsetY" type="float" />
+    <field name="offsetZ" type="float" />
+    <field name="yaw" type="float" />
+    <field name="pitch" type="float" />
+    <field name="roll" type="float" />
+  </SpellVisualKitModelAttach>-->
+
+  <!-- SpellVisualPrecastTransitions -->
+
+  <!-- Startup_Strings -->
+
+  <Stationery primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="itemID" type="uint32" />
+    <field name="texture" type="string" />
+    <field name="flags" type="uint32" />
+  </Stationery>
+
+  <StringLookups primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="String" type="string" />
+  </StringLookups>
+
+  <SummonProperties primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="control" type="uint32" />
+    <field name="faction" type="uint32" />
+    <field name="title" type="uint32" />
+    <field name="slot" type="uint32" />
+    <field name="flags" type="uint32" />
+  </SummonProperties>
+
+  <!--<Talent primary="ID" build="11792">
+    <field name="ID" type="uint32" />
+    <field name="tabID" type="uint32" />
+    <field name="tierID" type="uint32" />
+    <field name="columnIndex" type="uint32" />
+    <field name="spellRank[9]; // +0x10, size 0x24, type 0"
+    <field name="prereqTalent[3]; // +0x34, size 0xC, type 0"
+    <field name="prereqRank[3]; // +0x40, size 0xC, type 0"
+    <field name="flags" type="uint32" />
+    <field name="requiredSpellID" type="uint32" />
+    <field name="categoryMask[2]; // +0x54, size 0x8, type 0"
+  </Talent>-->
+
+  <!--<TalentTab primary="ID" build="11792">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="spellIconID" type="uint32" />
+    <field name="raceMask" type="uint32" />
+    <field name="classMask" type="uint32" />
+    <field name="petTalentMask" type="uint32" />
+    <field name="orderIndex" type="uint32" />
+    <field name="backgroundFile" type="string" />
+  </TalentTab>-->
+
+  <!-- TalentTreePrimarySpells -->
+
+  <TaxiNodes primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="ContinentID" type="uint32" />
+    <field name="X" type="float" />
+    <field name="Y" type="float" />
+    <field name="Z" type="float" />
+    <field name="Name" type="string" />
+    <field name="MountCreatureID1" type="uint32" />
+    <field name="MountCreatureID2" type="uint32" />
+  </TaxiNodes>
+
+  <TaxiPath primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="FromTaxiNode" type="uint32" />
+    <field name="ToTaxiNode" type="uint32" />
+    <field name="Cost" type="uint32" />
+  </TaxiPath>
+
+  <TaxiPathNode primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="PathID" type="uint32" />
+    <field name="NodeIndex" type="uint32" />
+    <field name="ContinentID" type="uint32" />
+    <field name="LocX" type="float" />
+    <field name="LocY" type="float" />
+    <field name="LocZ" type="float" />
+    <field name="flags" type="uint32" />
+    <field name="delay" type="uint32" />
+    <field name="arrivalEventID" type="uint32" />
+    <field name="departureEventID" type="uint32" />
+  </TaxiPathNode>
+
+  <!-- TerrainMaterial -->
+
+  <TerrainType primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="TerrainID" type="uint32" />
+    <field name="TerrainDesc" type="string" />
+    <field name="FootstepSprayRun" type="uint32" />
+    <field name="FootstepSprayWalk" type="uint32" />
+    <field name="SoundID" type="uint32" />
+    <field name="Flags" type="uint32" />
+  </TerrainType>
+
+  <TerrainTypeSounds primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+  </TerrainTypeSounds>
+
+  <TotemCategory primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="name" type="string" />
+    <field name="totemCategoryType" type="uint32" />
+    <field name="totemCategoryMask" type="uint32" />
+  </TotemCategory>
+
+  <TransportAnimation primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="TransportID" type="uint32" />
+    <field name="TimeIndex" type="uint32" />
+    <field name="PosX" type="float" />
+    <field name="PosY" type="float" />
+    <field name="PosZ" type="float" />
+    <field name="SequenceID" type="uint32" />
+  </TransportAnimation>
+
+  <TransportPhysics primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="waveAmp" type="float" />
+    <field name="waveTimeScale" type="float" />
+    <field name="rollAmp" type="float" />
+    <field name="rollTimeScale" type="float" />
+    <field name="pitchAmp" type="float" />
+    <field name="pitchTimeScale" type="float" />
+    <field name="maxBank" type="float" />
+    <field name="maxBankTurnSpeed" type="float" />
+    <field name="speedDampThresh" type="float" />
+    <field name="speedDamp" type="float" />
+  </TransportPhysics>
+
+  <TransportRotation primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="GameObjectsID" type="uint32" />
+    <field name="TimeIndex" type="uint32" />
+    <field name="RotX" type="float" />
+    <field name="RotY" type="float" />
+    <field name="RotZ" type="float" />
+    <field name="RotW" type="float" />
+  </TransportRotation>
+
+  <UnitBlood primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="CombatBloodSpurtFront1" type="uint32" />
+    <field name="CombatBloodSpurtFront2" type="uint32" />
+    <field name="CombatBloodSpurtBack1" type="uint32" />
+    <field name="CombatBloodSpurtBack2" type="uint32" />
+    <field name="GroundBlood1" type="string" />
+    <field name="GroundBlood2" type="string" />
+    <field name="GroundBlood3" type="string" />
+    <field name="GroundBlood4" type="string" />
+    <field name="GroundBlood5" type="string" />
+  </UnitBlood>
+
+  <UnitBloodLevels primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Violencelevel1" type="uint32" />
+    <field name="Violencelevel2" type="uint32" />
+    <field name="Violencelevel3" type="uint32" />
+  </UnitBloodLevels>
+
+  <!-- UnitPowerBar -->
+
+  <Vehicle primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="turnSpeed" type="float" />
+    <field name="pitchSpeed" type="float" />
+    <field name="pitchMin" type="float" />
+    <field name="pitchMax" type="float" />
+    <field name="seatID1" type="uint32" />
+    <field name="seatID2" type="uint32" />
+    <field name="seatID3" type="uint32" />
+    <field name="seatID4" type="uint32" />
+    <field name="seatID5" type="uint32" />
+    <field name="seatID6" type="uint32" />
+    <field name="seatID7" type="uint32" />
+    <field name="seatID8" type="uint32" />
+    <field name="mouseLookOffsetPitch" type="float" />
+    <field name="cameraFadeDistScalarMin" type="float" />
+    <field name="cameraFadeDistScalarMax" type="float" />
+    <field name="cameraPitchOffset" type="float" />
+    <field name="facingLimitRight" type="float" />
+    <field name="facingLimitLeft" type="float" />
+    <field name="msslTrgtTurnLingering" type="float" />
+    <field name="msslTrgtPitchLingering" type="float" />
+    <field name="msslTrgtMouseLingering" type="float" />
+    <field name="msslTrgtEndOpacity" type="float" />
+    <field name="msslTrgtArcSpeed" type="float" />
+    <field name="msslTrgtArcRepeat" type="float" />
+    <field name="msslTrgtArcWidth" type="float" />
+    <field name="msslTrgtImpactRadius1" type="float" />
+    <field name="msslTrgtImpactRadius2" type="float" />
+    <field name="msslTrgtArcTexture" type="string" />
+    <field name="msslTrgtImpactTexture" type="string" />
+    <field name="msslTrgtImpactModel1" type="string" />
+    <field name="msslTrgtImpactModel2" type="string" />
+    <field name="cameraYawOffset" type="float" />
+    <field name="uiLocomotionType" type="uint32" />
+    <field name="msslTrgtImpactTexRadius" type="float" />
+    <field name="vehicleUIIndicatorID" type="uint32" />
+    <field name="powerDisplayID1" type="uint32" />
+    <field name="powerDisplayID2" type="uint32" />
+    <field name="powerDisplayID3" type="uint32" />
+  </Vehicle>
+
+  <VehicleSeat primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="attachmentID" type="uint32" />
+    <field name="attachmentOffsetX" type="float" />
+    <field name="attachmentOffsetY" type="float" />
+    <field name="attachmentOffsetZ" type="float" />
+    <field name="enterPreDelay" type="float" />
+    <field name="enterSpeed" type="float" />
+    <field name="enterGravity" type="float" />
+    <field name="enterMinDuration" type="float" />
+    <field name="enterMaxDuration" type="float" />
+    <field name="enterMinArcHeight" type="float" />
+    <field name="enterMaxArcHeight" type="float" />
+    <field name="enterAnimStart" type="uint32" />
+    <field name="enterAnimLoop" type="uint32" />
+    <field name="rideAnimStart" type="uint32" />
+    <field name="rideAnimLoop" type="uint32" />
+    <field name="rideUpperAnimStart" type="uint32" />
+    <field name="rideUpperAnimLoop" type="uint32" />
+    <field name="exitPreDelay" type="float" />
+    <field name="exitSpeed" type="float" />
+    <field name="exitGravity" type="float" />
+    <field name="exitMinDuration" type="float" />
+    <field name="exitMaxDuration" type="float" />
+    <field name="exitMinArcHeight" type="float" />
+    <field name="exitMaxArcHeight" type="float" />
+    <field name="exitAnimStart" type="uint32" />
+    <field name="exitAnimLoop" type="uint32" />
+    <field name="exitAnimEnd" type="uint32" />
+    <field name="passengerYaw" type="float" />
+    <field name="passengerPitch" type="float" />
+    <field name="passengerRoll" type="float" />
+    <field name="passengerAttachmentID" type="uint32" />
+    <field name="vehicleEnterAnim" type="uint32" />
+    <field name="vehicleExitAnim" type="uint32" />
+    <field name="vehicleRideAnimLoop" type="uint32" />
+    <field name="vehicleEnterAnimBone" type="uint32" />
+    <field name="vehicleExitAnimBone" type="uint32" />
+    <field name="vehicleRideAnimLoopBone" type="uint32" />
+    <field name="vehicleEnterAnimDelay" type="float" />
+    <field name="vehicleExitAnimDelay" type="float" />
+    <field name="vehicleAbilityDisplay" type="uint32" />
+    <field name="enterUISoundID" type="uint32" />
+    <field name="exitUISoundID" type="uint32" />
+    <field name="uiSkin" type="uint32" />
+    <field name="flagsB" type="uint32" />
+    <field name="cameraEnteringDelay" type="float" />
+    <field name="cameraEnteringDuration" type="float" />
+    <field name="cameraExitingDelay" type="float" />
+    <field name="cameraExitingDuration" type="float" />
+    <field name="cameraOffsetX" type="float" />
+    <field name="cameraOffsetY" type="float" />
+    <field name="cameraOffsetZ" type="float" />
+    <field name="cameraPosChaseRate" type="float" />
+    <field name="cameraFacingChaseRate" type="float" />
+    <field name="cameraEnteringZoom" type="float" />
+    <field name="cameraSeatZoomMin" type="float" />
+    <field name="cameraSeatZoomMax" type="float" />
+    <field name="enterAnimKitID" type="uint32" />
+    <field name="rideAnimKitID" type="uint32" />
+    <field name="exitAnimKitID" type="uint32" />
+    <field name="vehicleEnterAnimKitID" type="uint32" />
+    <field name="vehicleRideAnimKitID" type="uint32" />
+    <field name="vehicleExitAnimKitID" type="uint32" />
+    <field name="unk65" type="uint32" />
+    <field name="unk66" type="uint32" />
+  </VehicleSeat>
+
+  <VehicleUIIndicator primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="backgroundTexture" type="string" />
+  </VehicleUIIndicator>
+
+  <VehicleUIIndSeat primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="vehicleUIIndicatorID" type="uint32" />
+    <field name="virtualSeatIndex" type="uint32" />
+    <field name="xPos" type="float" />
+    <field name="yPos" type="float" />
+  </VehicleUIIndSeat>
+
+  <!-- VideoHardware -->
+
+  <VocalUISounds primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="vocalUIEnum" type="uint32" />
+    <field name="raceID" type="uint32" />
+    <field name="NormalSoundID1" type="uint32" />
+    <field name="NormalSoundID2" type="uint32" />
+    <field name="PissedSoundID1" type="uint32" />
+    <field name="PissedSoundID2" type="uint32" />
+  </VocalUISounds>
+
+  <WeaponImpactSounds primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="WeaponSubClassID" type="uint32" />
+    <field name="ParrySoundType" type="uint32" />
+    <field name="impactSoundID1" type="uint32" />
+    <field name="impactSoundID2" type="uint32" />
+    <field name="impactSoundID3" type="uint32" />
+    <field name="impactSoundID4" type="uint32" />
+    <field name="impactSoundID5" type="uint32" />
+    <field name="impactSoundID6" type="uint32" />
+    <field name="impactSoundID7" type="uint32" />
+    <field name="impactSoundID8" type="uint32" />
+    <field name="impactSoundID9" type="uint32" />
+    <field name="impactSoundID10" type="uint32" />
+    <field name="critImpactSoundID1" type="uint32" />
+    <field name="critImpactSoundID2" type="uint32" />
+    <field name="critImpactSoundID3" type="uint32" />
+    <field name="critImpactSoundID4" type="uint32" />
+    <field name="critImpactSoundID5" type="uint32" />
+    <field name="critImpactSoundID6" type="uint32" />
+    <field name="critImpactSoundID7" type="uint32" />
+    <field name="critImpactSoundID8" type="uint32" />
+    <field name="critImpactSoundID9" type="uint32" />
+    <field name="critImpactSoundID10" type="uint32" />
+  </WeaponImpactSounds>
+
+  <WeaponSwingSounds2 primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="SwingType" type="uint32" />
+    <field name="Crit" type="uint32" />
+    <field name="SoundID" type="uint32" />
+  </WeaponSwingSounds2>
+
+  <Weather primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="ambienceID" type="uint32" />
+    <field name="effectType" type="uint32" />
+    <field name="transitionSkyBox" type="float" />
+    <field name="effectColor1" type="float" />
+    <field name="effectColor2" type="float" />
+    <field name="effectColor3" type="float" />
+    <field name="effectTexture" type="string" />
+  </Weather>
+
+  <WMOAreaTable primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="WMOID" type="uint32" />
+    <field name="NameSetID" type="uint32" />
+    <field name="WMOGroupID" type="uint32" />
+    <field name="SoundProviderPref" type="uint32" />
+    <field name="SoundProviderPrefUnderwater" type="uint32" />
+    <field name="AmbienceID" type="uint32" />
+    <field name="ZoneMusic" type="uint32" />
+    <field name="IntroSound" type="uint32" />
+    <field name="flags" type="uint32" />
+    <field name="AreaTableID" type="uint32" />
+    <field name="AreaName" type="string" />
+    <field name="unk13" type="uint32" />
+    <field name="unk14" type="uint32" />
+    <field name="unk15" type="uint32" />
+  </WMOAreaTable>
+
+  <!-- world_PVP_Area -->
+
+  <WorldChunkSounds primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="WorldMapContinentID" type="uint32" />
+    <field name="ChunkX" type="uint32" />
+    <field name="ChunkY" type="uint32" />
+    <field name="SubchunkX" type="uint32" />
+    <field name="SubchunkY" type="uint32" />
+    <field name="ZoneIntroMusicID" type="uint32" />
+    <field name="ZoneMusicID" type="uint32" />
+    <field name="SoundAmbienceID" type="uint32" />
+    <field name="SoundProviderPreferencesID" type="uint32" />
+  </WorldChunkSounds>
+
+  <WorldMapArea primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="areaID" type="uint32" />
+    <field name="areaName" type="string" />
+    <field name="locLeft" type="float" />
+    <field name="locRight" type="float" />
+    <field name="locTop" type="float" />
+    <field name="locBottom" type="float" />
+    <field name="displayMapID" type="uint32" />
+    <field name="defaultDungeonFloor" type="uint32" />
+    <field name="parentWorldMapID" type="uint32" />
+    <field name="unk12" type="uint32" />
+  </WorldMapArea>
+
+  <WorldMapContinent primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="leftBoundary" type="uint32" />
+    <field name="rightBoundary" type="uint32" />
+    <field name="topBoundary" type="uint32" />
+    <field name="bottomBoundary" type="uint32" />
+    <field name="continentOffsetX" type="float" />
+    <field name="continentOffsetY" type="float" />
+    <field name="scale" type="float" />
+    <field name="taxiMinX" type="float" />
+    <field name="taxiMinY" type="float" />
+    <field name="taxiMaxX" type="float" />
+    <field name="taxiMaxY" type="float" />
+    <field name="worldMapID" type="uint32" />
+  </WorldMapContinent>
+
+  <WorldMapOverlay primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapAreaID" type="uint32" />
+    <field name="areaID1" type="uint32" />
+    <field name="areaID2" type="uint32" />
+    <field name="areaID3" type="uint32" />
+    <field name="areaID4" type="uint32" />
+    <field name="textureName" type="string" />
+    <field name="textureWidth" type="uint32" />
+    <field name="textureHeight" type="uint32" />
+    <field name="offsetX" type="uint32" />
+    <field name="offsetY" type="uint32" />
+    <field name="hitRectTop" type="uint32" />
+    <field name="hitRectLeft" type="uint32" />
+    <field name="hitRectBottom" type="uint32" />
+    <field name="hitRectRight" type="uint32" />
+  </WorldMapOverlay>
+
+  <WorldMapTransforms primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="regionMinX" type="float" />
+    <field name="regionMinY" type="float" />
+    <field name="regionMaxX" type="float" />
+    <field name="regionMaxY" type="float" />
+    <field name="newMapID" type="uint32" />
+    <field name="regionOffsetX" type="float" />
+    <field name="regionOffsetY" type="float" />
+    <field name="newDungeonMapID" type="uint32" />
+    <field name="unk11" type="uint32" />
+  </WorldMapTransforms>
+
+  <WorldSafeLocs primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="continent" type="uint32" />
+    <field name="locX" type="float" />
+    <field name="locY" type="float" />
+    <field name="locZ" type="float" />
+    <field name="AreaName" type="string" />
+  </WorldSafeLocs>
+
+  <!--<WorldStateUI primary="ID" build="11792">
+    <field name="ID" type="uint32" />
+    <field name="mapID" type="uint32" />
+    <field name="areaID" type="uint32" />
+    <field name="phaseShift" type="uint32" />
+    <field name="icon" type="string" />
+    <field name="string" type="string" />
+    <field name="tooltip" type="string" />
+    <field name="stateVariable" type="uint32" />
+    <field name="type" type="uint32" />
+    <field name="dynamicIcon" type="string" />
+    <field name="dynamicTooltip" type="string" />
+    <field name="extendedUI" type="string" />
+    <field name="extendedUIStateVariable1" type="uint32" />
+    <field name="extendedUIStateVariable2" type="uint32" />
+    <field name="extendedUIStateVariable3" type="uint32" />
+  </WorldStateUI>-->
+
+  <WorldStateZoneSounds primary="generatedID" build="14333">
+    <field name="generatedID" type="uint32" />
+    <field name="WorldStateID" type="uint32" />
+    <field name="WorldStateValue" type="uint32" />
+    <field name="AreaID" type="uint32" />
+    <field name="WMOAreaID" type="uint32" />
+    <field name="ZoneIntroMusicID" type="uint32" />
+    <field name="ZoneMusicID" type="uint32" />
+    <field name="SoundAmbienceID" type="uint32" />
+    <field name="SoundProviderPreferencesID" type="uint32" />
+  </WorldStateZoneSounds>
+
+  <!-- WowError_Strings -->
+
+  <ZoneIntroMusicTable primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="Name" type="string" />
+    <field name="SoundID" type="uint32" />
+    <field name="Priority" type="uint32" />
+    <field name="MinDelayMinutes" type="uint32" />
+  </ZoneIntroMusicTable>
+
+  <!-- ZoneLight -->
+
+  <!-- ZoneLightPoint -->
+
+  <ZoneMusic primary="ID" build="14333">
+    <field name="ID" type="uint32" />
+    <field name="SetName" type="string" />
+    <field name="SilenceIntervalMin1" type="uint32" />
+    <field name="SilenceIntervalMin2" type="uint32" />
+    <field name="SilenceIntervalMax1" type="uint32" />
+    <field name="SilenceIntervalMax2" type="uint32" />
+    <field name="Sounds1" type="uint32" />
+    <field name="Sounds2" type="uint32" />
+  </ZoneMusic>
+
+</DBFilesClient>
