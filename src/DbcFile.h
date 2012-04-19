@@ -126,8 +126,6 @@ public:
 	//It also generate the format and fieldsOffset arrays, both needed for data extraction.
 	string MakeMySqlStructure(TiXmlElement *pDbcFile, string name);
 
-	const char *Terminator(string str);
-
 private:
 	uint32 recordSize;
 	uint32 recordCount;

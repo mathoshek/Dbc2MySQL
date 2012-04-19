@@ -125,4 +125,42 @@ inline bool getDirContents(vector<string> &fileList, string dirpath = ".", strin
 	return true;
 }
 
+inline string Terminator(const char *s)
+{
+	string str = s;
+
+	if (str.size() == 0)
+		return str.c_str();
+
+	size_t found = str.find("\\");
+	while (found != str.npos)
+	{
+		str.insert(found, "\\");
+		found = str.find("\\", found + 2);
+	}
+
+	found = str.find("'");
+	while (found != str.npos)
+	{
+		str.insert(found, "\\");
+		found = str.find("'", found + 2);
+	}
+
+	found = str.find("\"");
+	while (found != str.npos)
+	{
+		str.insert(found, "\\");
+		found = str.find("\"", found + 2);
+	}
+
+	found = str.find("\r\n");
+	while (found != str.npos)
+	{
+		str.replace(found, 2, "\\r\\n");
+		found = str.find("\r\n", found + 1);
+	}
+
+	return str;
+}
+
 #endif

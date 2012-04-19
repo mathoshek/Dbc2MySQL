@@ -113,45 +113,6 @@ void System::CreateDir(string path)
 #endif
 }
 
-string System::Terminator(string &str)
-{
-	if (&str == NULL)
-		return NULL;
-
-	if (str.size() == 0)
-		return str.c_str();
-
-	size_t found = str.find("\\");
-	while (found != str.npos)
-	{
-		str.insert(found, "\\");
-		found = str.find("\\", found + 2);
-	}
-
-	found = str.find("'");
-	while (found != str.npos)
-	{
-		str.insert(found, "\\");
-		found = str.find("'", found + 2);
-	}
-
-	found = str.find("\"");
-	while (found != str.npos)
-	{
-		str.insert(found, "\\");
-		found = str.find("\"", found + 2);
-	}
-
-	found = str.find("\r\n");
-	while (found != str.npos)
-	{
-		str.replace(found, 2, "\\r\\n");
-		found = str.find("\r\n", found + 1);
-	}
-
-	return str.c_str();
-}
-
 void System::ExportDBCs()
 {
 	MYSQL *conn;
@@ -262,7 +223,7 @@ void System::ExportDBCs()
 				if(createSqlFiles == true)
 				{
 					filename = homePath;
-					filename += "sql\\";
+					filename += "sql/";
 					filename += dbcfile.GetName();
 					filename += ".sql";
 					f = fopen(filename.c_str(), "w");
@@ -309,7 +270,6 @@ void System::ExportDBCs()
 					for(uint32 j = 0; j < dbcfile.GetNumCols(); j++)
 					{
 						char *tmp;
-						string tmpstr;
 						switch (dbcfile.GetFormat(j))
 						{
 						case FT_UINT8:
@@ -385,11 +345,9 @@ void System::ExportDBCs()
 							free(tmp);
 							break;
 						case FT_STRING:
-							tmpstr += dbcfile.getRecord(i).getString(j);
 							sqlinsert +="'";
-							sqlinsert += Terminator(tmpstr);
+							sqlinsert += Terminator(dbcfile.getRecord(i).getString(j));
 							sqlinsert +="',";
-							tmpstr.clear();
 							break;
 						case FT_IGNORED:
 							break;

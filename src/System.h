@@ -29,7 +29,6 @@ private:
 	// Functions
 	void ShowUsage(char *prg);
 	void CreateDir(string path);
-	string Terminator(string &str);
 };
 
 #endif // SYSTEM_H

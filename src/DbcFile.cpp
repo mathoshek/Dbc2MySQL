@@ -121,7 +121,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					sqlstructure += Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -138,7 +138,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -155,7 +155,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -172,7 +172,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -189,7 +189,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -206,7 +206,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -223,7 +223,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -240,7 +240,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -257,7 +257,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -274,7 +274,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -297,7 +297,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 				if(pField->Attribute("comment") != NULL)
 				{
 					sqlstructure += " COMMENT '";
-					Terminator((string)pField->Attribute("comment"));
+					sqlstructure += Terminator(pField->Attribute("comment"));
 					sqlstructure += "',\n";
 				}
 				else
@@ -305,7 +305,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 			}
 			else
 			{
-				printf("%s is not a valid type", Terminator((string)pDbcFile->Attribute("type")));
+				printf("%s is not a valid type", Terminator(pDbcFile->Attribute("type")));
 				exit(1);
 			}
 			pField = pField->NextSiblingElement("field");
@@ -365,39 +365,4 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 		
 		return sqlstructure;
 	}
-}
-
-const char *DbcFile::Terminator(string str)
-{
-	if (str.size() == 0)
-		return str.c_str();
-
-	size_t found = str.find("\\");
-	while (found != str.npos)
-	{
-		str.insert(found, "\\");
-		found = str.find("\\", found+2);
-	}
-
-	found = str.find("'");
-	while (found != str.npos)
-	{
-		str.insert(found, "\\");
-		found = str.find("'", found+2);
-	}
-
-	found = str.find("\"");
-	while (found != str.npos)
-	{
-		str.insert(found, "\\");
-		found = str.find("\"", found+2);
-	}
-
-	found = str.find("\r\n");
-	while (found != str.npos)
-	{
-		str.replace(found, 2, "\\r\\n");
-		found = str.find("\r\n", found+1);
-	}
-	return str.c_str();
 }
