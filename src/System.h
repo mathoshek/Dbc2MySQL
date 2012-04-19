@@ -21,6 +21,7 @@ private:
 	string db_user; // MySql User
 	string db_pass; // MySql Password
 	string db_host; // MySql Host
+	uint32 db_port; // MySql Port
 	string dbc_db; // The Database name where the Dbc Files will be exported
 	string homePath; // The path to application
 	string structureXml; // The xml file where the structures are defined;

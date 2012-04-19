@@ -2,7 +2,10 @@
 
 System::System()
 {
-	//
+	db_host = "localhost";
+	db_port = 3306;
+	dbc_db = "dbc";
+	createSqlFiles = false;
 }
 
 System::~System()
@@ -76,13 +79,19 @@ void System::HandleArguments(int argc, char * argv[])
 				else
 					ShowUsage(argv[0]);
 				break;
+			case 'o':
+				if(i + 1 < argc)
+					db_port = atoi(argv[i + 1]);
+				else
+					ShowUsage(argv[0]);
+				break;
 			}
 			i++;
 		}
 	}
-	if (db_user.empty() || db_pass.empty() || db_host.empty() || dbc_db.empty() || structureXml.empty())
+	if (db_user.empty() || db_pass.empty() || structureXml.empty())
 	{
-		printf("Some MySql Information missing, please check again\n");
+		printf("Some information missing, please check again\n");
 		ShowUsage(argv[0]);
 	}
 }
@@ -94,11 +103,13 @@ void System::ShowUsage(char *prg)
 		"%s -[var] [value]\n"\
 		"-u set mysql user\n"\
 		"-p set mysql password\n"\
-		"-h set mysql host\n"\
-		"-d set the database name in which the dbc files will be extracted\n"\
-		"-s y if you want to create a folder with sql files\n"\
+		"-h set mysql host (OPTIONAL - default: localhost)\n"\
+		"-o set mysql port (OPTIONAL - default: 3306)\n"\
+		"-d set mysql database (OPTIONAL - default: dbc)\n"\
+		"-s (yes/no) dump all dbc to sql files (OPTIONAL - default: no)\n"\
 		"-x set the structure.xml file\n"\
-		"Example: %s -u root -p pass -h localhost -d dbc -s no -x StructureWotLK.xml\n\n", prg, prg);
+		
+		"Example: %s -u root -p pass -x StructureWotLK.xml\n\n", prg, prg);
 	exit(1);
 }
 
@@ -127,7 +138,7 @@ void System::ExportDBCs()
 		exit(1);
 	}
 
-	if (mysql_real_connect(conn, db_host.c_str(), db_user.c_str(), db_pass.c_str(), NULL, 3306, NULL, 0) == NULL)
+	if (mysql_real_connect(conn, db_host.c_str(), db_user.c_str(), db_pass.c_str(), NULL, db_port, NULL, 0) == NULL)
 	{
 		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 		exit(1);

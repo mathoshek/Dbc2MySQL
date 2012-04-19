@@ -2,10 +2,13 @@ Dbc2MySQL
 =========
 
 Usage:
-  Dbc2Mysql.exe -[var] [value]
+Dbc2MySQL -[var] [value]
 	-u set mysql user
 	-p set mysql password
-	-h set mysql host
-	-d set the database name in which the dbc files will be extracted
-	-s yes if you want to create a folder with sql files
+	-h set mysql host (OPTIONAL - default: localhost)
+	-o set mysql port (OPTIONAL - default: 3306)
+	-d set mysql database (OPTIONAL - default: dbc)
+	-s (yes/no) dump all dbc to sql files (OPTIONAL - default: no)
 	-x set the structure.xml file
+
+Example: Dbc2MySQL -u root -p pass -x StructureWotLK.xml
