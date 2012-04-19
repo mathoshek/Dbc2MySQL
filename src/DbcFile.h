@@ -115,11 +115,11 @@ public:
 	uint32 GetStringSize() const { return stringSize; }
 	string GetName() const { return name; }
 	uint32 GetOffset(uint32 id) const { return (fieldsOffset != NULL && id < fieldCount) ? fieldsOffset[id] : 0; }
-	uint32 GetFormat(uint32 id) const { return (format !=NULL && id < fieldCount) ? format[id] : 99;}
+	uint32 GetFormat(uint32 id) const { return (format != NULL && id < fieldCount) ? format[id] : 99;}
 	bool IsLoaded() { return (dataTable != NULL); }
 	
-	//The Load function opens a Dbc file and gets its name, header and data into some pointers; 
 	bool Load(const char *filepath);
+	void Close();
 
 	//Based on the info from a given TiXmlElement this will return the CREATE TABLE query.
 	//If TiXmlElement is NULL, the table fields will have Unknown_?? names.

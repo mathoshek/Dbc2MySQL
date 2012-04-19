@@ -13,6 +13,46 @@ bool DbcFile::Load(const char *filepath)
 	uint32 header;
 
 	//Delete data, if there is data
+	Close();
+
+	//Get the name
+	name = filepath;
+	name = name.substr(name.find_last_of("\\") + 1);
+	name.resize(name.size() - 4);
+
+	//Open the Dbc files
+	FILE *f = fopen(filepath, "rb");
+	if (f == NULL)
+	{
+		printf("WARNING: Can't load '%s' - File Not Found - skipping it!\n", name.c_str());
+		return false;
+	}
+
+	//Check if that file really is a Dbc file
+	fread(&header, 4, 1, f);			// Signature
+	if (header != 0x43424457)
+	{
+		printf("WARNING: Can't load '%s' - Not A Dbc File - skipping it!\n", name.c_str());
+		return false;					// 'WDBC'
+	}
+
+	//Read the header
+	fread(&recordCount, 4, 1, f);		// Number of records
+	fread(&fieldCount, 4, 1, f);		// Number of fields
+	fread(&recordSize, 4, 1, f);		// Size of a record
+	fread(&stringSize, 4, 1, f);		// String size
+
+	dataTable = new unsigned char[recordSize * recordCount];
+	stringTable = new unsigned char[stringSize];
+	fread(dataTable, recordSize * recordCount, 1, f);
+	fread(stringTable, stringSize, 1, f);
+
+	fclose(f);
+	return true;
+}
+
+void DbcFile::Close()
+{
 	if (dataTable != NULL)
 	{
 		delete [] dataTable;
@@ -33,40 +73,6 @@ bool DbcFile::Load(const char *filepath)
 		delete [] fieldsOffset;
 		fieldsOffset = NULL;
 	}
-	//Get the name
-	name = filepath;
-	name = name.substr(name.find_last_of("\\") + 1);
-	name.resize(name.size() - 4);
-
-	//Open the Dbc files
-	FILE *f = fopen(filepath, "rb");
-	if (f == NULL)
-	{
-		printf("WARNING: Can't load '%s' - File Not Found - skipping it!\n", name);
-		return false;
-	}
-
-	//Check if that file really is a Dbc file
-	fread(&header, 4, 1, f);			// Signature
-	if (header != 0x43424457)
-	{
-		printf("WARNING: Can't load '%s' - Not A Dbc File - skipping it!\n", name);
-		return false;					// 'WDBC'
-	}
-
-	//Read the header
-	fread(&recordCount, 4, 1, f);		// Number of records
-	fread(&fieldCount, 4, 1, f);		// Number of fields
-	fread(&recordSize, 4, 1, f);		// Size of a record
-	fread(&stringSize, 4, 1, f);		// String size
-
-	dataTable = new unsigned char[recordSize * recordCount];
-	stringTable = new unsigned char[stringSize];
-	fread(dataTable, recordSize * recordCount, 1, f);
-	fread(stringTable, stringSize, 1, f);
-
-	fclose(f);
-	return true;
 }
 
 DbcFile::~DbcFile()

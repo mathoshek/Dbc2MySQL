@@ -1,3 +1,12 @@
+<!--
+Structure of dbc files.
+by Mathoshek
+
+Many thanks to:
+  http://www.pxr.dk/wowdev/wiki/index.php?title=Main_Page
+  https://github.com/mangos/mangos
+  https://github.com/TrinityCore/TrinityCore
+-->
 <?xml version="1.0"?>
 
 <DBFilesClient>

@@ -13,7 +13,7 @@ System::~System()
 void System::SayHello()
 {
 	printf("=================================================\n");
-	printf("===============Welcome to DBC2MySql==============\n");
+	printf("===============Welcome to Dbc2MySQL==============\n");
 	printf("===================by Mathoshek==================\n");
 	printf("=================================================\n\n");
 }
@@ -104,11 +104,13 @@ void System::ShowUsage(char *prg)
 
 void System::CreateDir(string path)
 {
-	#ifdef WIN32
-	_mkdir( path.c_str());
-	#else
+#ifdef _WIN32
+	CreateDirectory( path.c_str(), NULL );
+#elif defined __unix__
 	mkdir( Path.c_str(), 0777 );
-	#endif
+#else
+// MacOS things?
+#endif
 }
 
 string System::Terminator(string &str)
@@ -152,11 +154,10 @@ string System::Terminator(string &str)
 
 void System::ExportDBCs()
 {
-	DIR *dir;
 	MYSQL *conn;
 	DbcFile dbcfile;
 	FILE *f;
-	
+
 	// Connect to MySql Database
 	conn = mysql_init(NULL);
 	if (conn == NULL)
@@ -224,7 +225,7 @@ void System::ExportDBCs()
 		printf("Failed to load file \"%s\"\n", structureXml.c_str());
 		exit(1);
 	}
-	
+
 	string filename;
 	if(createSqlFiles == true)
 	{
@@ -235,186 +236,60 @@ void System::ExportDBCs()
 
 	string dpath = homePath.c_str();
 	dpath += "dbc\\";
-	dir = opendir(dpath.c_str());
-	struct dirent *ent;
-	if (dir != NULL)
+	vector<string> dbcFiles;
+	if( getDirContents( dbcFiles, dpath, "*.dbc" ) == true )
 	{
-		while ((ent = readdir(dir)) != NULL)
+		for( vector<string>::iterator i = dbcFiles.begin(); i < dbcFiles.end(); ++i )
 		{
-			if (strstr(ent->d_name, ".dbc"))
+
+			printf("Found %s \n", (*i).c_str());
+
+			string fpath = dpath;
+			fpath += (*i).c_str();
+
+			if( dbcfile.Load(fpath.c_str()) == false )
+				continue;
+
+			TiXmlElement *pDbcFile = NULL, *pField = NULL;
+			if ( pRoot )
 			{
-				if (ent->data.nFileSizeLow == 0)
+				pDbcFile = pRoot->FirstChildElement(dbcfile.GetName().c_str());
+
+				string sqlstructure;
+				sqlstructure = dbcfile.MakeMySqlStructure(pDbcFile, dbcfile.GetName());
+
+				//Send sqlstructure query
+				if(createSqlFiles == true)
 				{
-					printf("Warning: %s is empty (size 0 bytes) - skipping\n", ent->d_name);
-					continue;
+					filename = homePath;
+					filename += "sql\\";
+					filename += dbcfile.GetName();
+					filename += ".sql";
+					f = fopen(filename.c_str(), "w");
+					fprintf(f, "%s", sqlstructure);
+				}
+				if (mysql_query(conn, sqlstructure.c_str()))
+				{
+					FILE *error = fopen("error.txt","w");
+					fprintf(error, sqlstructure.c_str());
+					fclose(error);
+					printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
+					exit(1);
 				}
 
-				printf("Found %s \n", ent->d_name);
-				
-				string fpath = dpath;
-				fpath += ent->d_name;
+				string sqlinsert;
+				sqlinsert = "INSERT INTO `";
+				sqlinsert += dbcfile.GetName();
+				sqlinsert += "` VALUES\n";
 
-				dbcfile.Load(fpath.c_str());
-				
-				TiXmlElement *pDbcFile = NULL, *pField = NULL;
-				if ( pRoot )
+				for (uint32 i = 0; i < dbcfile.GetNumRows(); i++)
 				{
-					pDbcFile = pRoot->FirstChildElement(dbcfile.GetName().c_str());
-					
-					string sqlstructure;
-					sqlstructure = dbcfile.MakeMySqlStructure(pDbcFile, dbcfile.GetName());
-
-					//Send sqlstructure query
-					if(createSqlFiles == true)
+					if (sqlinsert.size() + 1024 > MAX_QUERY_LEN)
 					{
-						filename = homePath;
-						filename += "sql\\";
-						filename += dbcfile.GetName();
-						filename += ".sql";
-						f = fopen(filename.c_str(), "w");
-						fprintf(f, "%s", sqlstructure);
-					}
-					if (mysql_query(conn, sqlstructure.c_str()))
-					{
-						FILE *error = fopen("error.txt","w");
-						fprintf(error, sqlstructure.c_str());
-						fclose(error);
-						printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-						exit(1);
-					}
-
-					string sqlinsert;
-					sqlinsert = "INSERT INTO `";
-					sqlinsert += dbcfile.GetName();
-					sqlinsert += "` VALUES\n";
-
-					for (uint32 i = 0; i < dbcfile.GetNumRows(); i++)
-					{
-						if (sqlinsert.size() + 1024 > MAX_QUERY_LEN)
-						{
-							sqlinsert.resize(sqlinsert.size() - 2);
-							sqlinsert += "\n";
-							if(createSqlFiles == true)
-								fprintf(f, "%s", sqlinsert.c_str());
-							if (mysql_query(conn, sqlinsert.c_str()))
-							{
-								FILE *error = fopen("error.txt","w");
-								fprintf(error, sqlinsert.c_str());
-								fclose(error);
-								printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-								exit(1);
-							}
-							sqlinsert.clear();
-							sqlinsert = "INSERT INTO `";
-							sqlinsert += dbcfile.GetName();
-							sqlinsert += "` VALUES\n(";
-						}
-						else
-							sqlinsert += "(";
-
-						for(uint32 j = 0; j < dbcfile.GetNumCols(); j++)
-						{
-							char *tmp;
-							string tmpstr;
-							switch (dbcfile.GetFormat(j))
-							{
-							case FT_UINT8:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt8(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_INT8:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%i", dbcfile.getRecord(i).getInt8(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_UINT16:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt16(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_INT16:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%i", dbcfile.getRecord(i).getInt16(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_UINT32:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt32(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_INT32:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%i", dbcfile.getRecord(i).getInt32(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_UINT64:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt64(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_INT64:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%i", dbcfile.getRecord(i).getInt64(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_FLOAT:
-								tmp = (char *)malloc(256);
-								sprintf(tmp, "%f", dbcfile.getRecord(i).getFloat(j));
-								sqlinsert +="'";
-								sqlinsert += tmp;
-								sqlinsert +="',";
-								free(tmp);
-								break;
-							case FT_STRING:
-								tmpstr += dbcfile.getRecord(i).getString(j);
-								sqlinsert +="'";
-								sqlinsert += Terminator(tmpstr);
-								sqlinsert +="',";
-								tmpstr.clear();
-								break;
-							case FT_IGNORED:
-								break;
-							}
-							if (j == dbcfile.GetNumCols() - 1)
-							{
-								sqlinsert.resize(sqlinsert.size() - 1);
-								sqlinsert +="),\n";
-							}
-						}
-					}
-					sqlinsert.resize(sqlinsert.size() - 2);
-					if (dbcfile.GetNumRows() != 0)
-					{
+						sqlinsert.resize(sqlinsert.size() - 2);
+						sqlinsert += "\n";
 						if(createSqlFiles == true)
-						{
 							fprintf(f, "%s", sqlinsert.c_str());
-							fclose(f);
-						}
 						if (mysql_query(conn, sqlinsert.c_str()))
 						{
 							FILE *error = fopen("error.txt","w");
@@ -423,11 +298,128 @@ void System::ExportDBCs()
 							printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 							exit(1);
 						}
+						sqlinsert.clear();
+						sqlinsert = "INSERT INTO `";
+						sqlinsert += dbcfile.GetName();
+						sqlinsert += "` VALUES\n(";
+					}
+					else
+						sqlinsert += "(";
+
+					for(uint32 j = 0; j < dbcfile.GetNumCols(); j++)
+					{
+						char *tmp;
+						string tmpstr;
+						switch (dbcfile.GetFormat(j))
+						{
+						case FT_UINT8:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt8(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_INT8:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt8(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_UINT16:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt16(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_INT16:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt16(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_UINT32:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt32(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_INT32:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt32(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_UINT64:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt64(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_INT64:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt64(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_FLOAT:
+							tmp = (char *)malloc(256);
+							sprintf(tmp, "%f", dbcfile.getRecord(i).getFloat(j));
+							sqlinsert +="'";
+							sqlinsert += tmp;
+							sqlinsert +="',";
+							free(tmp);
+							break;
+						case FT_STRING:
+							tmpstr += dbcfile.getRecord(i).getString(j);
+							sqlinsert +="'";
+							sqlinsert += Terminator(tmpstr);
+							sqlinsert +="',";
+							tmpstr.clear();
+							break;
+						case FT_IGNORED:
+							break;
+						}
+						if (j == dbcfile.GetNumCols() - 1)
+						{
+							sqlinsert.resize(sqlinsert.size() - 1);
+							sqlinsert +="),\n";
+						}
+					}
+				}
+				sqlinsert.resize(sqlinsert.size() - 2);
+				if (dbcfile.GetNumRows() != 0)
+				{
+					if(createSqlFiles == true)
+					{
+						fprintf(f, "%s", sqlinsert.c_str());
+						fclose(f);
+					}
+					if (mysql_query(conn, sqlinsert.c_str()))
+					{
+						FILE *error = fopen("error.txt","w");
+						fprintf(error, sqlinsert.c_str());
+						fclose(error);
+						printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
+						exit(1);
 					}
 				}
 			}
 		}
-		closedir(dir);
 		mysql_close(conn);
 	}
 	else

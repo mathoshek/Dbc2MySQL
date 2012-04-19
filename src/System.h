@@ -3,8 +3,6 @@
 
 #include "defines.h"
 #include "tinyxml.h"
-#include "dirent.h"
-#include "direct.h"
 #include "DbcFile.h"
 #include "mysql.h"
 
