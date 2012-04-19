@@ -305,7 +305,7 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 			}
 			else
 			{
-				printf("%s is not a valid type", Terminator(pDbcFile->Attribute("type")));
+				printf("%s is not a valid type.", pDbcFile->Attribute("type"));
 				exit(1);
 			}
 			pField = pField->NextSiblingElement("field");
