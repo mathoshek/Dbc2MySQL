@@ -17,7 +17,7 @@ bool DbcFile::Load(const char *filepath)
 
 	//Get the name
 	name = filepath;
-	name = name.substr(name.find_last_of("\\") + 1);
+	name = name.substr(name.find_last_of("/") + 1);
 	name.resize(name.size() - 4);
 
 	//Open the Dbc files
@@ -77,14 +77,7 @@ void DbcFile::Close()
 
 DbcFile::~DbcFile()
 {
-	if (dataTable != NULL)
-		delete [] dataTable;
-	if (stringTable != NULL)
-		delete [] stringTable;
-	if (format != NULL)
-		delete [] format;
-	if (fieldsOffset != NULL)
-		delete [] fieldsOffset;
+	Close();
 }
 
 DbcFile::Record DbcFile::getRecord(uint32 id)
@@ -374,11 +367,8 @@ string DbcFile::MakeMySqlStructure(TiXmlElement *pDbcFile, string name)
 	}
 }
 
-const char *DbcFile::Terminator(string &str)
+const char *DbcFile::Terminator(string str)
 {
-	if (&str == NULL)
-		return NULL;
-
 	if (str.size() == 0)
 		return str.c_str();
 

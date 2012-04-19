@@ -98,7 +98,7 @@ void System::ShowUsage(char *prg)
 		"-d set the database name in which the dbc files will be extracted\n"\
 		"-s y if you want to create a folder with sql files\n"\
 		"-x set the structure.xml file\n"\
-		"Example: %s -u root -p pass -h localhost -d dbc -s no -x StructureWotLK.xml", prg, prg);
+		"Example: %s -u root -p pass -h localhost -d dbc -s no -x StructureWotLK.xml\n\n", prg, prg);
 	exit(1);
 }
 
@@ -107,7 +107,7 @@ void System::CreateDir(string path)
 #ifdef _WIN32
 	CreateDirectory( path.c_str(), NULL );
 #elif defined __unix__
-	mkdir( Path.c_str(), 0777 );
+	mkdir( path.c_str(), 0777 );
 #else
 // MacOS things?
 #endif
@@ -179,7 +179,7 @@ void System::ExportDBCs()
 	if (mysql_query(conn, dropcommand.c_str()))
 	{
 		FILE *error = fopen("error.txt","w");
-		fprintf(error, dropcommand.c_str());
+		fprintf(error, "%s", dropcommand.c_str());
 		fclose(error);
 		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 		exit(1);
@@ -191,7 +191,7 @@ void System::ExportDBCs()
 	if (mysql_query(conn, createcommand.c_str()))
 	{
 		FILE *error = fopen("error.txt","w");
-		fprintf(error, createcommand.c_str());
+		fprintf(error, "%s", createcommand.c_str());
 		fclose(error);
 		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 		exit(1);
@@ -203,7 +203,7 @@ void System::ExportDBCs()
 	if (mysql_query(conn, usecommand.c_str()))
 	{
 		FILE *error = fopen("error.txt","w");
-		fprintf(error, usecommand.c_str());
+		fprintf(error, "%s", usecommand.c_str());
 		fclose(error);
 		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 		exit(1);
@@ -235,7 +235,7 @@ void System::ExportDBCs()
 	}
 
 	string dpath = homePath.c_str();
-	dpath += "dbc\\";
+	dpath += "dbc/";
 	vector<string> dbcFiles;
 	if( getDirContents( dbcFiles, dpath, "*.dbc" ) == true )
 	{
@@ -266,12 +266,12 @@ void System::ExportDBCs()
 					filename += dbcfile.GetName();
 					filename += ".sql";
 					f = fopen(filename.c_str(), "w");
-					fprintf(f, "%s", sqlstructure);
+					fprintf(f, "%s", sqlstructure.c_str());
 				}
 				if (mysql_query(conn, sqlstructure.c_str()))
 				{
 					FILE *error = fopen("error.txt","w");
-					fprintf(error, sqlstructure.c_str());
+					fprintf(error, "%s", sqlstructure.c_str());
 					fclose(error);
 					printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 					exit(1);
@@ -293,7 +293,7 @@ void System::ExportDBCs()
 						if (mysql_query(conn, sqlinsert.c_str()))
 						{
 							FILE *error = fopen("error.txt","w");
-							fprintf(error, sqlinsert.c_str());
+							fprintf(error, "%s", sqlinsert.c_str());
 							fclose(error);
 							printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 							exit(1);
@@ -362,7 +362,7 @@ void System::ExportDBCs()
 							break;
 						case FT_UINT64:
 							tmp = (char *)malloc(256);
-							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt64(j));
+							sprintf(tmp, "%lu", dbcfile.getRecord(i).getUInt64(j));
 							sqlinsert +="'";
 							sqlinsert += tmp;
 							sqlinsert +="',";
@@ -370,7 +370,7 @@ void System::ExportDBCs()
 							break;
 						case FT_INT64:
 							tmp = (char *)malloc(256);
-							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt64(j));
+							sprintf(tmp, "%li", dbcfile.getRecord(i).getInt64(j));
 							sqlinsert +="'";
 							sqlinsert += tmp;
 							sqlinsert +="',";
@@ -412,7 +412,7 @@ void System::ExportDBCs()
 					if (mysql_query(conn, sqlinsert.c_str()))
 					{
 						FILE *error = fopen("error.txt","w");
-						fprintf(error, sqlinsert.c_str());
+						fprintf(error, "%s", sqlinsert.c_str());
 						fclose(error);
 						printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
 						exit(1);
@@ -424,7 +424,7 @@ void System::ExportDBCs()
 	}
 	else
 	{
-		printf("dbc directory doesn't exist");
+		printf("dbc directory doesn't exist, %s\n", dpath.c_str());
 		exit(1);
 	}
 }
