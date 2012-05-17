@@ -4,7 +4,6 @@
 #include "defines.h"
 #include "tinyxml.h"
 #include "DbcFile.h"
-#include "mysql.h"
 
 class System
 {
@@ -15,6 +14,7 @@ public:
 	void SayHello();
 	void HandleArguments(int argc, char * argv[]);
 	void ExportDBCs();
+	void HandleErrorMessage(const char *fmt, ...);
 
 private:
 	// Settings

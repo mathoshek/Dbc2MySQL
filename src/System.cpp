@@ -108,7 +108,7 @@ void System::ShowUsage(char *prg)
 		"-d set mysql database (OPTIONAL - default: dbc)\n"\
 		"-s (yes/no) dump all dbc to sql files (OPTIONAL - default: no)\n"\
 		"-x set the structure.xml file\n"\
-		
+
 		"Example: %s -u root -p pass -x StructureWotLK.xml\n\n", prg, prg);
 	exit(1);
 }
@@ -117,86 +117,44 @@ void System::CreateDir(string path)
 {
 #ifdef _WIN32
 	CreateDirectory( path.c_str(), NULL );
-#elif defined __unix__
+#elif __unix__
 	mkdir( path.c_str(), 0777 );
 #else
-// MacOS things?
+	// MacOS things?
 #endif
 }
 
 void System::ExportDBCs()
 {
-	MYSQL *conn;
-	DbcFile dbcfile;
 	FILE *f;
+	MySqlConnection MySql(BUFFER_LEN, db_host.c_str( ), db_user.c_str( ), db_pass.c_str( ), NULL, db_port, NULL, 0 );
 
-	// Connect to MySql Database
-	conn = mysql_init(NULL);
-	if (conn == NULL)
-	{
-		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-		exit(1);
-	}
+	MySql.Append( "DROP DATABASE IF EXISTS `%s`;\n", dbc_db.c_str( ) );
+	if( MySql.SendQuery( ) )
+		HandleErrorMessage("Error %u: %s\n%s\n", MySql.GetErrNo( ), MySql.GetError( ), MySql.DumpCommand( ) );
 
-	if (mysql_real_connect(conn, db_host.c_str(), db_user.c_str(), db_pass.c_str(), NULL, db_port, NULL, 0) == NULL)
-	{
-		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-		exit(1);
-	}
+	MySql.Append( "CREATE DATABASE IF NOT EXISTS `%s` CHARACTER SET utf8;\n", dbc_db.c_str( ) );
+	if( MySql.SendQuery( ) )
+		HandleErrorMessage("Error %u: %s\n%s\n", MySql.GetErrNo( ), MySql.GetError( ), MySql.DumpCommand( ) );
 
-	// Drop the old database if exists, create a new one, and use it
-	string dropcommand = "DROP DATABASE IF EXISTS `";
-	dropcommand += dbc_db.c_str();
-	dropcommand += "`;\n";
-	if (mysql_query(conn, dropcommand.c_str()))
-	{
-		FILE *error = fopen("error.txt","w");
-		fprintf(error, "%s", dropcommand.c_str());
-		fclose(error);
-		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-		exit(1);
-	}
-
-	string createcommand = "CREATE DATABASE IF NOT EXISTS `";
-	createcommand += dbc_db.c_str();
-	createcommand += "` CHARACTER SET utf8;\n";
-	if (mysql_query(conn, createcommand.c_str()))
-	{
-		FILE *error = fopen("error.txt","w");
-		fprintf(error, "%s", createcommand.c_str());
-		fclose(error);
-		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-		exit(1);
-	}
-
-	string usecommand = "USE `";
-	usecommand += dbc_db.c_str();
-	usecommand += "`;\n";
-	if (mysql_query(conn, usecommand.c_str()))
-	{
-		FILE *error = fopen("error.txt","w");
-		fprintf(error, "%s", usecommand.c_str());
-		fclose(error);
-		printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-		exit(1);
-	}
+	MySql.Append( "USE `%s`;\n", dbc_db.c_str( ) );
+	if( MySql.SendQuery( ) )
+		HandleErrorMessage("Error %u: %s\n%s\n", MySql.GetErrNo( ), MySql.GetError( ), MySql.DumpCommand( ) );
 
 	//Open the XML
 	string xmlpath = homePath.c_str();
 	xmlpath += structureXml;
 	TiXmlDocument doc(xmlpath.c_str());
-	bool loadOkay = doc.LoadFile();
 	TiXmlElement *pRoot = NULL;
-	if (loadOkay)
+	if (doc.LoadFile())
 	{
 		printf("\"%s\" loaded\n", structureXml.c_str());
 		pRoot = doc.FirstChildElement("DBFilesClient");
+		if(pRoot == NULL)
+			HandleErrorMessage("Couldn't find XML element DBFilesClient. Check the provided XML file.");
 	}
 	else
-	{
-		printf("Failed to load file \"%s\"\n", structureXml.c_str());
-		exit(1);
-	}
+		HandleErrorMessage("Failed to load file \"%s\"\n", structureXml.c_str());
 
 	string filename;
 	if(createSqlFiles == true)
@@ -206,194 +164,215 @@ void System::ExportDBCs()
 		CreateDir(filename);
 	}
 
+	WoWClientDBFile *file;
+
 	string dpath = homePath.c_str();
 	dpath += "dbc/";
 	vector<string> dbcFiles;
-	if( getDirContents( dbcFiles, dpath, "*.dbc" ) == true )
+	if( getDirContents( dbcFiles, dpath ) == true )
 	{
 		for( vector<string>::iterator i = dbcFiles.begin(); i < dbcFiles.end(); ++i )
 		{
-
-			printf("Found %s \n", (*i).c_str());
-
-			string fpath = dpath;
-			fpath += (*i).c_str();
-
-			if( dbcfile.Load(fpath.c_str()) == false )
+			if((*i).find_last_of(".") == std::string::npos)
 				continue;
 
-			TiXmlElement *pDbcFile = NULL, *pField = NULL;
-			if ( pRoot )
+			if( (*i).substr((*i).find_last_of(".")+1) == "dbc" )
+				file = new DbcFile();
+			else
+				continue;
+
+			printf("Found %s \n", (*i).c_str());
+			TiXmlElement *pDbcFile = NULL;
+			vector<uint32> format;
+			pDbcFile = pRoot->FirstChildElement((*i).c_str());
+
+			MySql.ResetCommand( );
+			if( pDbcFile != NULL )
 			{
-				pDbcFile = pRoot->FirstChildElement(dbcfile.GetName().c_str());
-
-				string sqlstructure;
-				sqlstructure = dbcfile.MakeMySqlStructure(pDbcFile, dbcfile.GetName());
-
-				//Send sqlstructure query
-				if(createSqlFiles == true)
+				MySql.Append( "CREATE TABLE `%s`(\n", i->c_str( ) );
+				TiXmlElement *pField = pDbcFile->FirstChildElement( "field" );
+				while( pField != NULL )
 				{
-					filename = homePath;
-					filename += "sql/";
-					filename += dbcfile.GetName();
-					filename += ".sql";
-					f = fopen(filename.c_str(), "w");
-					fprintf(f, "%s", sqlstructure.c_str());
-				}
-				if (mysql_query(conn, sqlstructure.c_str()))
-				{
-					FILE *error = fopen("error.txt","w");
-					fprintf(error, "%s", sqlstructure.c_str());
-					fclose(error);
-					printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-					exit(1);
-				}
+					MySql.Append( "  `%s` ", pField->Attribute( "name" ) );
+					const char *att = pField->Attribute( "type" );
 
-				string sqlinsert;
-				sqlinsert = "INSERT INTO `";
-				sqlinsert += dbcfile.GetName();
-				sqlinsert += "` VALUES\n";
-
-				for (uint32 i = 0; i < dbcfile.GetNumRows(); i++)
-				{
-					if (sqlinsert.size() + 1024 > MAX_QUERY_LEN)
+					if( !strcmp( att, "uint8" ) )
 					{
-						sqlinsert.resize(sqlinsert.size() - 2);
-						sqlinsert += "\n";
-						if(createSqlFiles == true)
-							fprintf(f, "%s", sqlinsert.c_str());
-						if (mysql_query(conn, sqlinsert.c_str()))
-						{
-							FILE *error = fopen("error.txt","w");
-							fprintf(error, "%s", sqlinsert.c_str());
-							fclose(error);
-							printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-							exit(1);
-						}
-						sqlinsert.clear();
-						sqlinsert = "INSERT INTO `";
-						sqlinsert += dbcfile.GetName();
-						sqlinsert += "` VALUES\n(";
+						MySql.Append( "TINYINT UNSIGNED " );
+						format.push_back( FT_UINT8 );
 					}
+					else if( !strcmp( att, "int8" ) )
+					{
+						MySql.Append( "TINYINT " );
+						format.push_back( FT_INT8 );
+					}
+					else if( !strcmp( att, "uint16" ) )
+					{
+						MySql.Append( "SMALLINT UNSIGNED " );
+						format.push_back( FT_UINT16 );
+					}
+					else if( !strcmp( att, "int16" ) )
+					{
+						MySql.Append( "SMALLINT " );
+						format.push_back( FT_INT16 );
+					}
+					else if( !strcmp( att, "uint32" ) )
+					{
+						MySql.Append( "INT UNSIGNED " );
+						format.push_back(FT_UINT32);
+					}
+					else if( !strcmp( att, "int32" ) )
+					{
+						MySql.Append( "INT " );
+						format.push_back( FT_INT32 );
+					}
+					else if( !strcmp( att, "uint64" ) )
+					{
+						MySql.Append( "BIGINT UNSIGNED " );
+						format.push_back( FT_UINT64 );
+					}
+					else if( !strcmp( att, "int64" ) )
+					{
+						MySql.Append( "BIGINT " );
+						format.push_back( FT_INT64 );
+					}
+					else if( !strcmp( att, "float" ) )
+					{
+						MySql.Append( "FLOAT " );
+						format.push_back( FT_FLOAT );
+					}
+					else if( !strcmp( att, "double" ) )
+					{
+						MySql.Append( "DOUBLE " );
+						format.push_back( FT_DOUBLE );
+					}
+					else if( !strcmp( att, "string" ) )
+					{
+						MySql.Append( "TEXT " );
+						format.push_back( FT_STRING );
+					}
+					else if( !strcmp( att, "loc" ) )
+					{
+						MySql.Append( "TEXT " );
+						format.push_back( FT_STRING );
+						for( uint32 x = 0; x < 16; x++ )
+							format.push_back( FT_IGNORED );
+					}
+					else if( !strcmp( att, "ignored" ) )
+						format.push_back( FT_IGNORED );
 					else
-						sqlinsert += "(";
+						HandleErrorMessage( "%s is not a valid type", att );
 
-					for(uint32 j = 0; j < dbcfile.GetNumCols(); j++)
-					{
-						char *tmp;
-						switch (dbcfile.GetFormat(j))
-						{
-						case FT_UINT8:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt8(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_INT8:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt8(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_UINT16:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt16(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_INT16:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt16(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_UINT32:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%u", dbcfile.getRecord(i).getUInt32(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_INT32:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%i", dbcfile.getRecord(i).getInt32(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_UINT64:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%lu", dbcfile.getRecord(i).getUInt64(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_INT64:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%li", dbcfile.getRecord(i).getInt64(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_FLOAT:
-							tmp = (char *)malloc(256);
-							sprintf(tmp, "%f", dbcfile.getRecord(i).getFloat(j));
-							sqlinsert +="'";
-							sqlinsert += tmp;
-							sqlinsert +="',";
-							free(tmp);
-							break;
-						case FT_STRING:
-							sqlinsert +="'";
-							sqlinsert += Terminator(dbcfile.getRecord(i).getString(j));
-							sqlinsert +="',";
-							break;
-						case FT_IGNORED:
-							break;
-						}
-						if (j == dbcfile.GetNumCols() - 1)
-						{
-							sqlinsert.resize(sqlinsert.size() - 1);
-							sqlinsert +="),\n";
-						}
-					}
+					MySql.Append( "NOT NULL,\n" );
+					pField = pField->NextSiblingElement( "field" );
 				}
-				sqlinsert.resize(sqlinsert.size() - 2);
-				if (dbcfile.GetNumRows() != 0)
+				if( pDbcFile->Attribute( "primary" ) != NULL )
+					MySql.Append( " PRIMARY KEY (`%s`)", pDbcFile->Attribute( "primary" ) );
+				else
+					MySql.EraseCommand( 2 );
+				MySql.Append( "\n) ENGINE=MyISAM DEFAULT CHARSET=utf8\n" );
+			}
+
+			if( file->Load(dpath + (*i), format) == false)
+			{
+				delete file;
+				continue;
+			}
+
+			if( format.size() == 0 )
+			{
+				MySql.Append( "CREATE TABLE `%s`(\n", i->c_str( ) );
+				for( uint32 i = 0; i < file->getFieldCount( ) - 1; i++ )
+					MySql.Append( "  `unk_uint32_%u` INT UNSIGNED NOT NULL,\n", i );
+				MySql.Append( "  `unk_uint32_%u` INT UNSIGNED NOT NULL\n) ENGINE=MyISAM DEFAULT CHARSET=utf8\n", file->getFieldCount( ) - 1 );
+			}
+
+			if( createSqlFiles == true )
+			{
+				filename = homePath + "sql/" + file->getName( ) + ".sql";
+				f = fopen( filename.c_str(), "w" );
+				fprintf( f, "%s", MySql.DumpCommand( ) );
+			}
+
+			if ( MySql.SendQuery( ) )
+				HandleErrorMessage("Error %u: %s\nCommand: %s\n", MySql.GetErrNo( ), MySql.GetError( ), MySql.DumpCommand( ) );
+
+			MySql.Append( "INSERT INTO `%s` VALUES\n", file->getName( ).c_str( ) );
+
+			for (uint32 i = 0; i < file->getRecordCount(); i++)
+			{
+				if( MySql.IsBufferFull( ) )
 				{
-					if(createSqlFiles == true)
+					MySql.RestoreCommandToMarker( );
+					MySql.EraseCommand( 2 );
+					if( createSqlFiles == true )
+						fprintf( f, "%s", MySql.DumpCommand( ) );
+					if ( MySql.SendQuery( ) )
+						HandleErrorMessage("Error %u: %s\nCommand: %s\n", MySql.GetErrNo( ), MySql.GetError( ), MySql.DumpCommand( ) );
+					
+					MySql.Append( "INSERT INTO `%s` VALUES\n", file->getName( ).c_str( ) );
+					i--;
+				}
+				MySql.InsertCommandMarker( );
+				MySql.Append( "(" );
+
+				for(uint32 j = 0; j < file->getFieldCount(); j++)
+				{
+					if(j != 0 && file->getFormat(j) != FT_IGNORED)
+						MySql.Append( "," );
+					switch ( file->getFormat( j ) )
 					{
-						fprintf(f, "%s", sqlinsert.c_str());
-						fclose(f);
+					case FT_UINT8:  MySql.Append( "'%u'", file->getRecord( i ).getUInt8( j ) ); break;
+					case FT_INT8:   MySql.Append( "'%i'", file->getRecord( i ).getInt8( j ) ); break;
+					case FT_UINT16: MySql.Append( "'%u'", file->getRecord( i ).getUInt16( j ) ); break;
+					case FT_INT16:  MySql.Append( "'%i'", file->getRecord( i ).getInt16( j ) ); break;
+					case FT_UINT32: MySql.Append( "'%u'", file->getRecord( i ).getUInt32( j ) ); break;
+					case FT_INT32:  MySql.Append( "'%i'", file->getRecord( i ).getInt32( j ) ); break;
+					case FT_UINT64: MySql.Append( "'%lu'", file->getRecord( i ).getUInt64( j ) ); break;
+					case FT_INT64:  MySql.Append( "'%li'", file->getRecord( i ).getInt64( j ) ); break;
+					case FT_FLOAT:  MySql.Append( "'%f'", file->getRecord( i ).getFloat( j ) ); break;
+					case FT_DOUBLE: MySql.Append( "'%f'", file->getRecord( i ).getDouble( j ) ); break;
+					case FT_STRING: MySql.Append( "'%s'", Terminator( file->getRecord( i ).getString( j ) ).c_str( ) ); break;
 					}
-					if (mysql_query(conn, sqlinsert.c_str()))
-					{
-						FILE *error = fopen("error.txt","w");
-						fprintf(error, "%s", sqlinsert.c_str());
-						fclose(error);
-						printf("Error %u: %s\n", mysql_errno(conn), mysql_error(conn));
-						exit(1);
-					}
+					if (j == file->getFieldCount() - 1)
+						MySql.Append( "),\n" );
 				}
 			}
+			MySql.EraseCommand( 2 );
+			if( file->getRecordCount() != 0 )
+			{
+				if( createSqlFiles == true )
+				{
+					fprintf( f, "%s", MySql.DumpCommand( ) );
+					fclose( f );
+				}
+				if( MySql.SendQuery ( ) )
+					HandleErrorMessage("Error %u: %s\n%s\n", MySql.GetErrNo( ), MySql.GetError( ), MySql.DumpCommand( ) );
+			}
+			delete file;
 		}
-		mysql_close(conn);
 	}
 	else
-	{
-		printf("dbc directory doesn't exist, %s\n", dpath.c_str());
-		exit(1);
-	}
+		HandleErrorMessage("dbc directory doesn't exist, %s\n", dpath.c_str());
+}
+
+void System::HandleErrorMessage(const char *fmt, ...)
+{
+	char msg[BUFFER_LEN];
+	va_list ap;
+
+	va_start(ap, fmt);
+	vsnprintf(msg, BUFFER_LEN, fmt, ap);
+	va_end(ap);
+
+	FILE *f = fopen("error.log", "a"); 
+	time_t tmm = time ( NULL );
+	struct tm * timeStruct = localtime( &tmm );
+	fprintf(f, "%02u:%02u:%02u - %s\n", timeStruct->tm_hour, timeStruct->tm_min, timeStruct->tm_sec, msg );
+	fclose(f);
+
+	//Important, NO NOT REMOVE, unless you check all the calls of this function
+	printf("Fatal error occured... check error.log file for details.\n");
+
+	exit(1);
 }
