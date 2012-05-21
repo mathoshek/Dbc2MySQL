@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DBFilesClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="table" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="field" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="type" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="int8"/>
+                        <xs:enumeration value="uint8"/>
+                        <xs:enumeration value="int16"/>
+                        <xs:enumeration value="uint16"/>
+                        <xs:enumeration value="int32"/>
+                        <xs:enumeration value="uint32"/>
+                        <xs:enumeration value="int64"/>
+                        <xs:enumeration value="uint64"/>
+                        <xs:enumeration value="float"/>
+                        <xs:enumeration value="double"/>
+                        <xs:enumeration value="string"/>
+                        <xs:enumeration value="loc"/>
+                        <xs:enumeration value="ignored"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="comment" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="primary" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
