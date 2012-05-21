@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <!--
 Structure of dbc files.
 by Mathoshek
@@ -7,10 +8,10 @@ Many thanks to:
   https://github.com/mangos/mangos
   https://github.com/TrinityCore/TrinityCore
 -->
-<?xml version="1.0"?>
 
-<DBFilesClient>
-  <Achievement primary="ID">
+<DBFilesClient xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Structure.xsd">
+
+  <table name="Achievement.dbc" primary="ID">
     <field name="ID" type="uint32" comment="Entry"/>
     <field name="Faction" type="int32" comment="-1: both, 0: Horde or 1: Alliance "/>
     <field name="Map" type="int32" comment="Map.dbc, -1 if none"/>
@@ -25,16 +26,16 @@ Many thanks to:
     <field name="Reward" type="loc"/>
     <field name="Count" type="uint32" comment="need this count of completed criterias (own or referenced achievement criterias)"/>
     <field name="RefAchievement" type="uint32" comment="Achievement.dbc, referenced achievement (counting of all completed criterias)"/>
-  </Achievement>
-  
-  <Achievement_Category primary="ID">
+  </table>
+
+  <table name="Achievement_Category.dbc" primary="ID">
     <field name="ID" type="uint32" comment="Entry"/>
     <field name="ParentID" type="int32" comment="-1 for main category"/>
     <field name="Name" type="loc"/>
     <field name="SortOrder" type="uint32"/>
-  </Achievement_Category>
-  
-  <Achievement_Criteria primary="ID">
+  </table>
+
+  <table name="Achievement_Criteria.dbc" primary="ID">
     <field name="ID" type="uint32" comment="Entry"/>
     <field name="Achievement" type="uint32"/>
     <field name="Type" type="uint32"/>
@@ -50,9 +51,9 @@ Many thanks to:
     <field name="timerStartEvent" type="uint32" comment="for timed spells it is spell id, for timed kills it is creature id"/>
     <field name="timeLimit" type="uint32" comment="time limit in seconds"/>
     <field name="showOrder" type="uint32"/>
-  </Achievement_Criteria>
+  </table>
 
-  <AnimationData primary="ID">
+  <table name="AnimationData.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Name" type="string"/>
     <field name="WeaponState" type="uint32"/>
@@ -61,9 +62,9 @@ Many thanks to:
     <field name="Unknown_6" type="uint32"/>
     <field name="Preceeding" type="uint32"/>
     <field name="RealID" type="uint32"/>
-  </AnimationData>
-  
-  <AreaGroup primary="ID">
+  </table>
+
+  <table name="AreaGroup.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="AreaID1" type="uint32"/>
     <field name="AreaID2" type="uint32"/>
@@ -71,10 +72,10 @@ Many thanks to:
     <field name="AreaID4" type="uint32"/>
     <field name="AreaID5" type="uint32"/>
     <field name="AreaID6" type="uint32"/>
-    <field name="NextGroup" type="uint32"/>    
-  </AreaGroup>
+    <field name="NextGroup" type="uint32"/>
+  </table>
 
-  <AreaPOI primary="ID">
+  <table name="AreaPOI.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Icon1" type="uint32"/>
     <field name="Icon2" type="uint32"/>
@@ -97,9 +98,9 @@ Many thanks to:
     <field name="Name2" type="loc"/>
     <field name="WorldState" type="uint32"/>
     <field name="Unknown_22" type="uint32"/>
-  </AreaPOI>
-  
-  <AreaTable primary="ID">
+  </table>
+
+  <table name="AreaTable.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="MapID" type="uint32"/>
     <field name="Zone" type="uint32" comment="if 0 then it's zone, else it's zone id of this area"/>
@@ -120,9 +121,9 @@ Many thanks to:
     <field name="Unknown_18" type="float" comment=""/>
     <field name="Unknown_19" type="float" comment=""/>
     <field name="Unknown_20" type="uint32" comment=""/>
-  </AreaTable>
+  </table>
 
-  <AreaTrigger primary="ID">
+  <table name="AreaTrigger.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="MapID" type="uint32"/>
     <field name="X" type="float"/>
@@ -133,22 +134,22 @@ Many thanks to:
     <field name="Box_Y" type="float"/>
     <field name="Box_Z" type="float"/>
     <field name="Box_O" type="float"/>
-  </AreaTrigger>
+  </table>
 
-  <AuctionHouse primary="ID">
+  <table name="AuctionHouse.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Faction" type="uint32"/>
     <field name="DepositPercent" type="uint32"/>
     <field name="CutPercent" type="uint32"/>
     <field name="Name" type="loc"/>
-  </AuctionHouse>
+  </table>
 
-  <BankBagSlotPrices primary="ID">
+  <table name="BankBagSlotPrices.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Price" type="uint32"/>
-  </BankBagSlotPrices>
+  </table>
 
-  <BarberShopStyle primary="ID">
+  <table name="BarberShopStyle.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Type" type="uint32" comment="0 -> hair, 2 -> facialhair"/>
     <field name="Name" type="loc"/>
@@ -157,9 +158,9 @@ Many thanks to:
     <field name="Race" type="uint32"/>
     <field name="Gender" type="uint32" comment="0 -> male, 1 -> female"/>
     <field name="HairID" type="uint32"/>
-  </BarberShopStyle>
+  </table>
 
-  <BattlemasterList primary="ID">
+  <table name="BattlemasterList.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="MapID1" type="int32"/>
     <field name="MapID2" type="int32"/>
@@ -176,9 +177,9 @@ Many thanks to:
     <field name="HolidayWorldStateID" type="uint32"/>
     <field name="MinLevel" type="uint32"/>
     <field name="SomeLevel" type="uint32"/>
-  </BattlemasterList>
+  </table>
 
-  <CharStartOutfit primary="ID">
+  <table name="CharStartOutfit.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="RaceClassGender" type="uint32"/>
     <field name="ItemID1" type="int32"/>
@@ -256,25 +257,25 @@ Many thanks to:
     <field name="Unknown_75" type="uint32"/>
     <field name="Unknown_76" type="uint32"/>
     <field name="Unknown_77" type="uint32"/>
-  </CharStartOutfit>
-  
-  <CharTitles primary="ID">
+  </table>
+
+  <table name="CharTitles.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Unknown_2" type="uint32"/>
     <field name="Name" type="loc"/>
     <field name="Name2" type="loc"/>
     <field name="BitIndex" type="uint32"/>
-  </CharTitles>
-  
-  <ChatChannels primary="ID">
+  </table>
+
+  <table name="ChatChannels.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Flags" type="uint32"/>
     <field name="Unknown_2" type="uint32"/>
     <field name="Pattern" type="loc"/>
     <field name="Name" type="loc"/>
-  </ChatChannels>
-  
-  <ChrClasses primary="ID">
+  </table>
+
+  <table name="ChrClasses.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Flags" type="uint32"/>
     <field name="PowerType" type="uint32"/>
@@ -287,9 +288,9 @@ Many thanks to:
     <field name="Flags2" type="uint32"/>
     <field name="CinematicSequenceID" type="uint32"/>
     <field name="Expansion" type="uint32"/>
-  </ChrClasses>
-  
-  <ChrRaces primary="ID">
+  </table>
+
+  <table name="ChrRaces.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Flags" type="uint32"/>
     <field name="FactionID" type="uint32"/>
@@ -311,10 +312,10 @@ Many thanks to:
     <field name="Feature[2]" type="string"/>
     <field name="Feature[3]" type="string"/>
     <field name="Expansion" type="uint32"/>
-  </ChrRaces>
-  
-  <CinematicSequences primary="ID">
-      <field name="ID" type="uint32"/>
+  </table>
+
+  <table name="CinematicSequences.dbc" primary="ID">
+    <field name="ID" type="uint32"/>
     <field name="Unknown_2" type="uint32"/>
     <field name="CinematicCameraID" type="uint32" comment="CinematicCamera.dbc"/>
     <field name="Unknown_4" type="uint32"/>
@@ -324,9 +325,9 @@ Many thanks to:
     <field name="Unknown_8" type="uint32"/>
     <field name="Unknown_9" type="uint32"/>
     <field name="Unknown_10" type="uint32"/>
-  </CinematicSequences>
-  
-  <CreatureDisplayInfo primary="ID">
+  </table>
+
+  <table name="CreatureDisplayInfo.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="modelID"/>
     <field type="uint32" name="soundID"/>
@@ -343,9 +344,9 @@ Many thanks to:
     <field type="uint32" name="particleColorID"/>
     <field type="uint32" name="creatureGeosetData"/>
     <field type="uint32" name="objectEffectPackageID"/>
-  </CreatureDisplayInfo>
-  
-  <CreatureFamily primary="ID">
+  </table>
+
+  <table name="CreatureFamily.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="float" name="minScale"/>
     <field type="uint32" name="minScaleLevel"/>
@@ -358,9 +359,9 @@ Many thanks to:
     <field type="int32" name="categoryEnumID"/>
     <field type="loc" name="name"/>
     <field type="string" name="iconFile"/>
-  </CreatureFamily>
-  
-  <CreatureSpellData primary="ID">
+  </table>
+
+  <table name="CreatureSpellData.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="spellId[1]"/>
     <field type="uint32" name="spellId[2]"/>
@@ -370,28 +371,28 @@ Many thanks to:
     <field type="uint32" name="availability[2]"/>
     <field type="uint32" name="availability[3]"/>
     <field type="uint32" name="availability[4]"/>
-  </CreatureSpellData>
-  
-  <CreatureType primary="ID">
+  </table>
+
+  <table name="CreatureType.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="loc" name="Name"/>
     <field type="uint32" name="no_expirience"/>
-  </CreatureType>
+  </table>
 
-  <CurrencyCategory primary="ID">
+  <table name="CurrencyCategory.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="Unknown_1"/>
     <field type="loc" name="Name"/>
-  </CurrencyCategory>
+  </table>
 
-  <CurrencyTypes primary="ID">
+  <table name="CurrencyTypes.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="ItemId"/>
     <field type="uint32" name="Category"/>
     <field type="uint32" name="BitIndex"/>
-  </CurrencyTypes>
+  </table>
 
-  <DurabilityCosts primary="Itemlvl">
+  <table name="DurabilityCosts.dbc" primary="Itemlvl">
     <field type="uint32" name="Itemlvl"/>
     <field type="uint32" name="multiplier[1]"/>
     <field type="uint32" name="multiplier[2]"/>
@@ -422,14 +423,14 @@ Many thanks to:
     <field type="uint32" name="multiplier[27]"/>
     <field type="uint32" name="multiplier[28]"/>
     <field type="uint32" name="multiplier[29]"/>
-  </DurabilityCosts>
+  </table>
 
-  <DurabilityQuality primary="ID">
+  <table name="DurabilityQuality.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="float" name="quality_mod"/>
-  </DurabilityQuality>
+  </table>
 
-  <Emotes primary="ID">
+  <table name="Emotes.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="string" name="Name"/>
     <field type="uint32" name="AnimationId"/>
@@ -437,9 +438,9 @@ Many thanks to:
     <field type="uint32" name="EmoteType"/>
     <field type="uint32" name="UnitStandState"/>
     <field type="uint32" name="SoundId"/>
-  </Emotes>
+  </table>
 
-  <EmotesText primary="ID">
+  <table name="EmotesText.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="string" name="InternalName"/>
     <field type="uint32" name="Unknown_2"/>
@@ -459,22 +460,22 @@ Many thanks to:
     <field type="uint32" name="Unknown_16"/>
     <field type="uint32" name="Unknown_17"/>
     <field type="uint32" name="Unknown_18"/>
-  </EmotesText>
+  </table>
 
-  <EmotesTextData primary ="ID">
+  <table name="EmotesTextData.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="loc" name="Text"/>
-  </EmotesTextData>
+  </table>
 
-  <EmotesTextSound primary="ID">
+  <table name="EmotesTextSound.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="Unknown_1"/>
     <field type="uint32" name="Unknown_2"/>
     <field type="uint32" name="Unknown_3"/>
     <field type="uint32" name="SoundID"/>
-  </EmotesTextSound>
+  </table>
 
-  <Faction primary="ID">
+  <table name="Faction.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="int32" name="reputationListID"/>
     <field type="uint32" name="BaseRepRaceMask[1]"/>
@@ -500,9 +501,9 @@ Many thanks to:
     <field type="uint32" name="spilloverRank_unk"/>
     <field type="loc" name="name"/>
     <field type="loc" name="description"/>
-  </Faction>
+  </table>
 
-  <FactionTemplate primary="ID">
+  <table name="FactionTemplate.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="faction"/>
     <field type="uint32" name="factionFlags"/>
@@ -517,9 +518,9 @@ Many thanks to:
     <field type="uint32" name="friendFaction[2]"/>
     <field type="uint32" name="friendFaction[3]"/>
     <field type="uint32" name="friendFaction[4]"/>
-  </FactionTemplate>
+  </table>
 
-  <GameObjectArtKit primary="Id">
+  <table name="GameObjectArtKit.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="string" name="TextureVariation1" />
     <field type="string" name="TextureVariation2" />
@@ -528,9 +529,9 @@ Many thanks to:
     <field type="string" name="AttachModel2" />
     <field type="string" name="AttachModel3" />
     <field type="string" name="AttachModel4" />
-  </GameObjectArtKit>
-  
-  <GameObjectDisplayInfo primary="Id">
+  </table>
+
+  <table name="GameObjectDisplayInfo.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="string" name="ModelName" />
     <field type="uint32" name="StandSound" />
@@ -550,40 +551,40 @@ Many thanks to:
     <field type="float" name="GeoBoxMaxY" />
     <field type="float" name="GeoBoxMaxZ" />
     <field type="uint32" name="ObjectEffectPackageId" />
-  </GameObjectDisplayInfo>
+  </table>
 
-  <GemProperties primary="ID">
+  <table name="GemProperties.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="SpellItemEnchantement"/>
     <field type="uint32" name="Unknown_2"/>
     <field type="uint32" name="Unknown_3"/>
     <field type="uint32" name="Color"/>
-  </GemProperties>
+  </table>
 
-  <GlyphProperties primary="ID">
+  <table name="GlyphProperties.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="SpellId"/>
     <field type="uint32" name="TypeFlags"/>
     <field type="uint32" name="GlyphIconId"/>
-  </GlyphProperties>
+  </table>
 
-  <GlyphSlot primary="ID">
+  <table name="GlyphSlot.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="TypeFlags"/>
     <field type="uint32" name="Order"/>
-  </GlyphSlot>
+  </table>
 
-  <HolidayDescriptions primary="HolidayDescriptionID">
+  <table name="HolidayDescriptions.dbc" primary="HolidayDescriptionID">
     <field type="uint32" name="HolidayDescriptionID"/>
     <field type="loc" name="Description"/>
-  </HolidayDescriptions>
+  </table>
 
-  <HolidayNames primary="HolidayNameID">
+  <table name="HolidayNames.dbc" primary="HolidayNameID">
     <field type="uint32" name="HolidayNameID"/>
     <field type="loc" name="Name"/>
-  </HolidayNames>
+  </table>
 
-  <Holiday primary="ID">
+  <table name="Holiday.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="Unknown_1"/>
     <field type="uint32" name="Unknown_2"/>
@@ -639,9 +640,9 @@ Many thanks to:
     <field type="uint32" name="Unknown_52"/>
     <field type="uint32" name="Unknown_53"/>
     <field type="uint32" name="Unknown_54"/>
-  </Holiday>
+  </table>
 
-  <Item primary="ID">
+  <table name="Item.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="uint32" name="Class"/>
     <field type="uint32" name="SubClass"/>
@@ -650,14 +651,14 @@ Many thanks to:
     <field type="uint32" name="DisplayId"/>
     <field type="uint32" name="InventoryType"/>
     <field type="uint32" name="Sheath"/>
-  </Item>
+  </table>
 
-  <ItemBagFamily primary="ID">
+  <table name="ItemBagFamily.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="loc" name="Name"/>
-  </ItemBagFamily>
-<!--
-  <ItemDisplayInfo primary="ID">
+  </table>
+  <!--
+  <table name="ItemDisplayInfo.dbc" primary="ID">
     <field type="uint32" name="ID"/>
     <field type="string" name="modelName[1]"/>
     <field type="string" name="modelName[2]"/>
@@ -682,9 +683,9 @@ Many thanks to:
     <field type="string" name="itemVisual[8]"/>
     <field type="uint32" name="Unknown_23"/>
     <field type="uint32" name="particleColorID"/>
-  </ItemDisplayInfo>
+  </table>
 -->
-  <ItemExtendedCost primary="ID">
+  <table name="ItemExtendedCost.dbc" primary="ID">
     <field name="ID" type="uint32" comment="Entry"/>
     <field name="ReqHonorPoints" type="uint32" comment="Required Honor Points"/>
     <field name="ReqArenaPoints" type="uint32" comment="Required Arena Points"/>
@@ -701,9 +702,9 @@ Many thanks to:
     <field name="ReqItemCount4" type="uint32"/>
     <field name="ReqPersRating" type="uint32"/>
     <field name="PurchaseGroup" type="uint32" comment="ItemPurchaseGroup.dbc"/>
-  </ItemExtendedCost>
+  </table>
 
-  <Lock primary="ID">
+  <table name="Lock.dbc" primary="ID">
     <field name="ID" type="uint32" />
     <field name="Type1" type="uint32" />
     <field name="Type2" type="uint32" />
@@ -737,17 +738,17 @@ Many thanks to:
     <field name="Action6" type="uint32" />
     <field name="Action7" type="uint32" />
     <field name="Action8" type="uint32" />
-  </Lock>
-  
-  <LockType primary="ID">
+  </table>
+
+  <table name="LockType.dbc" primary="ID">
     <field name="ID" type="uint32" />
     <field name="Name" type="loc" />
     <field name="ItemStateName" type="loc" />
     <field name="ProcessName" type="loc" />
     <field name="InternalName" type="string" />
-  </LockType>
-  
-  <Map primary="ID">
+  </table>
+
+  <table name="Map.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="InternalName" type="string"/>
     <field name="Type" type="uint32"/>
@@ -766,9 +767,9 @@ Many thanks to:
     <field name="Addon" type="uint32"/>
     <field name="Unknown_16" type="uint32"/>
     <field name="MaxPlayers" type="uint32"/>
-  </Map>
+  </table>
 
-  <ObjectEffect primary="Id">
+  <table name="ObjectEffect.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="string" name="Name" />
     <field type="uint32" name="ObjectEffectGroupId" />
@@ -781,14 +782,14 @@ Many thanks to:
     <field type="float" name="OffsetY" />
     <field type="float" name="OffsetZ" />
     <field type="uint32" name="ObjectEffectModifierID" />
-  </ObjectEffect>
+  </table>
 
-  <ObjectEffectGroup primary="Id">
+  <table name="ObjectEffectGroup.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="string" name="Name" />
-  </ObjectEffectGroup>
+  </table>
 
-  <ObjectEffectModifier primary="Id">
+  <table name="ObjectEffectModifier.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="uint32" name="InputType" />
     <field type="uint32" name="MapType" />
@@ -797,26 +798,26 @@ Many thanks to:
     <field type="float" name="Param2" />
     <field type="float" name="Param3" />
     <field type="float" name="Param4" />
-  </ObjectEffectModifier>
+  </table>
 
-  <ObjectEffectPackage primary="Id">
+  <table name="ObjectEffectPackage.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="string" name="Name" />
-  </ObjectEffectPackage>
+  </table>
 
-  <ObjectEffectPackageElem primary="Id">
+  <table name="ObjectEffectPackageElem.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="uint32" name="objectEffectPackageId" />
     <field type="uint32" name="objectEffectGroupId" />
     <field type="uint32" name="stateType" />
-  </ObjectEffectPackageElem>
-  
-  <QuestSort primary="ID">
+  </table>
+
+  <table name="QuestSort.dbc" primary="ID">
     <field name="ID" type="uint32" />
-	<field name="Name" type="loc" />
-  </QuestSort>
-  
-  <SkillLine primary="ID" build="14333">
+    <field name="Name" type="loc" />
+  </table>
+
+  <table name="SkillLine.dbc" primary="ID" build="14333">
     <field name="ID" type="uint32" />
     <field name="categoryID" type="uint32" />
     <field name="skillCostsID" type="uint32" />
@@ -825,9 +826,9 @@ Many thanks to:
     <field name="spellIconID" type="uint32" />
     <field name="alternateVerb" type="loc" />
     <field name="canLink" type="uint32" />
-  </SkillLine>
+  </table>
 
-  <SkillLineAbility primary="ID" build="14333">
+  <table name="SkillLineAbility.dbc" primary="ID" build="14333">
     <field name="ID" type="uint32" />
     <field name="skillLine" type="uint32" />
     <field name="spell" type="uint32" />
@@ -842,15 +843,15 @@ Many thanks to:
     <field name="trivialSkillLineRankLow" type="uint32" />
     <field name="characterPoints" type="uint32" />
     <field name="numSkillUps" type="uint32" />
-  </SkillLineAbility>
-  
-  <SkillLineCategory primary="ID" build="14333">
+  </table>
+
+  <table name="SkillLineCategory.dbc" primary="ID" build="14333">
     <field name="ID" type="uint32" />
     <field name="name" type="loc" />
     <field name="sortIndex" type="uint32" />
-  </SkillLineCategory>
+  </table>
 
-  <SkillRaceClassInfo primary="ID" build="14333">
+  <table name="SkillRaceClassInfo.dbc" primary="ID" build="14333">
     <field name="ID" type="uint32" />
     <field name="skillID" type="uint32" />
     <field name="raceMask" type="uint32" />
@@ -859,9 +860,9 @@ Many thanks to:
     <field name="minLevel" type="uint32" />
     <field name="skillTierID" type="uint32" />
     <field name="skillCostIndex" type="uint32" />
-  </SkillRaceClassInfo>
-  
-  <SkillTiers primary="ID" build="14333">
+  </table>
+
+  <table name="SkillTiers.dbc" primary="ID" build="14333">
     <field name="ID" type="uint32" />
     <field name="cost1" type="uint32" />
     <field name="cost2" type="uint32" />
@@ -895,9 +896,9 @@ Many thanks to:
     <field name="value14" type="uint32" />
     <field name="value15" type="uint32" />
     <field name="value16" type="uint32" />
-  </SkillTiers>
+  </table>
 
-  <SoundEntries primary="ID">
+  <table name="SoundEntries.dbc" primary="ID">
     <field name="ID" type="uint32" comment="Entry"/>
     <field name="Type" type="uint32"/>
     <field name="Name" type="string"/>
@@ -928,9 +929,9 @@ Many thanks to:
     <field name="distanceCutoff" type="float"/>
     <field name="EAXDef" type="uint32"/>
     <field name="Unknown_30" type="uint32"/>
-  </SoundEntries>
+  </table>
 
-  <Spell primary="ID">
+  <table name="Spell.dbc" primary="ID">
     <field name="ID" type="uint32" comment="entry"/>
     <field name="Category" type="uint32"/>
     <field name="Dispel" type="uint32"/>
@@ -1101,46 +1102,46 @@ Many thanks to:
     <field name="EffectBonusMultiplier3" type="float"/>
     <field name="spellDescriptionVariableID" type="uint32"/>
     <field name="SpellDifficultyId" type="uint32"/>
-  </Spell>
+  </table>
 
-  <SpellCastTimes primary="ID">
+  <table name="SpellCastTimes.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="CastTime" type="int32"/>
     <field name="CastTimePerLevel" type="float"/>
     <field name="MinCastTime" type="int32"/>
-  </SpellCastTimes>
+  </table>
 
-  <SpellCategory primary="ID">
+  <table name="SpellCategory.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Flags" type="uint32"/>
-  </SpellCategory>
+  </table>
 
-  <SpellDifficulty primary="ID">
+  <table name="SpellDifficulty.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="SpellID1" type="int32"/>
     <field name="SpellID2" type="int32"/>
     <field name="SpellID3" type="int32"/>
     <field name="SpellID4" type="int32"/>
-  </SpellDifficulty>
+  </table>
 
-  <SpellDuration primary="ID">
+  <table name="SpellDuration.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Duration1" type="int32"/>
     <field name="Duration2" type="int32"/>
     <field name="Duration3" type="int32"/>
-  </SpellDuration>
+  </table>
 
-  <SpellFocusObject primary="ID">
+  <table name="SpellFocusObject.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Name" type="loc"/>
-  </SpellFocusObject>
+  </table>
 
-  <SpellIcon primary="ID">
+  <table name="SpellIcon.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Path" type="string"/>
-  </SpellIcon>
+  </table>
 
-  <SpellItemEnchantment primary="ID">
+  <table name="SpellItemEnchantment.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Charges" type="uint32"/>
     <field name="Type1" type="uint32"/>
@@ -1163,9 +1164,9 @@ Many thanks to:
     <field name="RequiredSkill" type="uint32"/>
     <field name="RequiredSkillValue" type="uint32"/>
     <field name="RequiredLevel" type="uint32"/>
-  </SpellItemEnchantment>
+  </table>
 
-  <SpellItemEnchantmentCondition primary="ID">
+  <table name="SpellItemEnchantmentCondition.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="Color1" type="uint8"/>
     <field name="Color2" type="uint8"/>
@@ -1197,21 +1198,21 @@ Many thanks to:
     <field name="Logic3" type="uint8"/>
     <field name="Logic4" type="uint8"/>
     <field name="Logic5" type="uint8"/>
-  </SpellItemEnchantmentCondition>
+  </table>
 
-  <SpellMechanic primary="ID">
+  <table name="SpellMechanic.dbc" primary="ID">
     <field name="ID" type="uint32" />
-	<field name="Name" type="loc" />
-  </SpellMechanic>
-  
-  <SpellRadius primary="ID">
+    <field name="Name" type="loc" />
+  </table>
+
+  <table name="SpellRadius.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="RadiusHostile" type="float"/>
     <field name="Unknown_3" type="uint32"/>
     <field name="RadiusFriend" type="float"/>
-  </SpellRadius>
+  </table>
 
-  <SpellRange primary="ID">
+  <table name="SpellRange.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="minRangeHostile" type="float"/>
     <field name="minRangeFriend" type="float"/>
@@ -1220,17 +1221,17 @@ Many thanks to:
     <field name="type" type="uint32"/>
     <field name="Name" type="loc"/>
     <field name="Name2" type="loc"/>
-  </SpellRange>
+  </table>
 
-  <SpellRuneCost primary="ID">
+  <table name="SpellRuneCost.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="BloodRuneCost" type="uint32"/>
     <field name="FrostRuneCost" type="uint32"/>
     <field name="UnholyRuneCost" type="uint32"/>
     <field name="RunePowerGain" type="uint32"/>
-  </SpellRuneCost>
-  
-  <SpellVisual primary="ID">
+  </table>
+
+  <table name="SpellVisual.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="precastKit" type="uint32"/>
     <field name="castKit" type="uint32"/>
@@ -1263,28 +1264,28 @@ Many thanks to:
     <field name="missileImpactOffsetX" type="float"/>
     <field name="missileImpactOffsetY" type="float"/>
     <field name="missileImpactOffsetZ" type="float"/>
-  </SpellVisual>
-	
-  <SpellVisualEffectName primary="ID">
+  </table>
+
+  <table name="SpellVisualEffectName.dbc" primary="ID">
     <field name="ID" type="uint32" />
-	<field name="name" type="string" />
-	<field name="filename" type="string" />
-	<field name="unk01" type="float" />
-	<field name="unk02" type="float" />
-	<field name="unk03" type="float" />
-	<field name="unk04" type="float" />
-  </SpellVisualEffectName>
-  
-  <SummonProperties primary="ID">
+    <field name="name" type="string" />
+    <field name="filename" type="string" />
+    <field name="unk01" type="float" />
+    <field name="unk02" type="float" />
+    <field name="unk03" type="float" />
+    <field name="unk04" type="float" />
+  </table>
+
+  <table name="SummonProperties.dbc" primary="ID">
     <field name="ID" type="uint32" />
-	<field name="Control" type="uint32" />
-	<field name="Faction" type="uint32" />
-	<field name="Title" type="uint32" />
-	<field name="Slot" type="uint32" />
-	<field name="Flags" type="uint32" />
-  </SummonProperties>
-  
-  <TaxiNodes primary="ID">
+    <field name="Control" type="uint32" />
+    <field name="Faction" type="uint32" />
+    <field name="Title" type="uint32" />
+    <field name="Slot" type="uint32" />
+    <field name="Flags" type="uint32" />
+  </table>
+
+  <table name="TaxiNodes.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="MapID" type="uint32" comment="Map.dbc"/>
     <field name="X" type="float"/>
@@ -1293,16 +1294,16 @@ Many thanks to:
     <field name="Name" type="loc"/>
     <field name="MountCreatureIDH" type="uint32"/>
     <field name="MountCreatureIDA" type="uint32"/>
-  </TaxiNodes>
+  </table>
 
-  <TaxiPath primary="ID">
+  <table name="TaxiPath.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="TaxiNodeStart" type="uint32" comment="TaxiNodes.dbc"/>
     <field name="TaxiNodeEnd" type="uint32" comment="TaxiNodes.dbc"/>
     <field name="Price" type="uint32"/>
-  </TaxiPath>
+  </table>
 
-  <TaxiPathNode prmary="ID">
+  <table name="TaxiPathNode.dbc" primary="ID">
     <field name="ID" type="uint32"/>
     <field name="PathID" type="uint32" comment="TaxiPath.dbc"/>
     <field name="NodeIndex" type="uint32"/>
@@ -1314,9 +1315,9 @@ Many thanks to:
     <field name="delay" type="uint32"/>
     <field name="arrivalEventID" type="uint32"/>
     <field name="departureEventID" type="uint32"/>
-  </TaxiPathNode>
+  </table>
 
-  <TransportAnimation primary="Id">
+  <table name="TransportAnimation.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="uint32" name="TransportId" />
     <field type="uint32" name="TimeIndex" />
@@ -1324,9 +1325,9 @@ Many thanks to:
     <field type="float" name="PosY" />
     <field type="float" name="PosZ" />
     <field type="uint32" name="SequenceId" />
-  </TransportAnimation>
+  </table>
 
-  <TransportPhysics primary="Id">
+  <table name="TransportPhysics.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="float" name="WaveAmp" />
     <field type="float" name="WaveTimeScale" />
@@ -1338,9 +1339,9 @@ Many thanks to:
     <field type="float" name="MaxBankTurnSpeed" />
     <field type="float" name="SpeedDampThresh" />
     <field type="float" name="SpeedDamp" />
-  </TransportPhysics>
+  </table>
 
-  <TransportRotation primary="Id">
+  <table name="TransportRotation.dbc" primary="Id">
     <field type="uint32" name="Id" />
     <field type="uint32" name="GameObjectsID" />
     <field type="uint32" name="TimeIndex" />
@@ -1348,9 +1349,9 @@ Many thanks to:
     <field type="float" name="RotY" />
     <field type="float" name="RotZ" />
     <field type="float" name="RotW" />
-  </TransportRotation>
-  
-  <Vehicle primary="ID">
+  </table>
+
+  <table name="Vehicle.dbc" primary="ID">
     <field type="uint32"  name="ID"/>
     <field type="uint32"  name="flags"/>
     <field type="float"  name="turnSpeed"/>
@@ -1391,9 +1392,9 @@ Many thanks to:
     <field type="uint32"  name="powerType"/>
     <field type="uint32"  name="Unknown_38"/>
     <field type="uint32"  name="Unknown_39"/>
-  </Vehicle>
-  
-  <VehicleSeat primary="ID">
+  </table>
+
+  <table name="VehicleSeat.dbc" primary="ID">
     <field type="uint32"  name="ID"/>
     <field type="uint32"  name="flags"/>
     <field type="int32"  name="attachmentID"/>
@@ -1441,20 +1442,20 @@ Many thanks to:
     <field type="int32"  name="uiSkin"/>
     <field type="uint32"  name="flagsB"/>
     <field type="uint32"  name="unknown46"/>
-	<field type="uint32"  name="unknown47"/>
-	<field type="uint32"  name="unknown48"/>
-	<field type="uint32"  name="unknown49"/>
-	<field type="uint32"  name="unknown50"/>
-	<field type="uint32"  name="unknown51"/>
-	<field type="uint32"  name="unknown52"/>
-	<field type="uint32"  name="unknown53"/>
-	<field type="uint32"  name="unknown54"/>
-	<field type="uint32"  name="unknown55"/>
-	<field type="uint32"  name="unknown56"/>
-	<field type="uint32"  name="unknown57"/>
-  </VehicleSeat>
+    <field type="uint32"  name="unknown47"/>
+    <field type="uint32"  name="unknown48"/>
+    <field type="uint32"  name="unknown49"/>
+    <field type="uint32"  name="unknown50"/>
+    <field type="uint32"  name="unknown51"/>
+    <field type="uint32"  name="unknown52"/>
+    <field type="uint32"  name="unknown53"/>
+    <field type="uint32"  name="unknown54"/>
+    <field type="uint32"  name="unknown55"/>
+    <field type="uint32"  name="unknown56"/>
+    <field type="uint32"  name="unknown57"/>
+  </table>
 
-  <WMOAreaTable primary="ID">
+  <table name="WMOAreaTable.dbc" primary="ID">
     <field name="ID" type="uint32" />
     <field name="RootID" type="uint32" />
     <field name="AdtID" type="uint32" />
@@ -1467,18 +1468,18 @@ Many thanks to:
     <field name="Flags" type="uint32" />
     <field name="AreaID" type="uint32" />
     <field name="Name" type="loc" />
-  </WMOAreaTable>
-  
-  <WorldSafeLocs primary="ID">
+  </table>
+
+  <table name="WorldSafeLocs.dbc" primary="ID">
     <field name="ID" type="uint32" />
-	<field name="MapID" type="uint32" />
-	<field name="PosX" type="float" />
-	<field name="PosY" type="float" />
-	<field name="PosZ" type="float" />
-	<field name="Name" type="loc" />
-  </WorldSafeLocs>
-  
-  <WorldStateUI primary="m_ID">
+    <field name="MapID" type="uint32" />
+    <field name="PosX" type="float" />
+    <field name="PosY" type="float" />
+    <field name="PosZ" type="float" />
+    <field name="Name" type="loc" />
+  </table>
+
+  <table name="WorldStateUI.dbc" primary="m_ID">
     <field name="m_ID" type="uint32" />
     <field name="m_mapID" type="uint32" />
     <field name="m_areaID" type="uint32" />
@@ -1494,9 +1495,9 @@ Many thanks to:
     <field name="m_extendedUIStateVariable" type="uint32" />
     <field name="unk1" type="uint32" />
     <field name="unk2" type="uint32" />
-  </WorldStateUI>
-  
-  <WorldStateZoneSounds>
+  </table>
+
+  <table name="WorldStateZoneSounds.dbc">
     <field name="WorldState" type="uint32" />
     <field name="Value" type="int32" />
     <field name="AreaID" type="uint32" />
@@ -1505,6 +1506,6 @@ Many thanks to:
     <field name="Music" type="uint32" />
     <field name="SoundAmbience" type="uint32" />
     <field name="Preferences" type="uint32" />
-  </WorldStateZoneSounds>
-  
+  </table>
+
 </DBFilesClient>

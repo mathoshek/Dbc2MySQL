@@ -11,9 +11,7 @@ int main(int argc, char *argv[])
 	sys.SayHello();
 	sys.HandleArguments(argc, argv);
 	sys.ExportDBCs();
-	printf( "%f", t.getElapsedTime( ) );
-	getchar();
-	printf("Done!\n");
+	printf("Done in %f seconds!\n", t.getElapsedTime( ) / 1000000.0 );
 	return 0;
 }
 

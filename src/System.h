@@ -29,7 +29,18 @@ private:
 
 	// Functions
 	void ShowUsage(char *prg);
-	void CreateDir(string path);
+
+	bool CreateDir( const char* path );
+	const char *GetFileInDir( const char *dir );
+#ifdef _WIN32
+	HANDLE hFind;
+	WIN32_FIND_DATA findFileInfo;
+#elif __unix__
+	DIR *dirp;
+	struct dirent *dp;
+#else
+	//
+#endif
 };
 
 #endif // SYSTEM_H
