@@ -173,6 +173,8 @@ void System::ExportDBCs()
 
 		if( strcmp( dot + 1, "dbc" ) == 0 )
 			file = new DbcFile();
+		else if( strcmp( dot + 1, "db2" ) == 0 )
+			file = new Db2File();
 		else
 			continue;
 

@@ -1,0 +1,136 @@
+#include "Db2File.h"
+
+bool Db2File::Load(string filePath, vector<uint32> format)
+{
+	uint32 header;
+
+	//Delete data, if there is data
+	Close();
+
+	//Get the name
+	_name = filePath.substr(filePath.find_last_of("/") + 1);
+
+	//Open the Dbc files
+	FILE *f = fopen(filePath.c_str(), "rb");
+	if (f == NULL)
+	{
+		printf("WARNING: Can't load '%s' - File Not Found - skipping it!\n", filePath.c_str());
+		return false;
+	}
+
+	//Check if that file really is a Dbc file
+	fread(&header, 4, 1, f);			// Signature
+	if (header != 843203671)
+	{
+		printf("WARNING: Can't load '%s' - Not A Db2 File - skipping it!\n", filePath.c_str());
+		fclose(f);
+		return false;					// 'WDBC'
+	}
+
+	uint32 _stringSize;
+
+	//Read the header
+	fread(&_recordCount, 4, 1, f);		// Number of records
+	fread(&_fieldCount, 4, 1, f);		// Number of fields
+	fread(&_recordSize, 4, 1, f);		// Size of a record
+	fread(&_stringSize, 4, 1, f);		// String size
+
+	// WDB2 specific fields
+	uint32 tableHash, build, unk1;
+	fread(&tableHash, 4, 1, f);
+	fread(&build, 4, 1, f);
+	fread(&unk1, 4, 1, f);
+
+	if (build > 12880) // new extended header
+	{
+		int MinId, MaxId, locale, unk5;
+		fread(&MinId, 4, 1, f);
+		fread(&MaxId, 4, 1, f);
+		fread(&locale, 4, 1, f);
+		fread(&unk5, 4, 1, f);
+
+		if (MaxId != 0)
+		{
+			uint32 diff = MaxId - MinId + 1;
+			fseek(f, diff * 4, SEEK_CUR); // an index for rows
+			fseek(f, diff * 2, SEEK_CUR ); // a memory allocation bank  
+		}
+	}
+
+	_dataTable = new uint8[_recordSize * _recordCount];
+	fread(_dataTable, _recordSize * _recordCount, 1, f);
+
+	_stringTable = new uint8[_stringSize];
+	fread(_stringTable, _stringSize, 1, f);
+
+	_stringOffset = _recordCount * _recordSize;
+
+	fclose(f);
+
+	_format = new uint32[_fieldCount];
+	_fieldOffset = new uint32[_fieldCount];
+
+	if(format.size() == 0)
+	{
+		if(_fieldCount * 4 == _recordSize)
+			return BuildFormat(vector<uint32>(_fieldCount, FT_UINT32));
+		else
+		{
+			printf("WARNING: Can't load '%s' - cannot find a default format - skipping it\n", _name.c_str());
+			return false;
+		}
+	}
+
+	return BuildFormat(format);
+}
+
+uint32 Db2File::getRecordOffset( uint32 id )
+{
+	return id * _recordSize;
+}
+
+uint32 *Db2File::getFieldOffset( uint32 field )
+{
+	return _fieldOffset;
+}
+
+bool Db2File::BuildFormat( vector<uint32> Format )
+{
+	if( _dataTable == NULL )
+		return false;
+	if(_fieldCount != Format.size() )
+	{
+		printf("WARNING: The field count mismatch (defined:%u, real:%lu)\n", Format.size(), _fieldCount);
+		return false;
+	}
+	_format[0] = Format[0];
+	_fieldOffset[0] = 0;
+	for(uint32 i = 1; i < Format.size(); i++)
+	{
+		_format[i] = Format[i];
+		switch(_format[i])
+		{
+		case FT_INT8:
+		case FT_UINT8:
+			_fieldOffset[i] = _fieldOffset[i-1] + 1;
+			break;
+		case FT_INT16:
+		case FT_UINT16:
+			_fieldOffset[i] = _fieldOffset[i-1] + 2;
+			break;
+		case FT_INT32:
+		case FT_UINT32:
+		case FT_FLOAT:
+		case FT_STRING:
+		case FT_IGNORED:
+			_fieldOffset[i] = _fieldOffset[i-1] + 4;
+			break;
+		case FT_INT64:
+		case FT_UINT64:
+		case FT_DOUBLE:
+			_fieldOffset[i] = _fieldOffset[i-1] + 8;
+			break;
+		}
+	}
+	return true;
+}

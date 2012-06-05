@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __DBCFILE_H__
+#define __DBCFILE_H__
 
 #include "WoWClientDBFile.h"
 
@@ -17,3 +18,4 @@ private:
 	bool BuildFormat( vector<uint32> Format );
 };
 
+#endif//__DBCFILE_H__

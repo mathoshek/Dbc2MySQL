@@ -4,6 +4,7 @@
 #include "defines.h"
 #include "tinyxml.h"
 #include "DbcFile.h"
+#include "Db2File.h"
 
 class System
 {
